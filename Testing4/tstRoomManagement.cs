@@ -13,7 +13,7 @@ namespace Testing4
             //create an instance of the class we want to create
             clsRoomManagement AnRoomManagement = new clsRoomManagement();
             //test to see that it exists
-            Assert.IsNull(AnRoomManagement);
+            Assert.IsNotNull(AnRoomManagement);
         }
     }
 }
