@@ -1,6 +1,16 @@
-﻿namespace ClassLibrary
+﻿using System;
+
+namespace ClassLibrary
 {
     public class clsDoctor
     {
+        public bool Available { get; set; }
+        public DateTime ContractDate { get; set; }
+        public int DoctorId { get; set; }
+        public string FullName { get; set; }
+        public string Department { get; set; }
+        public string Street { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }
