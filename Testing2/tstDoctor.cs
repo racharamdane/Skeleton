@@ -18,7 +18,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void AvailableDocotrOK()
+        public void AvailableDoctorOK()
         {
             //create an instance of the class we want to create
             clsDoctor ADoctor = new clsDoctor();
@@ -105,6 +105,175 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(ADoctor.Department, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //create some test data to assign to the property
+            Boolean Found = false;
+            //assign the data to the property
+            int DoctorId = 14;
+            //test to see that the two values are the same
+            Found = ADoctor.Find(DoctorId);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestDoctorIdFound()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+            // create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int DoctorId = 14;
+            //invoke the method
+            Found = ADoctor.Find(DoctorId);
+            //check the doctor Id
+            if (ADoctor.DoctorId !=14)
+            {
+                OK = false;
+            }
+            //check to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDoctorFullNameFound()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int DoctorId = 14;
+            //invoke the method
+            Found = ADoctor.Find(DoctorId);
+            //check the Full Name property
+            if (ADoctor.FullName != "Jess Simpson")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDoctorPasswordFound()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int DoctorId = 14;
+            //invoke the method
+            Found = ADoctor.Find(DoctorId);
+            //check the Full Name property
+            if (ADoctor.Password != "JS6")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDoctorEmailFound()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int DoctorId = 14;
+            //invoke the method
+            Found = ADoctor.Find(DoctorId);
+            //check the Full Name property
+            if (ADoctor.Email != "js@gmail.com")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDoctorDepartmentFound()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int DoctorId = 14;
+            //invoke the method
+            Found = ADoctor.Find(DoctorId);
+            //check the Full Name property
+            if (ADoctor.Department != "Dermatology")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestContractDateFound()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+            // create a boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int DoctorId = 14;
+            //invoke the method
+            Found = ADoctor.Find(DoctorId);
+            //check the doctor Id
+            if (ADoctor.ContractDate != Convert.ToDateTime("08/05/2026"))
+            {
+                OK = false;
+            }
+            //check to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestDoctorAvailabilityFound()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            int DoctorId = 14;
+            //invoke the method
+            Found = ADoctor.Find(DoctorId);
+            //check the Full Name property
+            if (ADoctor.Available != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
 
     }
 }
