@@ -34,4 +34,37 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //Navigate to the next page
         Response.Redirect("PatientViewer.aspx");
     }
+
+
+
+
+
+
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+     
+        // Create a new instance of clsPatient
+        ClsPatient APatient = new ClsPatient();
+        // Variable to store the primary key
+        Int32 PatientID;
+        // Variable to store the result of the find operation
+        Boolean Found = false;
+        // Get the primary key entered by the user
+        PatientID = Convert.ToInt32(txtPatientID.Text);
+        // Find the record with the primary key
+        Found = APatient.Find(PatientID);
+        // If found
+        if (Found == true)
+        {
+            // Display the values of the properties in the form
+            txtPatientfullname.Text = APatient.FullName;
+            txtPatientdateofbirth.Text = APatient.DateAdded.ToString("dd/MM/yyyy");
+            txtPatientemail.Text = APatient.Email;
+            txtPatientgender.Text = APatient.PatientGender;
+            txtPatientpassword.Text = APatient.PatientPassword;
+            chkPatienttreatment.Checked = APatient.Treatment;
+        }
+    }
+
 }
