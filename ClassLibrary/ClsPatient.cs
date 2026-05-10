@@ -4,8 +4,8 @@ namespace ClassLibrary
 {
     public class ClsPatient
     {
-        
-         //private dara member for the address id patient
+
+        //private dara member for the address id patient
         private Int32 mPatientID;
         //patientId public 
         public int PatientID
@@ -123,20 +123,34 @@ namespace ClassLibrary
         /****** FIND METHOD ******/
 
 
-        public bool Find (int patientId) 
+        public bool Find(int patientId)
         {
-            // set the private data members to the test data value
-            mPatientID = 21;
-            mFullName = "Racha Ramdane"; 
-            mTreatment = true;
-            mDateAdded = Convert.ToDateTime("23-12-2022");
-            mEmail = "racha@gmail";
-            mPatientGender = "female";
-            mPatientPassword = "LE1234AB";
-            // always return true 
-            return true;
+            // create an instance of the data connection 
+            clsDataConnection DB = new clsDataConnection();
+            // add the parameter for the patient id to search for
+            DB.AddParameter("@PatientID", patientId);
+            // execute the stored procedure
+            DB.Execute("sproc_tblPatientManagement_FilterByPatientID");
+            //If one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                // copy the data from the database to the private data members 
+                mPatientID = Convert.ToInt32(DB.DataTable.Rows[0]["PatientID"]);
+                mFullName = Convert.ToString(DB.DataTable.Rows[0]["Patient full name"]);
+                mTreatment = Convert.ToBoolean(DB.DataTable.Rows[0]["Patient treatment"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["Patient date of birth"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Patient Email"]);
+                mPatientGender = Convert.ToString(DB.DataTable.Rows[0]["Patient gender"]);
+                mPatientPassword = Convert.ToString(DB.DataTable.Rows[0]["Patient password"]);
+                // return that everything worked OK
+                return true;
+            }
+            // if no record is found
+            else
+            {
+                // return false indicating a problem
+                return false;
+            }
         }
-       
-    
     }
 }
