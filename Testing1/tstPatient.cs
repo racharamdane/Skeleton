@@ -8,6 +8,8 @@ namespace Testing1
     [TestClass]
     public class tstPatient
     {
+        /******************INSTANCE OF THE CLASS TEST******************/
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -16,54 +18,57 @@ namespace Testing1
             //test to see that it exists
             Assert.IsNotNull(APatient);
         }
+
+        /******************PROPERTY OK TESTS******************/
+
         [TestMethod]
         public void PatientIdOK()
         {
             //create an instance of the class we want to create
-            ClsPatient AnAddress = new ClsPatient();
-            //create some test data to assign to the property
-            Int32 TestData = 1;
-            //assign the data to the property
-            AnAddress.PatientId = TestData;
+            ClsPatient APatient = new ClsPatient();
+            //create some test data to assign to the patient
+            Int32 TestData = 111;
+            //assign the data to the patient
+            APatient.PatientID = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnAddress.PatientId, TestData);
+            Assert.AreEqual(APatient.PatientID, TestData);
         }
         [TestMethod]
         public void PatientFullNameOK()
         {
             //create an instance of the class we want to create
-            ClsPatient AnAddress = new ClsPatient();
+            ClsPatient APatient = new ClsPatient();
             //create some test data to assign to the patient
             string TestData = "Racha Ramdane";
             //assign the data to the patient
-            AnAddress.FullName = TestData;
+            APatient.FullName = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnAddress.FullName, TestData);
+            Assert.AreEqual(APatient.FullName, TestData);
         }
 
         [TestMethod]
         public void PatientTreatmentOK()
         {
             //create an instance of the class we want to create
-            ClsPatient AnPatient = new ClsPatient();
+            ClsPatient APatient = new ClsPatient();
             //create some test data to assign to the patient
             Boolean TestData = true;
             //assign the data to the patient
-            AnPatient.Treatment = TestData;
+            APatient.Treatment = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnPatient.Treatment, TestData);
+            Assert.AreEqual(APatient.Treatment, TestData);
         }
         [TestMethod]
         public void PatientDateOfBirthOK()
         {
             //create an instance of the class we want to create
-            ClsPatient AnAddress = new ClsPatient();
+            ClsPatient APatient = new ClsPatient();
             //create some test data to assign to the patient
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the patient
-            AnAddress.DateAdded = TestData;
+            APatient.DateAdded = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnAddress.DateAdded, TestData);
+            Assert.AreEqual(APatient.DateAdded, TestData);
         }
         [TestMethod]
         public void PatientGenderOK()
@@ -83,7 +88,7 @@ namespace Testing1
             //create an instance of the class we want to create
             ClsPatient AnAddress = new ClsPatient();
             //create some test data to assign to the property
-            string TestData = "Some Street";
+            string TestData = "racha@gmail";
             //assign the data to the property
             AnAddress.Email = TestData;
             //test to see that the two values are the same
@@ -96,14 +101,181 @@ namespace Testing1
             //create an instance of the class we want to create
             ClsPatient AnAddress = new ClsPatient();
             //create some test data to assign to the patient
-            string TestData = "LE14AB";
+            string TestData = "LE1234AB";
             //assign the data to the patient
             AnAddress.PatientPassword = TestData;
             //test to see that the two values are the same
             Assert.AreEqual(AnAddress.PatientPassword, TestData);
         }
-        
-       
+
+       /******************FIND METHOD TEST******************/
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 APatientID = 21;
+            //invoke the method
+            Found = APatient.Find(APatientID);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+        /******************PROPERTY DATA TESTS******************/
+
+        [TestMethod]
+        public void TestPatientIdFound()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 PatientID = 21;
+            //invoke the method
+            Found = APatient.Find(PatientID);
+            //check the address id property
+            if (APatient.PatientID != 21)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestPatientFullNameFound()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 PatientID = 21;
+            //invoke the method
+            Found = APatient.Find(PatientID);
+            //check the house no property
+            if (APatient.FullName != "Racha Ramdane")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestTreatmentFound()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 PatientID = 21;
+            //invoke the method
+            Found = APatient.Find(PatientID);
+            //check the street property
+            if (APatient.Treatment != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 PatientID = 21;
+            //invoke the method
+            Found = APatient.Find(PatientID);
+            //check the date added property
+            if (APatient.DateAdded != Convert.ToDateTime("23-12-2022"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestPatientGenderFound()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 PatientID = 21;
+            //invoke the method
+            Found = APatient.Find(PatientID);
+            //check the county code property
+            if (APatient.PatientGender != "female")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestPatientEmailFound()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 PatientID = 21;
+            //invoke the method
+            Found = APatient.Find(PatientID);
+            //check the county code property
+            if (APatient.Email != "racha@gmail")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestPatientPasswordFound()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 PatientID = 21;
+            //invoke the method
+            Found = APatient.Find(PatientID);
+            //check the county code property
+            if (APatient.PatientPassword != "LE1234AB")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
+
+
 
     }
 }
