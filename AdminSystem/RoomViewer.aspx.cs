@@ -16,5 +16,15 @@ public partial class _1Viewer : System.Web.UI.Page
         AnRoomManagement = (clsRoomManagement)Session["AnRoomManagement"];
         //display the roomID for this entry
         Response.Write(AnRoomManagement.RoomID);
+        //display the room name for this entry
+        Response.Write(AnRoomManagement.RoomName);
+        //display the patientID for this entry
+        Response.Write(AnRoomManagement.PatientID);
+        //display the room entry date for this entry
+        Response.Write(AnRoomManagement.RoomEntryDate);
+        //display the clinical notes for this entry
+        Response.Write(AnRoomManagement.ClinicalNotes);
+        //display the treatment over for this entry
+        Response.Write(AnRoomManagement.TreatmentOver);
     }
 }
