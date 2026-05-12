@@ -117,19 +117,34 @@ namespace ClassLibrary
             }
 
         }
-        public bool Find(int doctorId)
+        public bool Find(int DoctorId)
         {
-            //set the private data members to the test data value
-            mDoctorId = 14;
-            mFullName = "Jess Simpson";
-            mPassword = "JS6";
-            mEmail = "js@gmail.com";
-            mDepartment = "Dermatology";
-            mContractDate = Convert.ToDateTime("08/05/2026");
-            mAvailable = true;
-
-            // always return true
-            return true;
+            //create an instance of the data connection 
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the docto id to search for
+            DB.AddParameter("@DoctorId", DoctorId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblDoctorManagement_FilterByDoctorId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mDoctorId = Convert.ToInt32(DB.DataTable.Rows[0]["DoctorId"]);
+                mFullName = Convert.ToString(DB.DataTable.Rows[0]["FullName"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mDepartment = Convert.ToString(DB.DataTable.Rows[0]["Department"]);
+                mContractDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ContractDate"]);
+                mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Availability"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
         }
 
     }
