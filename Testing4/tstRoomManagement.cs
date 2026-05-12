@@ -94,5 +94,151 @@ namespace Testing4
             Assert.AreEqual(AnRoomManagment.ClinicalNotes, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 RoomID = 1;
+            //invoke the method
+            Found = AnRoomManagement.Find(RoomID);
+            //test to see if the result is ture
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestRoomIDFound()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 RoomID = 1;
+            //invoke the method
+            Found = AnRoomManagement.Find(RoomID);
+            //check the room id
+            if (AnRoomManagement.RoomID != 1)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestTreatmentOverFound()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 RoomID = 1;
+            //invoke the method
+            Found = AnRoomManagement.Find(RoomID);
+            //check the room id
+            if (AnRoomManagement.TreatmentOver != false)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestRoomEntryDateFound()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 RoomID = 1;
+            //invoke the method
+            Found = AnRoomManagement.Find(RoomID);
+            //check the room id
+            if (AnRoomManagement.RoomEntryDate != Convert.ToDateTime("11/05/2026"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPatientIDFound()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 RoomID = 1;
+            //invoke the method
+            Found = AnRoomManagement.Find(RoomID);
+            //check the room id
+            if (AnRoomManagement.PatientID != 1)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestRoomNameFound()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 RoomID = 1;
+            //invoke the method
+            Found = AnRoomManagement.Find(RoomID);
+            //check the room id
+            if (AnRoomManagement.RoomName != "ObiWan")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestClinicalNotesFound()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 RoomID = 1;
+            //invoke the method
+            Found = AnRoomManagement.Find(RoomID);
+            //check the room id
+            if (AnRoomManagement.ClinicalNotes != "Patient is doing well")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 }
