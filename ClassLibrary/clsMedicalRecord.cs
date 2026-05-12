@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
 
 namespace ClassLibrary
@@ -58,13 +59,23 @@ namespace ClassLibrary
 
         public bool Find(int patientId)
         {
-            mPatientId = 100;
-            mDob = Convert.ToDateTime("12/12/2012");
-            mSex = true;
-            mMeds = "Test Meds";
-            mDiagnoses = "Test Diags";
-            mNotes = "Test Notes";
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@PatientId", IdAdded);
+            DB.Execute("sproc_tblMedicalRecord_FilterByPatientId");
+            if (DB.Count == 1)
+            {
+                mPatientId = Convert.ToInt32(1234571);
+                mDob = Convert.ToDateTime("12/12/2012");
+                mSex = Convert.ToBoolean(true);
+                mMeds = Convert.ToString("Test Meds");
+                mDiagnoses = Convert.ToString("Test Diags");
+                mNotes = Convert.ToString("Test Notes");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

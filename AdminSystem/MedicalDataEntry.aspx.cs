@@ -38,4 +38,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to view page
         Response.Redirect("MedicalViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+        Int32 PatientId;
+        Boolean Found = false;
+        PatientId = Convert.ToInt32(txtPatientId.Text);
+        Found = AMedicalRecord.Find(PatientId);
+        if(Found == true)
+        {
+            txtDob.Text = AMedicalRecord.DateAdded.ToString();
+            chkSex.Checked = AMedicalRecord.SexAdded;
+            txtMedications.Text = AMedicalRecord.MedsAdded;
+            txtDiagnoses.Text = AMedicalRecord.DiagsAdded;
+            txtClinicalNotes.Text = AMedicalRecord.NotesAdded;  
+
+        }
+
+    }
 }

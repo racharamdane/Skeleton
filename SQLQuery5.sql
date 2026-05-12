@@ -1,0 +1,11 @@
+﻿USE [p2800530]
+GO
+
+DECLARE	@return_value Int
+
+EXEC	@return_value = [dbo].[sproc_tblPatientManagement_FilterByPatientID]
+		@PatientID = 1234568
+
+SELECT	@return_value as 'Return Value'
+
+GO

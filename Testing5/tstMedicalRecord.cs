@@ -89,7 +89,7 @@ namespace Testing5
             Boolean Found = false;
             //create test data
             Boolean OK = true;
-            Int32 PatientId = 100;
+            Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
  
@@ -103,10 +103,10 @@ namespace Testing5
             Boolean Found = false;
             //create test data
             Boolean OK = true;
-            Int32 PatientId = 100;
+            Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
-            if(AMedicalRecord.IdAdded != 100)
+            if(AMedicalRecord.IdAdded != 1234571)
             { 
                 OK = false;
             }
@@ -120,7 +120,7 @@ namespace Testing5
             Boolean Found = false;
             //create test data
             Boolean OK = true;
-            Int32 PatientId = 100;
+            Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
             if (AMedicalRecord.DateAdded != Convert.ToDateTime("12/12/2012"))
@@ -137,7 +137,7 @@ namespace Testing5
             Boolean Found = false;
             //create test data
             Boolean OK = true;
-            Int32 PatientId = 100;
+            Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
             if (AMedicalRecord.SexAdded != true)
@@ -154,7 +154,7 @@ namespace Testing5
             Boolean Found = false;
             //create test data
             Boolean OK = true;
-            Int32 PatientId = 100;
+            Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
             if (AMedicalRecord.MedsAdded != "Test Meds")
@@ -171,7 +171,7 @@ namespace Testing5
             Boolean Found = false;
             //create test data
             Boolean OK = true;
-            Int32 PatientId = 100;
+            Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
             if (AMedicalRecord.DiagsAdded != "Test Diags")
@@ -188,7 +188,7 @@ namespace Testing5
             Boolean Found = false;
             //create test data
             Boolean OK = true;
-            Int32 PatientId = 100;
+            Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
             if (AMedicalRecord.NotesAdded != "Test Notes")
