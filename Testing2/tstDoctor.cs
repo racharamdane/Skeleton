@@ -420,6 +420,385 @@ namespace Testing2
         }
 
         [TestMethod]
+        public void PasswordMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = ""; //this should trigger an error
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordMin()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "a"; //this should be ok
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "aa"; //this should be ok
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "";
+            Password = Password.PadRight(49, 'a'); //this should pass
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordMax()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "";
+            Password = Password.PadRight(50, 'a'); //this should pass
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordMid()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "";
+            Password = Password.PadRight(25, 'a'); //this should pass
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PasswordMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "";
+            Password = Password.PadRight(51, 'a'); //this should fail
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void PasswordExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Password = "";
+            Password = Password.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = ""; //this should trigger an error
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMin()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "a"; //this should be ok
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "aa"; //this should be ok
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "";
+            Email = Email.PadRight(49, 'a'); //this should pass
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMax()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "";
+            Email = Email.PadRight(50, 'a'); //this should pass
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMid()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "";
+            Email = Email.PadRight(25, 'a'); //this should pass
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "";
+            Email = Email.PadRight(51, 'a'); //this should fail
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void EmailExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "";
+            Password = Password.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DepartmentMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Department = ""; //this should trigger an error
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DepartmentlMin()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Department = "a"; //this should be ok
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DepartmentMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Department = "aa"; //this should be ok
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DepartmentMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Department = "";
+            Department = Department.PadRight(49, 'a'); //this should pass
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DepartmentMax()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Department = "";
+            Department = Department.PadRight(50, 'a'); //this should pass
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DepartmentMid()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Department = "";
+            Department = Department.PadRight(25, 'a'); //this should pass
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DepartmentMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Department = "";
+            Department = Department.PadRight(51, 'a'); //this should fail
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DepartmentExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Department = "";
+            Department = Department.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
         public void ContractDateMinLessOne()
         {
             //create an instance of the class we want to create
