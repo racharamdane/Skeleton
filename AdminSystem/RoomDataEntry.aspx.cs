@@ -34,4 +34,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to the view page
         Response.Redirect("RoomViewer.aspx");
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        //create an instance of the room management class
+        clsRoomManagement AnRoomManagement = new clsRoomManagement();
+        //create a variable to store the primary key
+        Int32 RoomID;
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        RoomID = Convert.ToInt32(txtRoomID.Text);
+        //find the record
+        Found = AnRoomManagement.Find(RoomID);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtRoomName.Text = AnRoomManagement.RoomName;
+            txtPatientID.Text = AnRoomManagement.PatientID.ToString();
+            txtRoomEntryDate.Text = AnRoomManagement.RoomEntryDate.ToString();
+            txtClinicalNotes.Text = AnRoomManagement.ClinicalNotes;
+            chkTreatmentOver.Checked = AnRoomManagement.TreatmentOver;
+        }
+    }
 }

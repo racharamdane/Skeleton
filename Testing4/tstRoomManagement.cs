@@ -167,7 +167,7 @@ namespace Testing4
             //invoke the method
             Found = AnRoomManagement.Find(RoomID);
             //check the room id
-            if (AnRoomManagement.RoomEntryDate != Convert.ToDateTime("11/05/2026"))
+            if (AnRoomManagement.RoomEntryDate != Convert.ToDateTime("12/05/2026"))
             {
                 OK = false;
             }
@@ -211,7 +211,7 @@ namespace Testing4
             //invoke the method
             Found = AnRoomManagement.Find(RoomID);
             //check the room id
-            if (AnRoomManagement.RoomName != "ObiWan")
+            if (AnRoomManagement.RoomName != "room1")
             {
                 OK = false;
             }
@@ -233,7 +233,7 @@ namespace Testing4
             //invoke the method
             Found = AnRoomManagement.Find(RoomID);
             //check the room id
-            if (AnRoomManagement.ClinicalNotes != "Patient is doing well")
+            if (AnRoomManagement.ClinicalNotes != "stuff")
             {
                 OK = false;
             }

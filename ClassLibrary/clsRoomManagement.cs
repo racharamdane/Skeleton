@@ -93,16 +93,31 @@ namespace ClassLibrary
 
         public bool Find(int roomID)
         {
-            //set the private data members to the test data value
-            mRoomID = 1;
-            mTreatmentOver = false;
-            mRoomEntryDate = Convert.ToDateTime("11/05/2026");
-            mPatientID = 1;
-            mRoomName = "ObiWan";
-            mClinicalNotes = "Patient is doing well";
-
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the room id to search for
+            DB.AddParameter("@RoomID", roomID);
+            //execute the stored procedure
+            DB.Execute("sproc_tblRoomManagement_FilterByRoomID");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mRoomID = Convert.ToInt32(DB.DataTable.Rows[0]["RoomID"]);
+                mTreatmentOver = Convert.ToBoolean(DB.DataTable.Rows[0]["TreatmentOver"]);
+                mRoomEntryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["RoomEntryDate"]);
+                mPatientID = Convert.ToInt32(DB.DataTable.Rows[0]["PatientID"]);
+                mRoomName = Convert.ToString(DB.DataTable.Rows[0]["RoomName"]);
+                mClinicalNotes = Convert.ToString(DB.DataTable.Rows[0]["ClinicalNotes"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating a problem
+                return false;
+            }
         }
     }
 }
