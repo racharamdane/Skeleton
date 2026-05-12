@@ -147,5 +147,23 @@ namespace ClassLibrary
             }
         }
 
+        public string Valid(string fullName, string password, string email, string department, string contractDate)
+        {
+            //create a string variable to store the error
+            string Error = "";
+            //if the FullName is blank
+            if (fullName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The full name many not be blank : ";
+            }
+            if (fullName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The full name must be less than 50 characters : ";
+            }
+            //return any error message
+            return Error;
+        }
     }
 }
