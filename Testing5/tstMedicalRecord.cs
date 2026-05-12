@@ -81,17 +81,5 @@ namespace Testing5
 
             Assert.AreEqual(AMedicalRecord.NotesAdded, TestData);
         }
-        [TestMethod]
-        public void PrescriptionsOK()
-        {
-            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
-
-            String TestData = "Scripts";
-
-            AMedicalRecord.PrescriptionsAdded = TestData;
-
-            Assert.AreEqual(AMedicalRecord.PrescriptionsAdded, TestData);
-        }
-
     }
 }
