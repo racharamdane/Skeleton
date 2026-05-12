@@ -77,5 +77,10 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string dob, string medications, string diagnoses, string clinicalNotes)
+        {
+           return "";
+        }
     }
 }

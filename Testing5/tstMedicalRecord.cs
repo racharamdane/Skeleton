@@ -208,7 +208,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            Error = AMedicalRecord.Valid(Dob, Sex, Medications, Diagnoses, ClinicalNotes);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreEqual(Error, "");
         }
     }
