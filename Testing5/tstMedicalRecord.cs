@@ -81,5 +81,122 @@ namespace Testing5
 
             Assert.AreEqual(AMedicalRecord.NotesAdded, TestData);
         }
+        public void FindMethodOk()
+        {
+            //create instance of the class
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            //create boolean to store the results of the validation
+            Boolean Found = false;
+            //create test data
+            Boolean OK = true;
+            Int32 PatientId = 100;
+            //invoke method 
+            Found = AMedicalRecord.Find(PatientId);
+ 
+            Assert.IsTrue(Found);
+        }
+        public void TestPatientIdFound()
+        {
+            //create instance of the class
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            //create boolean to store the results of the validation
+            Boolean Found = false;
+            //create test data
+            Boolean OK = true;
+            Int32 PatientId = 100;
+            //invoke method 
+            Found = AMedicalRecord.Find(PatientId);
+            if(AMedicalRecord.IdAdded != 100)
+            { 
+                OK = false;
+            }
+            Assert.IsTrue(Found);
+        }
+        public void TestDobFound()
+        {
+            //create instance of the class
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            //create boolean to store the results of the validation
+            Boolean Found = false;
+            //create test data
+            Boolean OK = true;
+            Int32 PatientId = 100;
+            //invoke method 
+            Found = AMedicalRecord.Find(PatientId);
+            if (AMedicalRecord.DateAdded != Convert.ToDateTime("12/12/2012"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(Found);
+        }
+        public void TestSexFound()
+        {
+            //create instance of the class
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            //create boolean to store the results of the validation
+            Boolean Found = false;
+            //create test data
+            Boolean OK = true;
+            Int32 PatientId = 100;
+            //invoke method 
+            Found = AMedicalRecord.Find(PatientId);
+            if (AMedicalRecord.SexAdded != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(Found);
+        }
+        public void TestMedicationsFound()
+        {
+            //create instance of the class
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            //create boolean to store the results of the validation
+            Boolean Found = false;
+            //create test data
+            Boolean OK = true;
+            Int32 PatientId = 100;
+            //invoke method 
+            Found = AMedicalRecord.Find(PatientId);
+            if (AMedicalRecord.MedsAdded != "Test Meds")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(Found);
+        }
+        public void TestDiagnosesFound()
+        {
+            //create instance of the class
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            //create boolean to store the results of the validation
+            Boolean Found = false;
+            //create test data
+            Boolean OK = true;
+            Int32 PatientId = 100;
+            //invoke method 
+            Found = AMedicalRecord.Find(PatientId);
+            if (AMedicalRecord.DiagsAdded != "Test Diags")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(Found);
+        }
+        public void TestNotesFound()
+        {
+            //create instance of the class
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            //create boolean to store the results of the validation
+            Boolean Found = false;
+            //create test data
+            Boolean OK = true;
+            Int32 PatientId = 100;
+            //invoke method 
+            Found = AMedicalRecord.Find(PatientId);
+            if (AMedicalRecord.NotesAdded != "Test Notes")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(Found);
+        }
     }
+
 }
