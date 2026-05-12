@@ -2,12 +2,22 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.ComponentModel;
+using System.IO;
 
 namespace Testing1
 {
     [TestClass]
     public class tstPatient
     {
+        //good test data
+        //create some test data to pass to the method
+        string Patientfullname = "Racha R";
+        string PatientEmail = "racha@gmail.com";
+        string Patientgender = "female";
+        string Patientpassword = "racha123456789";
+        string DateAdded = DateTime.Now.ToShortDateString();
+
+
         /******************INSTANCE OF THE CLASS TEST******************/
 
         [TestMethod]
@@ -108,7 +118,7 @@ namespace Testing1
             Assert.AreEqual(AnAddress.PatientPassword, TestData);
         }
 
-       /******************FIND METHOD TEST******************/
+        /******************FIND METHOD TEST******************/
         [TestMethod]
         public void FindMethodOK()
         {
@@ -273,9 +283,126 @@ namespace Testing1
             Assert.IsTrue(OK);
         }
 
+        /******************VALID METHOD TEST******************/
 
 
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
 
 
+        }
+
+        [TestMethod]
+        public void PatientFullNameMinLessOne()
+        {
+            // create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Patientfullname = "";
+            //invoke the method
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PatientFullNameMin()
+        {
+            //create an instance of the class we want to create 
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message 
+            String Error = "";
+            //create some test data to pass to the method 
+            string Patientfullname = "a"; //this should be ok 
+            //invoke the method 
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword);
+            //test to see that the result is correct 
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PatientFullNameMinPlusOne()
+        {
+            //create an instance of the class we want to create 
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message 
+            String Error = "";
+            //create some test data to pass to the method 
+            string Patientfullname = "aa"; //this should be ok 
+            //invoke the method 
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword);
+            //test to see that the result is correct 
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PatientFullNameMaxLessOne()
+        {
+            //create an instance of the class we want to create 
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message 
+            String Error = "";
+            //create some test data to pass to the method 
+            string Patientfullname = "aaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok 
+            //invoke the method 
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword);
+            //test to see that the result is correct 
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PatientFullNameNoMax()
+        {
+            //create an instance of the class we want to create 
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message 
+            String Error = "";
+            //create some test data to pass to the method 
+            string Patientfullname = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok 
+            //invoke the method 
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword);
+            //test to see that the result is correct 
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PatientFullNameNoMid()
+        {
+            //create an instance of the class we want to create 
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message 
+            String Error = "";
+            //create some test data to pass to the method 
+            string Patientfullname = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok 
+            //invoke the method 
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword);
+            //test to see that the result is correct 
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PatientFullNameExtremeMax()
+        {
+            //create an instance of the class we want to create 
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message 
+            String Error = "";
+            //create some test data to pass to the method 
+            string Patientfullname = "";
+            Patientfullname = Patientfullname.PadRight(500, 'a'); //this should fail 
+            //invoke the method 
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword);
+            //test to see that the result is correct 
+            Assert.AreNotEqual(Error, "");
+        }
     }
+
 }
