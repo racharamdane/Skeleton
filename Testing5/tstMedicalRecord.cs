@@ -15,9 +15,9 @@ namespace Testing5
 
             Int32 TestData = '1';
 
-            AMedicalRecord.IdAdded = TestData;
+            AMedicalRecord.PatientId = TestData;
 
-            Assert.AreEqual(AMedicalRecord.IdAdded, TestData);
+            Assert.AreEqual(AMedicalRecord.PatientId, TestData);
         }
         [TestMethod]
         public void InstanceOk()
@@ -33,9 +33,9 @@ namespace Testing5
 
             DateTime TestData = DateTime.Now.Date;
 
-            AMedicalRecord.DateAdded = TestData;
+            AMedicalRecord.Dob = TestData;
 
-            Assert.AreEqual(AMedicalRecord.DateAdded, TestData);
+            Assert.AreEqual(AMedicalRecord.Dob, TestData);
         }
         [TestMethod]
         public void SexOK()
@@ -44,9 +44,9 @@ namespace Testing5
 
             Boolean TestData = true;
 
-            AMedicalRecord.SexAdded = TestData;
+            AMedicalRecord.Sex = TestData;
 
-            Assert.AreEqual(AMedicalRecord.SexAdded, TestData);
+            Assert.AreEqual(AMedicalRecord.Sex, TestData);
         }
         [TestMethod]
         public void MedicationsOK()
@@ -55,9 +55,9 @@ namespace Testing5
 
             String TestData = "Meds";
 
-            AMedicalRecord.MedsAdded = TestData;
+            AMedicalRecord.Medications = TestData;
 
-            Assert.AreEqual(AMedicalRecord.MedsAdded, TestData);
+            Assert.AreEqual(AMedicalRecord.Medications, TestData);
         }
         [TestMethod]
         public void DiagnosesOK()
@@ -66,9 +66,9 @@ namespace Testing5
 
             String TestData = "Ailments";
 
-            AMedicalRecord.DiagsAdded = TestData;
+            AMedicalRecord.Diagnoses = TestData;
 
-            Assert.AreEqual(AMedicalRecord.DiagsAdded, TestData);
+            Assert.AreEqual(AMedicalRecord.Diagnoses, TestData);
         }
         [TestMethod]
         public void ClinicalNotesOK()
@@ -77,9 +77,9 @@ namespace Testing5
 
             String TestData = "Notes";
 
-            AMedicalRecord.NotesAdded = TestData;
+            AMedicalRecord.ClinicalNotes = TestData;
 
-            Assert.AreEqual(AMedicalRecord.NotesAdded, TestData);
+            Assert.AreEqual(AMedicalRecord.ClinicalNotes, TestData);
         }
         public void FindMethodOk()
         {
@@ -106,7 +106,7 @@ namespace Testing5
             Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
-            if(AMedicalRecord.IdAdded != 1234571)
+            if(AMedicalRecord.PatientId != 1234571)
             { 
                 OK = false;
             }
@@ -123,7 +123,7 @@ namespace Testing5
             Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
-            if (AMedicalRecord.DateAdded != Convert.ToDateTime("12/12/2012"))
+            if (AMedicalRecord.Dob != Convert.ToDateTime("12/12/2012"))
             {
                 OK = false;
             }
@@ -140,7 +140,7 @@ namespace Testing5
             Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
-            if (AMedicalRecord.SexAdded != true)
+            if (AMedicalRecord.Sex != true)
             {
                 OK = false;
             }
@@ -157,7 +157,7 @@ namespace Testing5
             Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
-            if (AMedicalRecord.MedsAdded != "Test Meds")
+            if (AMedicalRecord.Medications != "Test Meds")
             {
                 OK = false;
             }
@@ -174,7 +174,7 @@ namespace Testing5
             Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
-            if (AMedicalRecord.DiagsAdded != "Test Diags")
+            if (AMedicalRecord.Diagnoses != "Test Diags")
             {
                 OK = false;
             }
@@ -191,7 +191,7 @@ namespace Testing5
             Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
-            if (AMedicalRecord.NotesAdded != "Test Notes")
+            if (AMedicalRecord.ClinicalNotes != "Test Notes")
             {
                 OK = false;
             }

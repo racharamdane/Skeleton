@@ -14,42 +14,42 @@ namespace ClassLibrary
         private Boolean mSex;
         private string mNotes;
      
-        public DateTime DateAdded
+        public DateTime Dob
         {
             get
             { return mDob; }
             set
             { mDob = value; }
         }
-        public int IdAdded
+        public int PatientId
         {
             get
                 { return mPatientId; }
             set
                 { mPatientId = value; }
         }
-        public string MedsAdded
+        public string Medications
         {
             get
             { return mMeds; }
             set
             { mMeds = value; }
         }
-        public string DiagsAdded
+        public string Diagnoses
         {
             get
             { return mDiagnoses; }
             set
             { mDiagnoses = value; }
         }
-        public bool SexAdded
+        public bool Sex
         {
             get
             { return mSex; }
             set
             { mSex = value; }
         }
-        public string NotesAdded
+        public string ClinicalNotes
         {
             get
             { return mNotes; }
@@ -57,19 +57,19 @@ namespace ClassLibrary
             { mNotes = value; }
         }
 
-        public bool Find(int patientId)
+        public bool Find(int PatientId)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@PatientId", IdAdded);
+            DB.AddParameter("@PatientId", PatientId);
             DB.Execute("sproc_tblMedicalRecord_FilterByPatientId");
             if (DB.Count == 1)
             {
-                mPatientId = Convert.ToInt32(1234571);
-                mDob = Convert.ToDateTime("12/12/2012");
-                mSex = Convert.ToBoolean(true);
-                mMeds = Convert.ToString("Test Meds");
-                mDiagnoses = Convert.ToString("Test Diags");
-                mNotes = Convert.ToString("Test Notes");
+                mPatientId = Convert.ToInt32(DB.DataTable.Rows[0]["PatientId"]);
+                mDob = Convert.ToDateTime(DB.DataTable.Rows[0]["Dob"]);
+                mSex = Convert.ToBoolean(DB.DataTable.Rows[0]["Sex"]);
+                mMeds = Convert.ToString(DB.DataTable.Rows[0]["Medications"]);
+                mDiagnoses = Convert.ToString(DB.DataTable.Rows[0]["Diagnoses"]);
+                mNotes = Convert.ToString(DB.DataTable.Rows[0]["ClinicalNotes"]);
                 return true;
             }
             else
