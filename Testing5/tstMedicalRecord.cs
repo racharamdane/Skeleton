@@ -8,6 +8,12 @@ namespace Testing5
     [TestClass]
     public class tstMedicalRecord
     {
+        //test data
+        string Dob = DateTime.Now.ToShortDateString();
+        string Medications = "Medication 200mg";
+        string Diagnoses = "Diabetus";
+        string ClinicalNotes = "Foot Pain";
+
         [TestMethod]
         public void PatientIdOK()
         {
@@ -196,6 +202,14 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            Error = AMedicalRecord.Valid(Dob, Sex, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
         }
     }
 
