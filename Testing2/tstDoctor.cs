@@ -114,7 +114,7 @@ namespace Testing2
             //create some test data to assign to the property
             Boolean Found = false;
             //assign the data to the property
-            int DoctorId = 14;
+            int DoctorId = 1;
             //test to see that the two values are the same
             Found = ADoctor.Find(DoctorId);
             Assert.IsTrue(Found);
@@ -130,11 +130,11 @@ namespace Testing2
             // create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int DoctorId = 14;
+            int DoctorId = 1;
             //invoke the method
             Found = ADoctor.Find(DoctorId);
             //check the doctor Id
-            if (ADoctor.DoctorId !=14)
+            if (ADoctor.DoctorId !=1)
             {
                 OK = false;
             }
@@ -152,11 +152,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int DoctorId = 14;
+            int DoctorId = 1;
             //invoke the method
             Found = ADoctor.Find(DoctorId);
             //check the Full Name property
-            if (ADoctor.FullName != "Jess Simpson")
+            if (ADoctor.FullName.Trim() != "Praisy")
             {
                 OK = false;
             }
@@ -174,11 +174,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int DoctorId = 14;
+            int DoctorId = 1;
             //invoke the method
             Found = ADoctor.Find(DoctorId);
             //check the Full Name property
-            if (ADoctor.Password != "JS6")
+            if (ADoctor.Password.Trim() != "P1")
             {
                 OK = false;
             }
@@ -196,11 +196,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int DoctorId = 14;
+            int DoctorId = 1;
             //invoke the method
             Found = ADoctor.Find(DoctorId);
             //check the Full Name property
-            if (ADoctor.Email != "js@gmail.com")
+            if (ADoctor.Email != "p@gmail.com")
             {
                 OK = false;
             }
@@ -218,11 +218,11 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int DoctorId = 14;
+            int DoctorId = 1;
             //invoke the method
             Found = ADoctor.Find(DoctorId);
             //check the Full Name property
-            if (ADoctor.Department != "Dermatology")
+            if (ADoctor.Department != "Gynaecology")
             {
                 OK = false;
             }
@@ -240,11 +240,11 @@ namespace Testing2
             // create a boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int DoctorId = 14;
+            int DoctorId = 1;
             //invoke the method
             Found = ADoctor.Find(DoctorId);
             //check the doctor Id
-            if (ADoctor.ContractDate != Convert.ToDateTime("08/05/2026"))
+            if (ADoctor.ContractDate != Convert.ToDateTime("29/04/2026"))
             {
                 OK = false;
             }
@@ -262,7 +262,7 @@ namespace Testing2
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            int DoctorId = 14;
+            int DoctorId = 1;
             //invoke the method
             Found = ADoctor.Find(DoctorId);
             //check the Full Name property
