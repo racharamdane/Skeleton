@@ -18,18 +18,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create new class of clsMedicalRecord
         clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
         //take patientId
-        AMedicalRecord.IdAdded= Convert.ToInt32(txtPatientId.Text);
+        AMedicalRecord.PatientId= Convert.ToInt32(txtPatientId.Text);
 
         //take dob
-        AMedicalRecord.DateAdded = Convert.ToDateTime(txtDob.Text);
+        AMedicalRecord.Dob = Convert.ToDateTime(txtDob.Text);
 
         //take sex
-        AMedicalRecord.SexAdded = chkSex.Checked;
+        AMedicalRecord.Sex = chkSex.Checked;
 
         //take meds, diags and notes
-        AMedicalRecord.MedsAdded = txtMedications.Text;
-        AMedicalRecord.DiagsAdded = txtDiagnoses.Text;
-        AMedicalRecord.NotesAdded = txtClinicalNotes.Text;
+        AMedicalRecord.Medications = txtMedications.Text;
+        AMedicalRecord.Diagnoses = txtDiagnoses.Text;
+        AMedicalRecord.ClinicalNotes = txtClinicalNotes.Text;
 
 
 
@@ -37,5 +37,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["AMedicalRecord"] = AMedicalRecord;
         //navigate to view page
         Response.Redirect("MedicalViewer.aspx");
+    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+        Int32 PatientId;
+        Boolean Found = false;
+        PatientId = Convert.ToInt32(txtPatientId.Text);
+        Found = AMedicalRecord.Find(PatientId);
+        if(Found == true)
+        {
+            txtDob.Text = AMedicalRecord.Dob.ToString();
+            chkSex.Checked = AMedicalRecord.Sex;
+            txtMedications.Text = AMedicalRecord.Medications;
+            txtDiagnoses.Text = AMedicalRecord.Diagnoses;
+            txtClinicalNotes.Text = AMedicalRecord.ClinicalNotes;  
+
+        }
+
     }
 }
