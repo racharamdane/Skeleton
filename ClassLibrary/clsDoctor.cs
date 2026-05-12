@@ -151,6 +151,10 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             string Error = "";
+
+            //create a temporary variable to store the data values
+            DateTime DateTemp;
+
             //if the FullName is blank
             if (fullName.Length == 0)
             {
@@ -162,6 +166,39 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The full name must be less than 50 characters : ";
             }
+
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statements
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+
+                //copy the ContractDate value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(contractDate);
+
+                //check to see if the date is less than todays date
+                if (DateTemp < DateComp) //compare contractDate with Date
+                {
+                    //record the error
+                    Error = Error + "The contract date cannot be in the past : ";
+                }
+
+                //check to see if the date is greater than todays date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The contract date cannot be in the future : ";
+                }
+
+            }
+
+            catch
+            {
+                // record the error
+                Error = Error + "The contract date was not a valid date : ";
+            }
+
             //return any error message
             return Error;
         }
