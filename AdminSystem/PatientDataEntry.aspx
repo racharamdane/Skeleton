@@ -17,7 +17,7 @@
         </p>
         <asp:Label ID="lblPatientfullname" runat="server" style="z-index: 1; left: 10px; top: 107px; position: absolute" Text="Patient full name" width="192px"></asp:Label>
         <asp:TextBox ID="txtPatientfullname" runat="server" style="z-index: 1; left: 286px; top: 104px; position: absolute"></asp:TextBox>
-        <asp:TextBox ID="txtPatientdateofbirth" runat="server" style="z-index: 1; left: 286px; top: 160px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtPatientregistrationdate" runat="server" style="z-index: 1; left: 286px; top: 160px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblPatientgender" runat="server" style="z-index: 1; left: 10px; top: 225px; position: absolute" Text="Patient gender" width="192px"></asp:Label>
         <asp:TextBox ID="txtPatientgender" runat="server" style="z-index: 1; left: 286px; top: 218px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblPatientemail" runat="server" style="z-index: 1; left: 10px; top: 274px; position: absolute" Text="Patient email" width="192px"></asp:Label>
@@ -33,7 +33,7 @@
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 46px; top: 529px; position: absolute" Text="OK" />
         </p>
         <p>
-            <asp:Label ID="lblPatientdateofbirth" runat="server" style="z-index: 1; left: 10px; top: 167px; position: absolute" Text="Patient date of birth"></asp:Label>
+            <asp:Label ID="lblPatientregistrationdate" runat="server" style="z-index: 1; left: 10px; top: 167px; position: absolute" Text="Patient registration date"></asp:Label>
         </p>
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 144px; top: 533px; position: absolute" Text="Cancel" />
         <p>
