@@ -119,5 +119,19 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(int roomID, string roomName, string clinicalNotes, int patientID, string roomEntryDate)
+        {
+            //create a string variable to store the error
+            string Error = "";
+            //if the room id is less than 1
+            if (roomID < 1)
+            {
+                //record the error
+                Error = Error + "The room ID must be greater than 0. ";
+            }
+            //return any error messages
+            return Error;
+        }
     }
 }

@@ -240,5 +240,20 @@ namespace Testing4
             //test to see that the result is correct
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
+        public void RoomIDMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            Int32 RoomID = 0; //this should trigger an error 
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }
