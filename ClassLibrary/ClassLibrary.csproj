@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsDoctor.cs" />
+    <Compile Include="clsDoctorCollection.cs" />
     <Compile Include="clsMedicalRecord.cs" />
     <Compile Include="ClsPatient.cs" />
     <Compile Include="ClsPatientCollection.cs" />

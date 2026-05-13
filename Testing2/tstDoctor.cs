@@ -428,7 +428,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Password = ""; //this should trigger an error
-                                  //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -443,7 +443,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Password = "a"; //this should be ok
-                                   //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -458,7 +458,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Password = "aa"; //this should be ok
-                                    //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -474,7 +474,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Password = "";
             Password = Password.PadRight(49, 'a'); //this should pass
-                                                   //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -490,7 +490,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Password = "";
             Password = Password.PadRight(50, 'a'); //this should pass
-                                                   //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -506,7 +506,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Password = "";
             Password = Password.PadRight(25, 'a'); //this should pass
-                                                   //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -522,7 +522,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Password = "";
             Password = Password.PadRight(51, 'a'); //this should fail
-                                                   //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -539,7 +539,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Password = "";
             Password = Password.PadRight(500, 'a'); //this should fail
-                                                    //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -554,7 +554,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Email = ""; //this should trigger an error
-                               //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -569,7 +569,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Email = "a"; //this should be ok
-                                //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -584,7 +584,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Email = "aa"; //this should be ok
-                                 //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -600,7 +600,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Email = "";
             Email = Email.PadRight(49, 'a'); //this should pass
-                                             //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -616,7 +616,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Email = "";
             Email = Email.PadRight(50, 'a'); //this should pass
-                                             //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -632,7 +632,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Email = "";
             Email = Email.PadRight(25, 'a'); //this should pass
-                                             //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -648,7 +648,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Email = "";
             Email = Email.PadRight(51, 'a'); //this should fail
-                                             //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -665,7 +665,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Email = "";
             Password = Password.PadRight(500, 'a'); //this should fail
-                                                    //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -680,7 +680,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Department = ""; //this should trigger an error
-                                    //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -695,7 +695,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Department = "a"; //this should be ok
-                                     //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -710,7 +710,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Department = "aa"; //this should be ok
-                                      //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -726,7 +726,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Department = "";
             Department = Department.PadRight(49, 'a'); //this should pass
-                                                       //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -742,7 +742,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Department = "";
             Department = Department.PadRight(50, 'a'); //this should pass
-                                                       //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -758,7 +758,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Department = "";
             Department = Department.PadRight(25, 'a'); //this should pass
-                                                       //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -774,7 +774,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Department = "";
             Department = Department.PadRight(51, 'a'); //this should fail
-                                                       //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
@@ -791,7 +791,7 @@ namespace Testing2
             //create some test data to pass to the method
             string Department = "";
             Department = Department.PadRight(500, 'a'); //this should fail
-                                                        //invoke the method
+            //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
