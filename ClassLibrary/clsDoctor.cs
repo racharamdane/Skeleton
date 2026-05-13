@@ -159,12 +159,48 @@ namespace ClassLibrary
             if (fullName.Length == 0)
             {
                 //record the error
-                Error = Error + "The full name many not be blank : ";
+                Error = Error + "The full name may not be blank : ";
             }
             if (fullName.Length > 50)
             {
                 //record the error
                 Error = Error + "The full name must be less than 50 characters : ";
+            }
+
+            //if the Password is blank
+            if (password.Length == 0)
+            {
+                //record the error
+                Error = Error + "The password may not be blank : ";
+            }
+            if (password.Length > 50)
+            {
+                //record the error
+                Error = Error + "The password must be less than 50 characters : ";
+            }
+
+            //if the Email is blank
+            if (email.Length == 0)
+            {
+                //record the error
+                Error = Error + "The email may not be blank : ";
+            }
+            if (email.Length > 50)
+            {
+                //record the error
+                Error = Error + "The email must be less than 50 characters : ";
+            }
+
+            //if the Department is blank
+            if (department.Length == 0)
+            {
+                //record the error
+                Error = Error + "The department may not be blank : ";
+            }
+            if (department.Length > 50)
+            {
+                //record the error
+                Error = Error + "The department must be less than 50 characters : ";
             }
 
             //create an instance of DateTime to compare with DateTemp
@@ -204,3 +240,4 @@ namespace ClassLibrary
         }
     }
 }
+
