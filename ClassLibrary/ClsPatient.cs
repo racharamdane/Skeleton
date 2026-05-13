@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace ClassLibrary
 {
@@ -70,7 +71,7 @@ namespace ClassLibrary
                 mDateAdded = value;
             }
         }
-        //private data member for the Patient Gender property
+        //private data member for the Patient Gender 
         private string mPatientGender;
         //patient gender public property
         public string PatientGender
@@ -138,7 +139,7 @@ namespace ClassLibrary
                 mPatientID = Convert.ToInt32(DB.DataTable.Rows[0]["PatientID"]);
                 mFullName = Convert.ToString(DB.DataTable.Rows[0]["Patient full name"]);
                 mTreatment = Convert.ToBoolean(DB.DataTable.Rows[0]["Patient treatment"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["Patient date of birth"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["Patient registration date"]);
                 mEmail = Convert.ToString(DB.DataTable.Rows[0]["Patient Email"]);
                 mPatientGender = Convert.ToString(DB.DataTable.Rows[0]["Patient gender"]);
                 mPatientPassword = Convert.ToString(DB.DataTable.Rows[0]["Patient password"]);
@@ -153,10 +154,13 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string patientfullname, string patientEmail, string patientgender, string patientpassword)
-       {
+        public string Valid(string patientfullname, string patientEmail, string patientgender, string patientpassword, string dateAdded)
+        {
             //create a string variable to store the error
             String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+
             //if the patient full name is blank
             if (patientfullname.Length == 0)
             {
@@ -169,8 +173,74 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The patient full name must be less than 50 characters : ";
             }
+            //create an instance of datetime to compare with the datetemp
+            //in the if statement
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //copy the date added value to the date temp variable
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp < DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is less than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+            //is the email blank
+            if (patientEmail.Length == 0)
+
+            {
+                //record the error
+                Error = Error + "The Email may not be blank : ";
+            }
+            //if the email is too long
+            if (patientEmail.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Email must be less than 50 characters : ";
+            }
+            //is the password blank
+            if (patientpassword.Length == 0)
+            {
+                //record the error
+                Error = Error + "The password may not be blank : ";
+            }
+            //if the password is too long
+            if (patientpassword.Length > 50)
+            {
+                //record the error
+                Error = Error + "The password must be less than 50 characters : ";
+            }
+            //is the gender blank
+            if (patientgender.Length == 0)
+            {
+                //record the error
+                Error = Error + "The gender may not be blank : ";
+            }
+            //if the gender is too long
+            if (patientgender.Length > 50)
+            {
+                //record the error
+                Error = Error + "The gender must be less than 50 characters : ";
+            }
+
             //return any error messages
             return Error;
-       }
+        }
+
     }
+
+
 }
