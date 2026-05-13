@@ -212,7 +212,8 @@ namespace Testing1
             //invoke the method
             Found = APatient.Find(PatientID);
             //check the date added property
-            if (APatient.DateAdded != Convert.ToDateTime("10/01/2000"))
+            if (APatient.DateAdded
+                != Convert.ToDateTime("10/01/2026"))
             {
                 OK = false;
             }
