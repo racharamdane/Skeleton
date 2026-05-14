@@ -83,13 +83,21 @@ namespace ClassLibrary
             String Error = "";
             DateTime DateTemp;
             DateTemp = Convert.ToDateTime(dob);
-            if (DateTemp > DateTime.Now.Date || DateTemp < DateTime.Now.Date.AddYears(150))
+            try
             {
-                Error += "DOB is invalid";
+                if (DateTemp > DateTime.Now.Date || DateTemp < DateTime.Now.Date.AddYears(150))
+                {
+                    Error += "DOB is invalid";
+                }
+                if (dob == null)
+                {
+                    Error += "DOB is required";
+                }
+
             }
-            if (dob == null)
+            catch
             {
-                Error += "DOB is required";
+                Error += "DOB must be a date, dd/mm/yyyy";
             }
 
             if(medications.Length > 100)
