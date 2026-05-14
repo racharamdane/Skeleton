@@ -80,7 +80,31 @@ namespace ClassLibrary
 
         public string Valid(string dob, string medications, string diagnoses, string clinicalNotes)
         {
-           return "";
+            String Error = "";
+            DateTime DateTemp;
+            DateTemp = Convert.ToDateTime(dob);
+            if (DateTemp > DateTime.Now.Date || DateTemp < DateTime.Now.Date.AddYears(150))
+            {
+                Error += "DOB is invalid";
+            }
+            if (dob == null)
+            {
+                Error += "DOB is required";
+            }
+
+            if(medications.Length > 100)
+            {
+                Error += "Medications cannot exceed 100 char";
+            }
+            if (diagnoses.Length > 100)
+            {
+                Error += "Diagnoses cannot exceed 100 char";
+            }
+            if(clinicalNotes.Length == 0)
+            {
+                Error += "Must attach some clinical notes";
+            }
+            return Error;
         }
     }
 }
