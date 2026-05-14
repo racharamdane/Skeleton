@@ -77,5 +77,42 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(DateTime dob, string medications, string diagnoses, string clinicalNotes)
+        {
+            String Error = "";
+            DateTime DateTemp;
+            DateTemp = Convert.ToDateTime(dob);
+            try
+            {
+                if (DateTemp > DateTime.Now.Date || DateTemp < DateTime.Now.Date.AddYears(150))
+                {
+                    Error += "DOB is invalid";
+                }
+                if (dob == null)
+                {
+                    Error += "DOB is required";
+                }
+
+            }
+            catch
+            {
+                Error += "DOB must be a date, dd/mm/yyyy";
+            }
+
+            if(medications.Length > 100)
+            {
+                Error += "Medications cannot exceed 100 char";
+            }
+            if (diagnoses.Length > 100)
+            {
+                Error += "Diagnoses cannot exceed 100 char";
+            }
+            if(clinicalNotes.Length == 0)
+            {
+                Error += "Must attach some clinical notes";
+            }
+            return Error;
+        }
     }
 }
