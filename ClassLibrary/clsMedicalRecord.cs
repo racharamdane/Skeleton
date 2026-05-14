@@ -78,7 +78,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string dob, string medications, string diagnoses, string clinicalNotes)
+        public string Valid(DateTime dob, string medications, string diagnoses, string clinicalNotes)
         {
             String Error = "";
             DateTime DateTemp;

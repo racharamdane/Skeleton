@@ -17,24 +17,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create new class of clsMedicalRecord
         clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
-        //take patientId
-        AMedicalRecord.PatientId= Convert.ToInt32(txtPatientId.Text);
+        
+        DateTime Dob = Convert.ToDateTime(txtDob.Text);
+        Boolean Sex = chkSex.Checked;
+        String Medications = txtMedications.Text;
+        String Diagnoses = txtDiagnoses.Text;
+        String ClinicalNotes = txtClinicalNotes.Text;
 
-        //take dob
-        AMedicalRecord.Dob = Convert.ToDateTime(txtDob.Text);
+        String Error = "";
+        Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+        if (Error == "")
+        {
+  
+            AMedicalRecord.Sex = Sex;
+            AMedicalRecord.Dob = Dob;
+            AMedicalRecord.Medications = Medications;
+            AMedicalRecord.Diagnoses = Diagnoses;  
+            AMedicalRecord.ClinicalNotes = ClinicalNotes;
 
-        //take sex
-        AMedicalRecord.Sex = chkSex.Checked;
-
-        //take meds, diags and notes
-        AMedicalRecord.Medications = txtMedications.Text;
-        AMedicalRecord.Diagnoses = txtDiagnoses.Text;
-        AMedicalRecord.ClinicalNotes = txtClinicalNotes.Text;
+        }
+        else
+        { lblError.Text = Error; }
 
 
 
-        //store id in session object
-        Session["AMedicalRecord"] = AMedicalRecord;
+
+            //store id in session object
+            Session["AMedicalRecord"] = AMedicalRecord;
         //navigate to view page
         Response.Redirect("MedicalViewer.aspx");
     }
