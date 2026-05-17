@@ -120,15 +120,32 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(int roomID, string roomName, string clinicalNotes, int patientID, string roomEntryDate)
+        public string Valid(string RoomName, string ClinicalNotes, int PatientID, DateTime RoomEntryDate)
         {
             //create a string variable to store the error
-            string Error = "";
-            //if the room id is less than 1
-            if (roomID < 1)
+            String Error = "";
+            //if the room id is blank
+            if (RoomName.Length == 0)
             {
                 //record the error
-                Error = Error + "The room ID must be greater than 0. ";
+                Error = Error + "The Roomname may not be blank : ";
+            }
+            else if (RoomName.Length > 100)
+            {
+                //record the error
+                Error = Error + "The Roomname must be less than 100 characters : ";
+            }
+
+
+            if (PatientID < 1)
+            {
+                //record the error
+                Error = Error + "The PatientID must be greater than 0 : ";
+            }
+            else if (PatientID > 10000)
+            {
+                //record the error
+                Error = Error + "The PatientID must be less than 10000 : ";
             }
             //return any error messages
             return Error;
