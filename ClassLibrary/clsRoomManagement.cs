@@ -120,10 +120,15 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string RoomName, string ClinicalNotes, int PatientID, DateTime RoomEntryDate)
+        
+
+        public string Valid(string roomName, string clinicalNotes, string patientID, string roomEntryDate)
         {
             //create a string variable to store the error
             String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+
             //if the room id is blank
             if (RoomName.Length == 0)
             {
@@ -136,17 +141,31 @@ namespace ClassLibrary
                 Error = Error + "The Roomname must be less than 100 characters : ";
             }
 
+           
 
-            if (PatientID < 1)
+            try
+            {
+                //copy the PatientID value to the IntTemp variable
+                int IntTemp = Convert.ToInt32(patientID);
+
+                if (PatientID < 1)
+                {
+                    //record the error
+                    Error = Error + "The PatientID must be greater than 0 : ";
+                }
+                else if (PatientID > 10000)
+                {
+                    //record the error
+                    Error = Error + "The PatientID must be less than 10000 : ";
+                }
+            }
+
+            catch
             {
                 //record the error
-                Error = Error + "The PatientID must be greater than 0 : ";
+                Error = Error + "The PatientID must be a valid integer : ";
             }
-            else if (PatientID > 10000)
-            {
-                //record the error
-                Error = Error + "The PatientID must be less than 10000 : ";
-            }
+
             //return any error messages
             return Error;
         }

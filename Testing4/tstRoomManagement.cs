@@ -11,8 +11,8 @@ namespace Testing4
         //create some test data to pass to the method
         string RoomName = "Test";
         string ClinicalNotes = "Test";
-        int PatientID = 1;
-        DateTime RoomEntryDate = DateTime.Now.Date;
+        string PatientID = 1.ToString();
+        string RoomEntryDate = DateTime.Now.Date.ToShortDateString();
 
         [TestMethod]
         public void InstanceOK()
@@ -376,7 +376,7 @@ namespace Testing4
             //string c=variable to store any error message
             String Error = "";
             //create some test data to assign to the property
-            int PatientID = 0; //this should trigger an error 
+            string PatientID = 0.ToString(); //this should trigger an error 
             //invoke the method
             Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
@@ -391,7 +391,7 @@ namespace Testing4
             //string c=variable to store any error message
             String Error = "";
             //create some test data to assign to the property
-            int PatientID = 1; //this should be ok
+            string PatientID = 1.ToString(); //this should be ok
             //invoke the method
             Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
@@ -406,7 +406,7 @@ namespace Testing4
             //string c=variable to store any error message
             String Error = "";
             //create some test data to assign to the property
-            int PatientID = 2; //this should be ok
+            string PatientID = 2.ToString(); //this should be ok
             //invoke the method
             Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
@@ -421,7 +421,7 @@ namespace Testing4
             //string c=variable to store any error message
             String Error = "";
             //create some test data to assign to the property
-            int PatientID = 9999; //this should be ok
+            string PatientID = 9999.ToString(); //this should be ok
             //invoke the method
             Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
@@ -436,7 +436,7 @@ namespace Testing4
             //string c=variable to store any error message
             String Error = "";
             //create some test data to assign to the property
-            int PatientID = 10000; //this should be ok
+            string PatientID = 10000.ToString(); //this should be ok
             //invoke the method
             Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
@@ -451,7 +451,7 @@ namespace Testing4
             //string c=variable to store any error message
             String Error = "";
             //create some test data to assign to the property
-            int PatientID = 10001; //this should be ok
+            string PatientID = 10001.ToString(); //this should be ok
             //invoke the method
             Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
@@ -466,7 +466,7 @@ namespace Testing4
             //string c=variable to store any error message
             String Error = "";
             //create some test data to assign to the property
-            int PatientID = 5000; //this should be ok
+            string PatientID = 5000.ToString(); //this should be ok
             //invoke the method
             Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
@@ -481,7 +481,7 @@ namespace Testing4
             //string c=variable to store any error message
             String Error = "";
             //create some test data to assign to the property
-            int PatientID = 9999999; //this should be ok
+            string PatientID = 9999999.ToString(); //this should be ok
             //invoke the method
             Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
