@@ -119,5 +119,55 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        
+
+        public string Valid(string roomName, string clinicalNotes, string patientID, string roomEntryDate)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+
+            //if the room id is blank
+            if (RoomName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Roomname may not be blank : ";
+            }
+            else if (RoomName.Length > 100)
+            {
+                //record the error
+                Error = Error + "The Roomname must be less than 100 characters : ";
+            }
+
+           
+
+            try
+            {
+                //copy the PatientID value to the IntTemp variable
+                int IntTemp = Convert.ToInt32(patientID);
+
+                if (PatientID < 1)
+                {
+                    //record the error
+                    Error = Error + "The PatientID must be greater than 0 : ";
+                }
+                else if (PatientID > 10000)
+                {
+                    //record the error
+                    Error = Error + "The PatientID must be less than 10000 : ";
+                }
+            }
+
+            catch
+            {
+                //record the error
+                Error = Error + "The PatientID must be a valid integer : ";
+            }
+
+            //return any error messages
+            return Error;
+        }
     }
 }

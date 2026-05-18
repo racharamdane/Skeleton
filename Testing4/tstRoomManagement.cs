@@ -7,6 +7,13 @@ namespace Testing4
     [TestClass]
     public class tstRoomManagement
     {
+        //good test data
+        //create some test data to pass to the method
+        string RoomName = "Test";
+        string ClinicalNotes = "Test";
+        string PatientID = 1.ToString();
+        string RoomEntryDate = DateTime.Now.Date.ToShortDateString();
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -239,6 +246,261 @@ namespace Testing4
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void RoomNameMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string RoomName = ""; //this should trigger an error 
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomNameMin()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string RoomName = "a"; //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomNameMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string RoomName = "aa"; //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomNameMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string RoomName = new string('a', 99); //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomNameMax()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string RoomName = new string('a', 100); //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomNameMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string RoomName = new string('a', 101); //this should trigger an error
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomNameMid()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string RoomName = new string('a', 50); //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomNameExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string RoomName = new string('a', 9999); //this should trigger an error
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PatientIDMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string PatientID = 0.ToString(); //this should trigger an error 
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PatientIDMin() 
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string PatientID = 1.ToString(); //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PatientIDMinPlusOne() 
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string PatientID = 2.ToString(); //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PatientIDMMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string PatientID = 9999.ToString(); //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PatientIDMMax()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string PatientID = 10000.ToString(); //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PatientIDMMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string PatientID = 10001.ToString(); //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PatientIDMMid()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string PatientID = 5000.ToString(); //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PatientIDExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string PatientID = 9999999.ToString(); //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PatientIDInvalidDataType()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string PatientID = "a"; //this should be ok
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
     }
 }
