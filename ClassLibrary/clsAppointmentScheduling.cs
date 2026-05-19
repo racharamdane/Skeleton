@@ -26,7 +26,7 @@ namespace ClassLibrary
 
         private DateTime mAppointmentDate;
         public DateTime AppointmentDate
-        {
+t charg        {
             get
             {
                 //this line of code sends data out of the property
