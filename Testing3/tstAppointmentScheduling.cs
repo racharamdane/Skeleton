@@ -267,7 +267,19 @@ namespace Testing3
             throw new NotImplementedException();
         }
     }
-}
+     [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            //string variable to store any error message
+            string Error = "";
+            //invoke the method
+            Error = AAppointmentScheduling.Valid(AppointmentId, DoctorId, PatientId, AppointmentDate, AppointmentTime, AppointmentNotes, Availability);
+            //test to see that the result is correct
+            global::System.Object value = Assert.AreEqual(Error, "");
+        }
+    }
 
 
 
