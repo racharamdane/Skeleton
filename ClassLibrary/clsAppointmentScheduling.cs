@@ -24,21 +24,21 @@ namespace ClassLibrary
             }
         }
 
-        private DateTime mAppointmentDate;
-        public DateTime AppointmentDate
-t charg        {
-            get
-            {
-                //this line of code sends data out of the property
-                return mAppointmentDate;
-            }
+//        private DateTime mAppointmentDate;
+//        public DateTime AppointmentDate
+//t charg        {
+//            get
+//            {
+//                //this line of code sends data out of the property
+//                return mAppointmentDate;
+//            }
 
-            set
-            {
-                //this line of code allows data into the property
-                mAppointmentDate = value;
-            }
-        }
+//            set
+//            {
+//                //this line of code allows data into the property
+//                mAppointmentDate = value;
+//            }
+//        }
         private DateTime mAppointmentTime;
         public DateTime AppointmentTime
         {
@@ -140,7 +140,7 @@ t charg        {
                 mPatientId = Convert.ToInt32(DB.DataTable.Rows[0]["PatientId"]);
                 mAppointmentNotes = Convert.ToString(DB.DataTable.Rows[0]["Appointment Notes"]);
                 mAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["Availability"]);
-                mAppointmentDate = Convert.ToDateTime(DB.DataTable.Rows[0]["Appointment Date"]);
+                //mAppointmentDate = Convert.ToDateTime(DB.DataTable.Rows[0]["Appointment Date"]);
                 mAppointmentTime = Convert.ToDateTime(DB.DataTable.Rows[0]["Appointment Time"]);
                 // return that everything worked OK
                 return true;

@@ -85,9 +85,9 @@ namespace ClassLibrary
             DateTemp = Convert.ToDateTime(dob);
             try
             {
-                if (DateTemp > DateTime.Now.Date || DateTemp < DateTime.Now.Date.AddYears(150))
+                if (DateTemp > DateTime.Now.Date || DateTemp < DateTime.Now.Date.AddYears(-151))
                 {
-                    Error += "DOB is invalid";
+                    Error += "DOB cannot be in the future or more than 150 years in the past";
                 }
                 if (dob == null)
                 {
