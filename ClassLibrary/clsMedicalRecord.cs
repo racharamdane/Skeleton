@@ -78,27 +78,11 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(DateTime dob, string medications, string diagnoses, string clinicalNotes)
+        public string Valid(String dob, string medications, string diagnoses, string clinicalNotes)
         {
             String Error = "";
-            DateTime DateTemp;
-            DateTemp = Convert.ToDateTime(dob);
-            try
-            {
-                if (DateTemp > DateTime.Now.Date || DateTemp < DateTime.Now.Date.AddYears(-151))
-                {
-                    Error += "DOB cannot be in the future or more than 150 years in the past";
-                }
-                if (dob == null)
-                {
-                    Error += "DOB is required";
-                }
-
-            }
-            catch
-            {
-                Error += "DOB must be a date, dd/mm/yyyy";
-            }
+            DateTime DateComp = DateTime.Now.Date;
+            
 
             if(medications.Length > 100)
             {
@@ -111,6 +95,26 @@ namespace ClassLibrary
             if(clinicalNotes.Length == 0)
             {
                 Error += "Must attach some clinical notes";
+            }
+            try
+            {
+                DateTime DateTemp = Convert.ToDateTime(dob);
+                if (DateTemp > DateComp)
+                {
+                    Error += "DOB cannot be in the future";
+                }
+                if (DateTemp <= DateComp.AddYears(-151))
+                {
+                    Error += "DOB cannot be more than 150 years in the past";
+                }
+                if (DateTemp == null)
+                {
+                    Error += "DOB is required";
+                }
+            }
+            catch
+            {
+                Error += "Not a valid date";
             }
             return Error;
         }
