@@ -384,7 +384,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void PatientIDMin() 
+        public void PatientIDMin()
         {
             //create an instance of the class we want to create
             clsRoomManagement AnRoomManagement = new clsRoomManagement();
@@ -399,7 +399,7 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void PatientIDMinPlusOne() 
+        public void PatientIDMinPlusOne()
         {
             //create an instance of the class we want to create
             clsRoomManagement AnRoomManagement = new clsRoomManagement();
@@ -502,5 +502,26 @@ namespace Testing4
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
-    }
+
+        [TestMethod]
+        public void RoomEntryDateExtremeMin()
+        { 
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create a varible to store the test data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to be 100 years in the past
+            TestDate = TestDate.AddYears(-100);
+            //convert the date to a string variable
+            string RoomEntryDate = TestDate.ToString();
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+    }    
 }

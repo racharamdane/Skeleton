@@ -266,7 +266,7 @@ namespace Testing3
         {
             throw new NotImplementedException();
         }
-    }
+    
      [TestMethod]
         public void ValidMethodOK()
         {
@@ -280,7 +280,7 @@ namespace Testing3
             global::System.Object value = Assert.AreEqual(Error, "");
         }
     }
-
+}
 
 
 
