@@ -45,8 +45,8 @@
 <p>
     &nbsp;</p>
 <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 325px; top: 307px; position: absolute; height: 26px;" Text="Cancel" width="75px" />
-<asp:Button ID="btnOK" runat="server" height="25px" OnClick="btnOK_Click1" style="z-index: 1; left: 225px; top: 306px; position: absolute" Text="OK" width="75px" />
-<asp:Button ID="btnFind" runat="server" height="25px" OnClick="btnFind_Click" style="z-index: 1; left: 513px; top: 32px; position: absolute" Text="Find" width="75px" />
+<%--<asp:Button ID="btnOK" runat="server" height="25px" OnClick="btnOK_Click1" style="z-index: 1; left: 225px; top: 306px; position: absolute" Text="OK" width="75px" /> --%>
+<%-- <asp:Button ID="btnFind" runat="server" height="25px" OnClick="btnFind_Click" style="z-index: 1; left: 513px; top: 32px; position: absolute" Text="Find" width="75px" /> --%>
 </form>
 </body>
 </html>
