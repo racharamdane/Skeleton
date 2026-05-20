@@ -8,8 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    // variable to store the primary key with page level scope
+    Int32 PatientID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        // get the number of the patient to be processed
+        PatientID = Convert.ToInt32(Session["PatientID"]);
+        if (IsPostBack == false)
+        {
+            // if this is not a new record
+            if (PatientID != -1)
+            {
+                // display the current data for the record
+                DisplayPatient();
+            }
+        }   
+    }
+
+    private void DisplayPatient()
+    {
+      //create an instance of the patient 
+      ClsPatientCollection Patient = new ClsPatientCollection();
+        //find the record to update
+        Patient.ThisPatient.Find(PatientID);
+        //display the data for this record
+        txtPatientfullname.Text = Patient.ThisPatient.PatientID.ToString();
+        txtPatientemail.Text = Patient.ThisPatient.Email.ToString();
+        txtPatientgender.Text = Patient.ThisPatient.PatientGender.ToString();
+        txtPatientpassword.Text = Patient.ThisPatient.PatientPassword.ToString();
+        txtPatientregistrationdate.Text = Patient.ThisPatient.DateAdded.ToString();
+        chkPatienttreatment.Checked = Patient.ThisPatient.Treatment;
+        txtPatientID.Text = Patient.ThisPatient.PatientID.ToString();
 
     }
 
@@ -38,6 +67,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             // capture the patient full name
             APatient.FullName = FullName;
+            // capture the patient id
+            APatient.PatientID = PatientID;
             // capture the patient date of registration
             APatient.DateAdded = Convert.ToDateTime(DateAdded);
             // capture the patient email
@@ -50,13 +81,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
             APatient.Treatment = chkPatienttreatment.Checked;
             //create a new instance of the patient collection
              ClsPatientCollection PatientList = new ClsPatientCollection();
-            //set the ThisPatient property
-            PatientList.ThisPatient = APatient;
-            //add the new record
-            PatientList.Add();
-            //redirect to list page
+            //if this is a new record i.e. PatientID = -1 then add the data
+            if (PatientID == -1)
+            {
+                // set the ThisPatient property
+                PatientList.ThisPatient = APatient;
+                // add the new record
+                PatientList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                // find the record to update
+                PatientList.ThisPatient.Find(PatientID);
+                // set the ThisPatient property
+                PatientList.ThisPatient = APatient;
+                // update the record
+                PatientList.Update();
+            }
+
+            // redirect back to the list page
             Response.Redirect("PatientList.aspx");
-          
+
         }
         else
         {
