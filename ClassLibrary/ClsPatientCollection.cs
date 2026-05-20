@@ -11,8 +11,8 @@ namespace ClassLibrary
         ClsPatient mThisPatient = new ClsPatient();
 
         // public property for the patient list
-        public List<ClsPatient> PatientList 
-            {
+        public List<ClsPatient> PatientList
+        {
             get
             {
                 //return the private data
@@ -25,8 +25,8 @@ namespace ClassLibrary
             }
         }
         // public property for count of patients
-        public int Count 
-            {
+        public int Count
+        {
             get
             {
                 //return the count of the list
@@ -38,8 +38,8 @@ namespace ClassLibrary
             }
         }
         //public property for this patient
-        public ClsPatient ThisPatient 
-        { 
+        public ClsPatient ThisPatient
+        {
             get
             {
                 //return the private data
@@ -61,7 +61,7 @@ namespace ClassLibrary
             //variable to store the record count
             Int32 RecordCount = 0;
             //onjection for data connection
-              clsDataConnection DB = new clsDataConnection();
+            clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblPatientManagement_SelectAll");
             //get the count of records returned
@@ -69,7 +69,7 @@ namespace ClassLibrary
             //while there are records to process
             while (Index < RecordCount)
             {
-                 //create a blank patient
+                //create a blank patient
                 ClsPatient APatient = new ClsPatient();
                 //read in the fields from the current record
                 APatient.Treatment = Convert.ToBoolean(DB.DataTable.Rows[Index]["Patienttreatment"]);
@@ -84,7 +84,7 @@ namespace ClassLibrary
                 //point to the next record
                 Index++;
             }
-            
+
 
         }
         public int Add()
@@ -102,6 +102,22 @@ namespace ClassLibrary
             //execute the query returning the primary key value
             return DB.Execute("sproc_tblPatientManagement_Insert");
 
+        }
+        public void Update()
+        {
+            //update an existing record based on the values of ThisPatient
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@PatientID", mThisPatient.PatientID);
+            DB.AddParameter("@Patientfullname", mThisPatient.FullName);
+            DB.AddParameter("@Patientregistrationdate", mThisPatient.DateAdded);
+            DB.AddParameter("@Patientgender", mThisPatient.PatientGender);
+            DB.AddParameter("@Patientpassword", mThisPatient.PatientPassword);
+            DB.AddParameter("@PatientEmail", mThisPatient.Email);
+            DB.AddParameter("@Patienttreatment", mThisPatient.Treatment);
+            //execute the query returning the primary key value
+            DB.Execute("sproc_tblPatientManagement_Update");
         }
     }
 
