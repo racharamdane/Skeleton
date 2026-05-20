@@ -168,8 +168,40 @@ namespace Testing1
 
 
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            ClsPatientCollection AllPatients = new ClsPatientCollection();
+            //create the item of test data
+            ClsPatient TestItem = new ClsPatient();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set the properties of the test item
+            TestItem.Treatment = true;
+            TestItem.FullName = "Racha R";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.PatientGender = "female";
+            TestItem.PatientPassword = "racha123456789";
+            TestItem.Email = "racha@gmail.com";
+            TestItem.PatientID = 111;
+            //set ThisPatient to the test data
+            AllPatients.ThisPatient = TestItem;
+            //add the record
+            PrimaryKey = AllPatients.Add();
+            //set the primary key of the test data
+            TestItem.PatientID = PrimaryKey;
+            //find the record
+            AllPatients.ThisPatient.Find(PrimaryKey);
+            //delete the record
+            AllPatients.Delete();
+            //now find the record
+            Boolean Found = AllPatients.ThisPatient.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
 
+
+        }
 
     }
-
-}
