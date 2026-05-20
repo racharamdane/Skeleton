@@ -9,7 +9,7 @@ namespace Testing5
     public class tstMedicalRecord
     {
         //test data
-        string Dob = DateTime.Now.ToShortDateString();
+        DateTime Dob = DateTime.Now;
         string Medications = "Medication 200mg";
         string Diagnoses = "Diabetus";
         string ClinicalNotes = "Foot Pain";
@@ -211,6 +211,216 @@ namespace Testing5
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreEqual(Error, "");
         }
+        [TestMethod]
+        public void DobExtremeMin()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            DateTime Dob = DateTime.Now.AddYears(100);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DobMinLess1()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            DateTime Dob = DateTime.Now.AddDays(1);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DobMin()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            DateTime Dob = DateTime.Now;
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DobMinPlus1()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            DateTime Dob = DateTime.Now.AddDays(-1);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DobMaxLess1()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            DateTime Dob = DateTime.Now.AddYears(-149);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DobMax()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            DateTime Dob = DateTime.Now.AddYears(-150);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DobMaxPlus1()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            DateTime Dob = DateTime.Now.AddYears(-151);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void MedicationsMaxLess1()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string Medications = new string('a', 99);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void MedicationsMax()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string Medications = new string('a', 100);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void MedicationsMaxPlus1()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string Medications = new string('a', 101);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void MedicationsExtremeMax()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string Medications = new string('a', 500);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void MedicationsMid()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string Medications = new string('a', 50);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void MedicationsBlank()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string Medications = "";
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DiagnosesMaxLess1()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string Diagnoses = new string('a', 99);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DiagnosesMax()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string Diagnoses = new string('a', 100);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DiagnosesMaxPlus1()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string Diagnoses = new string('a', 101);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DiagnosesExtremeMax()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string Diagnoses = new string('a', 500);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DiagnosesMid()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string Diagnoses = new string('a', 50);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DiagnosesBlank()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string Diagnoses = "";
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ClinicalNotesBlank()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string ClinicalNotes = "";
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ClinicalMinPlus1()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string ClinicalNotes = "a";
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ClinicalMid()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string ClinicalNotes = "patient seen for stomach pain";
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ClinicalExtremeMax()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string ClinicalNotes = new string('a', 1000);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
     }
 
 }
