@@ -7,6 +7,8 @@ namespace ClassLibrary
     {
         //private data member for the patient list
         List<ClsPatient> mPatientList = new List<ClsPatient>();
+        //private member data for ThisPatient
+        ClsPatient mThisPatient = new ClsPatient();
 
         // public property for the patient list
         public List<ClsPatient> PatientList 
@@ -35,7 +37,20 @@ namespace ClassLibrary
                 //we will worry about this later
             }
         }
-        public ClsPatient ThisPatient { get; set; }
+        //public property for this patient
+        public ClsPatient ThisPatient 
+        { 
+            get
+            {
+                //return the private data
+                return mThisPatient;
+            }
+            set
+            {
+                //set the private data
+                mThisPatient = value;
+            }
+        }
 
         //constructor for the class
 
@@ -57,19 +72,35 @@ namespace ClassLibrary
                  //create a blank patient
                 ClsPatient APatient = new ClsPatient();
                 //read in the fields from the current record
-                APatient.Treatment = Convert.ToBoolean(DB.DataTable.Rows[Index]["Patient treatment"]);
+                APatient.Treatment = Convert.ToBoolean(DB.DataTable.Rows[Index]["Patienttreatment"]);
                 APatient.PatientID = Convert.ToInt32(DB.DataTable.Rows[Index]["PatientID"]);
-                APatient.FullName = Convert.ToString(DB.DataTable.Rows[Index]["Patient full name"]);
-                APatient.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["Patient registration date"]);
-                APatient.PatientGender = Convert.ToString(DB.DataTable.Rows[Index]["Patient gender"]);
-                APatient.PatientPassword = Convert.ToString(DB.DataTable.Rows[Index]["Patient password"]);
-                APatient.Email = Convert.ToString(DB.DataTable.Rows[Index]["Patient Email"]);
+                APatient.FullName = Convert.ToString(DB.DataTable.Rows[Index]["Patientfullname"]);
+                APatient.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["Patientregistrationdate"]);
+                APatient.PatientGender = Convert.ToString(DB.DataTable.Rows[Index]["Patientgender"]);
+                APatient.PatientPassword = Convert.ToString(DB.DataTable.Rows[Index]["Patientpassword"]);
+                APatient.Email = Convert.ToString(DB.DataTable.Rows[Index]["PatientEmail"]);
                 //add the patient to the private data member
                 mPatientList.Add(APatient);
                 //point to the next record
                 Index++;
             }
             
+
+        }
+        public int Add()
+        {
+            //adds a record to the databse based on the values of mThisPatient
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Patientfullname", mThisPatient.FullName);
+            DB.AddParameter("@Patientregistrationdate", mThisPatient.DateAdded);
+            DB.AddParameter("@Patientgender", mThisPatient.PatientGender);
+            DB.AddParameter("@Patientpassword", mThisPatient.PatientPassword);
+            DB.AddParameter("@PatientEmail", mThisPatient.Email);
+            DB.AddParameter("@Patienttreatment", mThisPatient.Treatment);
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblPatientManagement_Insert");
 
         }
     }

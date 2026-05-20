@@ -97,8 +97,39 @@ namespace Testing1
             Assert.AreEqual(AllPatients.Count, TestList.Count);
 
         }
-        
-        
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            ClsPatientCollection AllPatients = new ClsPatientCollection();
+            //create the item of test data
+            ClsPatient TestItem = new ClsPatient();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Treatment = true;
+            TestItem.PatientID = 111;
+            TestItem.FullName = "Racha R";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.PatientGender = "female";
+            TestItem.PatientPassword = "racha123456789";
+            TestItem.Email = "racha@gmail.com";
+            //set ThisPatient to the test data
+            AllPatients.ThisPatient TestItem;
+            //add the record
+            PrimaryKey = AllPatients.Add();
+            //set the primary ke of the test data 
+            TestItem.PatientID = PrimaryKey;
+            //find the record
+            AllPatients.ThisPatient.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllPatients.ThisPatient, TestItem);
+
+
+
+        }
+
+
     }
 
 }

@@ -46,11 +46,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             APatient.PatientGender = PatientGender;
             // capture the patient password
             APatient.PatientPassword = PatientPassword;
-           
-
-            //Navigate to the next page
-            Response.Redirect("PatientViewer.aspx");
-
+            // capture the patient treatment status
+            APatient.Treatment = chkPatienttreatment.Checked;
+            //create a new instance of the patient collection
+             ClsPatientCollection PatientList = new ClsPatientCollection();
+            //set the ThisPatient property
+            PatientList.ThisPatient = APatient;
+            //add the new record
+            PatientList.Add();
+            //redirect to list page
+            Response.Redirect("PatientList.aspx");
+          
         }
         else
         {
