@@ -110,5 +110,37 @@ namespace Testing3
             //test to see that the two values are the same
             // Assert.AreEqual(AllAppointments.Count, TestList.Count);
         }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsAppointmentSchedulingCollection AllAppointments = new clsAppointmentSchedulingCollection();
+            //create the item of test data
+            clsAppointmentScheduling TestItem = new clsAppointmentScheduling();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Availability = true;
+            TestItem.PatientID = 111;
+            TestItem.DoctorID = 1;
+            TestItem.AppointmentId = 1234;
+            TestItem.AppointmentNotes = "N/A";
+            TestItem.AppointmentDate = DateTime.Now;
+            TestItem.AppointmentTime = DateTime.Now;
+
+            //set ThisPatient to the test data
+            AllAppointments.ThisAppointment TestItem;
+            //add the record
+            PrimaryKey = AllAppointments.Add();
+            //set the primary ke of the test data 
+            TestItem.AppointmentID = PrimaryKey;
+            //find the record
+            AllAppointments.ThisAppointment.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllAppointment.ThisPatient, TestItem);
+
+
+
+        }
     }
 }

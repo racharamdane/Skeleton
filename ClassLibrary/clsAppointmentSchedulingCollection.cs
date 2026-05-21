@@ -10,7 +10,8 @@ namespace ClassLibrary
     {
         //private data member for the list 
         List<clsAppointmentScheduling> mAppointmentSchedulingList = new List<clsAppointmentScheduling>();
-
+        //private member data for ThisAppointmentScheduling
+        clsAppointmentScheduling mThisAppointmentScheduling = new clsAppointmentScheduling();
         //public property for the Appointment list
         public List<clsAppointmentScheduling> AppointmentSchedulingList
         {
@@ -76,7 +77,51 @@ namespace ClassLibrary
                 //point at the next record
                 Index++;
             }
+        }
+        
+            public int Add()
+        {
+            //adds a record to the databse based on the values of mThisAppointmentScheduling
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@AppointmentDate", mThisAppointmentScheduling.AppointmentDate);
+            DB.AddParameter("@AppointmentTime", mThisAppointmentScheduling.AppointmentTime);
+            DB.AddParameter("@AppointmentNotes", mThisAppointmentScheduling.AppointmentNotes);
+            DB.AddParameter("@Availability", mThisAppointmentScheduling.Availability);
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblAppointmentScheduling_Insert");
 
         }
+        public void Update()
+        {
+            //update an existing record based on the values of ThisAppointmentScheduling    
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@AppointmentId", mThisAppointmentScheduling.AppointmentId);
+            DB.AddParameter("@DoctorId", mThisAppointmentScheduling.DoctorId);
+            DB.AddParameter("@PatientId", mThisAppointmentScheduling.PatientId);
+            DB.AddParameter("@AppointmentDate", mThisAppointmentScheduling.AppointmentDate);
+            DB.AddParameter("@AppointmentTime", mThisAppointmentScheduling.AppointmentTime);
+            DB.AddParameter("@AppointmentNotes", mThisAppointmentScheduling.AppointmentNotes);
+            DB.AddParameter("@Availability", mThisAppointmentScheduling.Availability);
+            //execute the query returning the primary key value
+            DB.Execute("sproc_tblAppointmentScheduling_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by ThisAppointmentScheduling
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@AppointmentId", mThisAppointmentScheduling.AppointmentId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblAppointmentScheduling_Delete");
+        }
     }
+
 }
+    }
+    }
