@@ -105,6 +105,8 @@ namespace ClassLibrary
 
         }
         private string mAppointmentNotes;
+        internal DateTime AppointmentDate;
+
         public string AppointmentNotes
         {
             get
