@@ -138,9 +138,82 @@ namespace Testing3
             AllAppointments.ThisAppointment.Find(PrimaryKey);
             //test to see that the two values are the same
             Assert.AreEqual(AllAppointment.ThisPatient, TestItem);
+        }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsAppointmentSchedulingCollection AllAppointments = new clsAppointmentSchedulingCollection();
+            //create the item of test data
+            clsAppointmentScheduling TestItem = new clsAppointmentScheduling();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Availability = true;
+            TestItem.PatientID = 111;
+            TestItem.DoctorID = 1;
+            TestItem.AppointmentId = 1234;
+            TestItem.AppointmentNotes = "N/A";
+            TestItem.AppointmentDate = DateTime.Now;
+            TestItem.AppointmentTime = DateTime.Now;
+
+            //set ThisAppointment to the test data
+            AllAppointments.ThisAppointment TestItem;
+            //add the record
+            PrimaryKey = AllAppointments.Add();
+            //set the primary ke of the test data 
+            TestItem.AppointmentID = PrimaryKey;
+            //modify the test data
+            TestItem.Availability = false;
+            TestItem.PatientID = 222;
+            TestItem.DoctorID = 2;
+            TestItem.AppointmentNotes = "Updated Notes";
+            TestItem.AppointmentDate = DateTime.Now.AddDays(1);
+            TestItem.AppointmentTime = DateTime.Now.AddHours(1);
+
+            //update the record
+            AllAppointments.ThisAppointment = TestItem;
+            AllAppointments.Update();
+
+            //find the record
+            AllAppointments.ThisAppointment.Find(PrimaryKey);
+
+            //test to see that the two values are the same
+            Assert.AreEqual(AllAppointments.ThisAppointment, TestItem);
+        }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsAppointmentSchedulingCollection AllAppointments = new clsAppointmentSchedulingCollection();
+            //create the item of test data
+            clsAppointmentScheduling TestItem = new clsAppointmentScheduling();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Availability = true;
+            TestItem.PatientID = 111;
+            TestItem.DoctorID = 1;
+            TestItem.AppointmentId = 1234;
+            TestItem.AppointmentNotes = "N/A";
+            TestItem.AppointmentDate = DateTime.Now;
+            TestItem.AppointmentTime = DateTime.Now;
+            //set ThisAppointment to the test data
+            AllAppointments.ThisAppointment TestItem;
+            //add the record
+            PrimaryKey = AllAppointments.Add();
+            //set the primary ke of the test data 
+            TestItem.AppointmentID = PrimaryKey;
+            //delete the record
+            AllAppointments.ThisAppointment.Find(PrimaryKey);
+            AllAppointments.Delete();
+            //now find the record
+            Boolean Found = AllAppointments.ThisAppointment.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
 
 
 
         }
     }
-}

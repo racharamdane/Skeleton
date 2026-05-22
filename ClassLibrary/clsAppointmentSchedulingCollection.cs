@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    internal class clsAppointmentSchedulingCollection
+    public class clsAppointmentSchedulingCollection
     {
         //private data member for the list 
-        List<clsAppointmentScheduling> mAppointmentSchedulingList = new List<clsAppointmentScheduling>();
+        List<clsAppointmentScheduling> mAppointmentList = new List<clsAppointmentScheduling>();
         //private member data for ThisAppointmentScheduling
         clsAppointmentScheduling mThisAppointmentScheduling = new clsAppointmentScheduling();
         //public property for the Appointment list
-        public List<clsAppointmentScheduling> AppointmentSchedulingList
+        public List<clsAppointmentScheduling> AppointmentList
         {
             get
             {
                 //return the private data
-                return mAppointmentSchedulingList;
+                return mAppointmentList;
             }
             set
             {
                 //set the private data
-                mAppointmentSchedulingList = value;
+                mAppointmentList = value;
             }
         }
 
@@ -33,7 +33,7 @@ namespace ClassLibrary
             get
             {
                 //return the count of the list
-                return mAppointmentSchedulingList.Count;
+                return mAppointmentList.Count;
             }
             set
             {
@@ -72,7 +72,7 @@ namespace ClassLibrary
                 AAppointmentScheduling.Availability = Convert.ToBoolean(DB.DataTable.Rows[Index]["Availability"]);
 
                 //add the record to the private data member
-                mAppointmentSchedulingList.Add(AAppointmentScheduling);
+                mAppointmentList.Add(AAppointmentScheduling);
 
                 //point at the next record
                 Index++;
@@ -120,8 +120,12 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tblAppointmentScheduling_Delete");
         }
+
+        public static implicit operator clsAppointmentSchedulingCollection(clsAppointmentScheduling v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
-    }
-    }
+    
