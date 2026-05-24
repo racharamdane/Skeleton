@@ -20,9 +20,9 @@
         <asp:TextBox ID="txtPatientregistrationdate" runat="server" style="z-index: 1; left: 286px; top: 160px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblPatientgender" runat="server" style="z-index: 1; left: 10px; top: 225px; position: absolute" Text="Patient gender" width="192px"></asp:Label>
         <asp:TextBox ID="txtPatientgender" runat="server" style="z-index: 1; left: 286px; top: 218px; position: absolute"></asp:TextBox>
-        <asp:Label ID="lblPatientemail" runat="server" style="z-index: 1; left: 10px; top: 274px; position: absolute" Text="Patient email" width="192px"></asp:Label>
-        <asp:TextBox ID="txtPatientemail" runat="server" style="z-index: 1; left: 286px; top: 275px; position: absolute"></asp:TextBox>
-        <asp:Label ID="lblPatientpassword" runat="server" style="z-index: 1; left: 10px; top: 329px; position: absolute" Text="Patient Password" width="192px"></asp:Label>
+        <asp:Label ID="lblPatientEmail" runat="server" style="z-index: 1; left: 10px; top: 274px; position: absolute" Text="Patient email" width="192px"></asp:Label>
+        <asp:TextBox ID="txtPatientEmail" runat="server" style="z-index: 1; left: 286px; top: 275px; position: absolute"></asp:TextBox>
+        <asp:Label ID="lblPatientpassword" runat="server" style="z-index: 1; left: 10px; top: 329px; position: absolute" Text="Patient password" width="192px"></asp:Label>
         <asp:TextBox ID="txtPatientpassword" runat="server" style="z-index: 1; left: 286px; top: 331px; position: absolute"></asp:TextBox>
         <p>
             <asp:CheckBox ID="chkPatienttreatment" runat="server" style="z-index: 1; left: 287px; top: 405px; position: absolute" Text="Patient treatment" />

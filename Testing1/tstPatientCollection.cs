@@ -46,7 +46,7 @@ namespace Testing1
             Assert.AreEqual(AllPatients.PatientList, TestList);
 
         }
-        
+
         [TestMethod]
         public void ThisPatientOK()
         {
@@ -200,8 +200,56 @@ namespace Testing1
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+        [TestMethod]
+        public void ReportByFullNameMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            ClsPatientCoolection AllPatients = new ClsPatientCollection();
+            //create an instance of the filtered data
+            ClsPatientCollection FilteredPatients = new ClsPatientCollection();
+            //apply a blank string (should return all records)
+            FilteredPatients.ReportByFullName("xxxxxx");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllPatients.Count, FilteredPatients.Count);
 
 
         }
+        [TestMethod]
+        public void ReportByFullNameNoneFound()
+        {
+            //create an instance of the filtered data
+            ClsPatientCollection FilteredPatients = new ClsPatientCollection();
+            //apply a name that doesn't exist
+            FilteredPatients.ReportByFullName("xxxxxx");
+            //check that the correct number of records are found
+            if (FilteredPatients.Count != 5)
+            {
+                //check to see that the first record is 5
+                if (FilteredPatients.PatientList[0].PatientID != 5)
+                {
+                    OK = false;
+                }
+                // check to see that the second record is 6
+                if (FilteredPatients.PatientList[1].PatientID != 6)
+                {
+                    OK = false;
+                }
+
+            }
+            else
+            {
+                OK = false;
+
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
+
 
     }
+}
+
+
+
+
+    
