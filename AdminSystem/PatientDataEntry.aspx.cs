@@ -32,13 +32,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //find the record to update
         Patient.ThisPatient.Find(PatientID);
         //display the data for this record
-        txtPatientfullname.Text = Patient.ThisPatient.PatientID.ToString();
-        txtPatientemail.Text = Patient.ThisPatient.Email.ToString();
-        txtPatientgender.Text = Patient.ThisPatient.PatientGender.ToString();
-        txtPatientpassword.Text = Patient.ThisPatient.PatientPassword.ToString();
-        txtPatientregistrationdate.Text = Patient.ThisPatient.DateAdded.ToString();
+        txtPatientfullname.Text = Convert.ToString(Patient.ThisPatient.PatientID);
+        txtPatientEmail.Text = Convert.ToString(Patient.ThisPatient.Email);
+        txtPatientgender.Text = Convert.ToString(Patient.ThisPatient.PatientGender);
+        txtPatientpassword.Text = Convert.ToString(Patient.ThisPatient.PatientPassword);
+        txtPatientregistrationdate.Text = Convert.ToString(Patient.ThisPatient.DateAdded);
         chkPatienttreatment.Checked = Patient.ThisPatient.Treatment;
-        txtPatientID.Text = Patient.ThisPatient.PatientID.ToString();
+        txtPatientID.Text = Convert.ToString(Patient.ThisPatient.PatientID);
 
     }
 
@@ -52,7 +52,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // capture the patient date of registration
         string DateAdded = txtPatientregistrationdate.Text;
         // capture the patient email
-        string Email = txtPatientemail.Text;
+        string Email = txtPatientEmail.Text;
         // capture the patient gender
         string PatientGender = txtPatientgender.Text;
         // capture the patient password
@@ -72,7 +72,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // capture the patient date of registration
             APatient.DateAdded = Convert.ToDateTime(DateAdded);
             // capture the patient email
-            APatient.Email = Email;
+            APatient.Email = Convert.ToString(Email);
             // capture the patient gender
             APatient.PatientGender = PatientGender;
             // capture the patient password
@@ -131,7 +131,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // Display the values of the properties in the form
             txtPatientfullname.Text = APatient.FullName;
             txtPatientregistrationdate.Text = APatient.DateAdded.ToString("dd/MM/yyyy");
-            txtPatientemail.Text = APatient.Email;
+            txtPatientEmail.Text = APatient.Email;
             txtPatientgender.Text = APatient.PatientGender;
             txtPatientpassword.Text = APatient.PatientPassword;
             chkPatienttreatment.Checked = APatient.Treatment;
