@@ -176,6 +176,11 @@ namespace ClassLibrary
                 Index++;
             }
         }
+
+        public void ReportByFullName(string v)
+        {
+            throw new NotImplementedException();
         }
+    }
 
     }
