@@ -37,7 +37,7 @@ namespace Testing1
             //create an instance of the class we want to create
             ClsPatient APatient = new ClsPatient();
             //create some test data to assign to the patient
-            Int32 TestData = 111;
+            Int32 TestData = 122;
             //assign the data to the patient
             APatient.PatientID = TestData;
             //test to see that the two values are the same
@@ -127,7 +127,7 @@ namespace Testing1
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 APatientID = 111;
+            Int32 APatientID = 122;
             //invoke the method
             Found = APatient.Find(APatientID);
             //test to see if the result is true
@@ -145,11 +145,11 @@ namespace Testing1
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PatientID = 111;
+            Int32 PatientID = 122;
             //invoke the method
             Found = APatient.Find(PatientID);
             //check the address id property
-            if (APatient.PatientID != 111)
+            if (APatient.PatientID != 122)
             {
                 OK = false;
             }
@@ -166,7 +166,7 @@ namespace Testing1
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PatientID = 111;
+            Int32 PatientID = 122;
             //invoke the method
             Found = APatient.Find(PatientID);
             //check the house no property
@@ -187,7 +187,7 @@ namespace Testing1
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PatientID = 111;
+            Int32 PatientID = 122;
             //invoke the method
             Found = APatient.Find(PatientID);
             //check the street property
@@ -208,7 +208,7 @@ namespace Testing1
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PatientID = 111;
+            Int32 PatientID = 122;
             //invoke the method
             Found = APatient.Find(PatientID);
             //check the date added property
@@ -230,7 +230,7 @@ namespace Testing1
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PatientID = 111;
+            Int32 PatientID = 122;
             //invoke the method
             Found = APatient.Find(PatientID);
             //check the county code property
@@ -251,7 +251,7 @@ namespace Testing1
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PatientID = 111;
+            Int32 PatientID = 122;
             //invoke the method
             Found = APatient.Find(PatientID);
             //check the county code property
@@ -272,7 +272,7 @@ namespace Testing1
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PatientID = 111;
+            Int32 PatientID = 122;
             //invoke the method
             Found = APatient.Find(PatientID);
             //check the county code property

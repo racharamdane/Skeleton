@@ -5,11 +5,18 @@ namespace ClassLibrary
 {
     public class ClsPatientCollection
     {
+      
+
+
         //private data member for the patient list
         List<ClsPatient> mPatientList = new List<ClsPatient>();
         //private member data for ThisPatient
         ClsPatient mThisPatient = new ClsPatient();
-
+        
+        //object for the data collection
+       
+        
+        
         // public property for the patient list
         public List<ClsPatient> PatientList
         {
@@ -58,6 +65,9 @@ namespace ClassLibrary
 
         public ClsPatientCollection()
         {
+
+
+
             //variable for the index
             Int32 Index = 0;
             //variable to store the record count
@@ -88,9 +98,9 @@ namespace ClassLibrary
                 //point to the next record
                 Index++;
             }
+        }   
 
 
-        }
         public int Add()
         {
             //adds a record to the databse based on the values of mThisPatient
@@ -146,6 +156,20 @@ namespace ClassLibrary
 
 
         }
+        public void ReportByFullName(string Patientfullname)
+        {
+            //filters the records based on a full or partial name
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the full name parameter to the database
+            DB.AddParameter("@Patientfullname", Patientfullname);
+            //execute the stored procedure
+            DB.Execute("sproc_tblPatientManagement_FilteredByFullName");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+
         void PopulateArray(clsDataConnection DB)
         {
             //populate the array list based on the data table in the parameter DB
@@ -177,10 +201,7 @@ namespace ClassLibrary
             }
         }
 
-        public void ReportByFullName(string v)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 
     }
