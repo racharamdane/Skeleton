@@ -505,7 +505,7 @@ namespace Testing4
 
         [TestMethod]
         public void RoomEntryDateExtremeMin()
-        { 
+        {
             //create an instance of the class we want to create
             clsRoomManagement AnRoomManagement = new clsRoomManagement();
             //string c=variable to store any error message
@@ -523,5 +523,204 @@ namespace Testing4
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
-    }    
+
+        [TestMethod]
+        public void RoomEntryDateMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create a varible to store the test data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to be 100 years in the past
+            TestDate = TestDate.AddYears(-5).AddDays(-1);
+            //convert the date to a string variable
+            string RoomEntryDate = TestDate.ToString();
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomEntryDateMin()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create a varible to store the test data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to be 100 years in the past
+            TestDate = TestDate.AddYears(-5);
+            //convert the date to a string variable
+            string RoomEntryDate = TestDate.ToString();
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomEntryDateMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create a varible to store the test data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to be 100 years in the past
+            TestDate = TestDate.AddYears(-5).AddDays(1);
+            //convert the date to a string variable
+            string RoomEntryDate = TestDate.ToString();
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomEntryDateMaxMinusOne()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create a varible to store the test data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to be 100 years in the past
+            TestDate = TestDate.AddDays(-1);
+            //convert the date to a string variable
+            string RoomEntryDate = TestDate.ToString();
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomEntryDateMax()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create a varible to store the test data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to be 100 years in the past
+            TestDate = TestDate;
+            //convert the date to a string variable
+            string RoomEntryDate = TestDate.ToString();
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomEntryDateMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create a varible to store the test data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to be 100 years in the past
+            TestDate = TestDate.AddDays(1);
+            //convert the date to a string variable
+            string RoomEntryDate = TestDate.ToString();
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomEntryDateMid()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create a varible to store the test data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to be 100 years in the past
+            TestDate = TestDate.AddYears(-2).AddDays(-182);
+            //convert the date to a string variable
+            string RoomEntryDate = TestDate.ToString();
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomEntryDateExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create a varible to store the test data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to be 100 years in the past
+            TestDate = TestDate.AddYears(100);
+            //convert the date to a string variable
+            string RoomEntryDate = TestDate.ToString();
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void RoomEntryDateInvalidDataType()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create a varible to store the test data
+            String RoomEntryDate = "String";
+
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ClinicalNotesExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagement AnRoomManagement = new clsRoomManagement();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string ClinicalNotes = "a"; //this should trigger an error
+            //invoke the method
+            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+    }
 }

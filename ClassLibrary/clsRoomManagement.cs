@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
 
 namespace ClassLibrary
 {
@@ -164,6 +165,34 @@ namespace ClassLibrary
             {
                 //record the error
                 Error = Error + "The PatientID must be a valid integer : ";
+            }
+
+            try
+            {
+                //copy the RoomEntryDate value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(roomEntryDate);
+
+                if (DateTemp <= DateTime.Now.Date.AddYears(-5).AddDays(-1))
+                {
+                    //record the error
+                    Error = Error + "The RoomEntryDate cannot be over 5 years in the past : ";
+                }
+                else if (DateTemp >= DateTime.Now.Date.AddDays(1))
+                {
+                    //record the error
+                    Error = Error + "The RoomEntryDate cannot be in the future : ";
+                }
+            }
+            
+            catch
+            {
+                //record the error
+                Error = Error + "The RoomEntryDate must be a valid date : ";
+            }
+
+            try
+            {
+
             }
 
             //return any error messages
