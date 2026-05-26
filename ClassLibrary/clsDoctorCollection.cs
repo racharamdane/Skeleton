@@ -108,5 +108,36 @@ namespace ClassLibrary
             //execute the query returning the primary key value
             return DB.Execute("sproc_tblDoctorManagement_Insert");
         }
+
+        public void Update()
+        {
+            {
+                //updates an existing record based on the values of mThisDoctor
+                //connect to the database
+                clsDataConnection DB = new clsDataConnection();
+                //set the parameters for the stored procedure
+                DB.AddParameter("@DoctorId", mThisDoctor.DoctorId);
+                DB.AddParameter("@FullName", mThisDoctor.FullName);
+                DB.AddParameter("@PPassword", mThisDoctor.Password);
+                DB.AddParameter("@Email", mThisDoctor.Email);
+                DB.AddParameter("@Department", mThisDoctor.Department);
+                DB.AddParameter("@ContractDate", mThisDoctor.ContractDate);
+                DB.AddParameter("@AAvailability", mThisDoctor.Available);
+
+                //execute the stored procedure
+                DB.Execute("sproc_tblDoctorManagement_Update");
+            }
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisDoctor
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@DoctorId", mThisDoctor.DoctorId);
+            //execute the stored procedure
+            DB.Execute("sproc_DoctorManagement_Delete");
+        }
     }
 }
