@@ -120,5 +120,77 @@ namespace Testing2
                 //test to see that the two values are the same
                 Assert.AreEqual(AllDoctors.ThisDoctor, TestItem);
             }
+
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsDoctorCollection AllDoctors = new clsDoctorCollection();
+            //create the item of the test data
+            clsDoctor TestItem = new clsDoctor();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Available = true;
+            TestItem.DoctorId = 1;
+            TestItem.FullName = "Praisy";
+            TestItem.Password = "P1";
+            TestItem.Email = "p@gmail.com";
+            TestItem.Department = "Gynaecology";
+            TestItem.ContractDate = DateTime.Now;
+            //set ThisDoctor to the test data
+            AllDoctors.ThisDoctor = TestItem;
+            //add the record
+            PrimaryKey = AllDoctors.Add();
+            //set the primary key of the test data
+            TestItem.DoctorId = PrimaryKey;
+            //modify the test data
+            TestItem.Available = false;
+            TestItem.FullName = "Praisy S";
+            TestItem.Password = "P12";
+            TestItem.Email = "ps@gmail.com";
+            TestItem.Department = "Oncology";
+            TestItem.ContractDate = DateTime.Now;
+            //set the record based on the new test data
+            AllDoctors.ThisDoctor = TestItem;
+            //update the record
+            AllDoctors.Update();
+            //find the record
+            AllDoctors.ThisDoctor.Find(PrimaryKey);
+            //test to see if ThisDoctor matches the test data
+            Assert.AreEqual(AllDoctors.ThisDoctor, TestItem);
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsDoctorCollection AllDoctors = new clsDoctorCollection();
+            //create the item of the test data
+            clsDoctor TestItem = new clsDoctor();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Available = true;
+            TestItem.DoctorId = 1;
+            TestItem.FullName = "Praisy";
+            TestItem.Password = "P1";
+            TestItem.Email = "p@gmail.com";
+            TestItem.Department = "Gynaecology";
+            TestItem.ContractDate = DateTime.Now;
+            //set ThisDoctor to the test data
+            AllDoctors.ThisDoctor = TestItem;
+            //add the record
+            PrimaryKey = AllDoctors.Add();
+            //set the primary key of the test data
+            TestItem.DoctorId = PrimaryKey;
+            //find the record
+            AllDoctors.ThisDoctor.Find(PrimaryKey);
+            //delete the record
+            AllDoctors.Delete();
+            //now find the record
+            Boolean Found = AllDoctors.ThisDoctor.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.IsFalse(Found);
+        }
     }
 }
