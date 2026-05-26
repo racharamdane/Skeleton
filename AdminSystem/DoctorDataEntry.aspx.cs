@@ -48,10 +48,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ADoctor.ContractDate = Convert.ToDateTime(DateTime.Now);
             //capture the availability
             ADoctor.Available = chkAvailability.Checked;
-            //get the data from the session object
-            Session["ADoctor"] = ADoctor;
-            //navigate to the view page
-            Response.Redirect("DoctorViewer.aspx");
+            //create a new instance of the doctor collection
+            clsDoctorCollection DoctorList = new clsDoctorCollection();
+            //set the ThisDoctor property
+            DoctorList.ThisDoctor = ADoctor;
+            //add the new record
+            DoctorList.Add();
+            //redirect back to the list page
+            Response.Redirect("DoctorList.aspx");
         }
 
         else
