@@ -10,6 +10,8 @@ namespace Testing1
     [TestClass]
     public class tstPatientCollection
     {
+        public bool OK { get; private set; }
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -31,7 +33,7 @@ namespace Testing1
             ClsPatient TestItem = new ClsPatient();
             // set its properties
             TestItem.Treatment = true;
-            TestItem.PatientID = 111;
+            TestItem.PatientID = 122;
             TestItem.FullName = "Racha R";
             TestItem.DateAdded = DateTime.Now;
             TestItem.PatientGender = "female";
@@ -59,7 +61,7 @@ namespace Testing1
             ClsPatient TestItem = new ClsPatient();
             // set its properties
             TestItem.Treatment = true;
-            TestItem.PatientID = 111;
+            TestItem.PatientID = 122;
             TestItem.FullName = "Racha R";
             TestItem.DateAdded = DateTime.Now;
             TestItem.PatientGender = "female";
@@ -83,7 +85,7 @@ namespace Testing1
             ClsPatient TestItem = new ClsPatient();
             // set its properties
             TestItem.Treatment = true;
-            TestItem.PatientID = 111;
+            TestItem.PatientID = 122;
             TestItem.FullName = "Racha R";
             TestItem.DateAdded = DateTime.Now;
             TestItem.PatientGender = "female";
@@ -108,7 +110,7 @@ namespace Testing1
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.Treatment = true;
-            TestItem.PatientID = 111;
+            TestItem.PatientID = 122;
             TestItem.FullName = "Racha R";
             TestItem.DateAdded = DateTime.Now;
             TestItem.PatientGender = "female";
@@ -184,7 +186,7 @@ namespace Testing1
             TestItem.PatientGender = "female";
             TestItem.PatientPassword = "racha123456789";
             TestItem.Email = "racha@gmail.com";
-            TestItem.PatientID = 111;
+            TestItem.PatientID = 122;
             //set ThisPatient to the test data
             AllPatients.ThisPatient = TestItem;
             //add the record
@@ -208,7 +210,7 @@ namespace Testing1
             //create an instance of the filtered data
             ClsPatientCollection FilteredPatients = new ClsPatientCollection();
             //apply a blank string (should return all records)
-            FilteredPatients.ReportedByFullName("xxxxxx");
+            FilteredPatients.ReportedByFullName("xxxx xx");
             //test to see that the two values are the same
             Assert.AreEqual(AllPatients.Count, FilteredPatients.Count);
 
@@ -220,7 +222,7 @@ namespace Testing1
             //create an instance of the filtered data
             ClsPatientCollection FilteredPatients = new ClsPatientCollection();
             //apply a name that doesn't exist
-            FilteredPatients.ReportByFullName("xxxxxx");
+            FilteredPatients.ReportByFullName("xxxx xx");
             //check that the correct number of records are found
             if (FilteredPatients.Count != 6)
             {
