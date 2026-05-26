@@ -15,7 +15,7 @@ namespace Testing3
         public void InstanceOK()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //test to see that it exists
             Assert.IsNotNull(AAppointmentScheduling);
         }
@@ -24,7 +24,7 @@ namespace Testing3
         public void AvailabilityOK()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign the data to the property
@@ -37,7 +37,7 @@ namespace Testing3
         public void AppointmentDateOK()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property
@@ -50,7 +50,7 @@ namespace Testing3
         public void DoctorIdOK()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create some test data to assign to the property
             Int32 TestData = 4;
             //assign the data to the property
@@ -63,7 +63,7 @@ namespace Testing3
         public void PatientIdOK()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create some test data to assign to the property
             Int32 TestData = 111;
             //assign the data to the property
@@ -76,7 +76,7 @@ namespace Testing3
         public void AppointmentNotesOK()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create some test data to assign to the property
             string TestData = "N/A";
             //assign the data to the property
@@ -89,7 +89,7 @@ namespace Testing3
         public void FindMethodOK()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create some test data to assign to the property
             Boolean Found = false;
             //assign the data to the property
@@ -103,7 +103,7 @@ namespace Testing3
         public void TestDoctorIdFound(object doctorId)
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create a boolean variable to store the result of the search
             Boolean Found = false;
             // create a boolean variable to record if the data is OK (assume it is)
@@ -124,7 +124,7 @@ namespace Testing3
         public void TestPatientIdFound(object patientId, object patientId1)
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create a boolean variable to store the result of the search
             Boolean Found = false;
             // create a boolean variable to record if the data is OK (assume it is)
@@ -145,7 +145,7 @@ namespace Testing3
         public void TestAppointmentIdFound()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create a boolean variable to store the result of the search
             Boolean Found = false;
             // create a boolean variable to record if the data is OK (assume it is)
@@ -167,7 +167,7 @@ namespace Testing3
         public void TestAppointmentNotesFound()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create a Boolean variable to store the result of the search
             Boolean Found = false;
             //create a Boolean variable to record if data is OK (assume it is)
@@ -189,7 +189,7 @@ namespace Testing3
         public void TestAppointmentDateFound()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create a boolean variable to store the result of the search
             Boolean Found = false;
             // create a boolean variable to record if the data is OK (assume it is)
@@ -210,7 +210,7 @@ namespace Testing3
         public void TestAppointmentTimeFound()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create a boolean variable to store the result of the search
             Boolean Found = false;
             // create a boolean variable to record if the data is OK (assume it is)
@@ -232,7 +232,7 @@ namespace Testing3
         public void TestAvailabilityFound()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //create a Boolean variable to store the result of the search
             Boolean Found = false;
             //create a Boolean variable to record if data is OK (assume it is)
@@ -251,7 +251,7 @@ namespace Testing3
         }
     }
 
-    public class ClsAppointmentScheduling
+    public class clsAppointmentScheduling
     {
         internal DateTime AppointmentTime;
         internal DateTime AppointmentDate;
@@ -271,7 +271,7 @@ namespace Testing3
         public void ValidMethodOK()
         {
             //create an instance of the class we want to create
-            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
             //string variable to store any error message
             string Error = "";
             //invoke the method

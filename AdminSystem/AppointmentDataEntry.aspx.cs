@@ -46,7 +46,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtAppointmentTime = Appointment.AppointmentTime.ToString();
         chkAvailability.Checked = Appointment.Availability;
     }
-    protected void btnOK_Click(object sender, EventArgs e)
+    protected void btnOK_Click1(object sender, EventArgs e)
     {
         // Create a new instance of clsAppointmentScheduling
         clsAppointmentScheduling AAppointment = new clsAppointmentScheduling();

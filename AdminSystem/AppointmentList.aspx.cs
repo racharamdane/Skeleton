@@ -11,4 +11,29 @@ public partial class _1_List : System.Web.UI.Page
     {
 
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+
+    }
 }
