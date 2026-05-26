@@ -143,7 +143,7 @@ namespace Testing3
         public void UpdateMethodOK()
         {
             //create an instance of the class we want to create
-            clsAppointmentSchedulingCollection AllAppointments = new clsAppointmentSchedulingCollection();
+            clsAppointmentSchedulingCollection AAppointments = new clsAppointmentSchedulingCollection();
             //create the item of test data
             clsAppointmentScheduling TestItem = new clsAppointmentScheduling();
             //variable to store the primary key
@@ -158,9 +158,9 @@ namespace Testing3
             TestItem.AppointmentTime = DateTime.Now;
 
             //set ThisAppointment to the test data
-            AllAppointments.ThisAppointment TestItem;
+            AAppointments.ThisAppointment TestItem;
             //add the record
-            PrimaryKey = AllAppointments.Add();
+            PrimaryKey = AAppointments.Add();
             //set the primary ke of the test data 
             TestItem.AppointmentID = PrimaryKey;
             //modify the test data
@@ -212,8 +212,28 @@ namespace Testing3
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
-
-
+        [TestMethod]
+            public void ReportByDoctorIdMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsAppointmentSchedulingCollection AllAppointments = new clsAppointmentSchedulingCollection();
+            //create an instance of the filtered data
+            clsAppointmentSchedulingCollection FilteredAppointments = new clsAppointmentSchedulingCollection();
+            //apply a blank string (should return all records)
+            FilteredAppointments.ReportByDoctorId("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllAppointments.Count, FilteredAppointments.Count);
+        }
+        [TestMethod]
+        public void ReportByDoctorIdNoneFound()
+        {
+            //create an instance of the class we want to create
+            clsAppointmentSchedulingCollection FilteredAppointments = new clsAppointmentSchedulingCollection();
+            //apply a DoctorId that doesn't exist
+            FilteredAppointments.ReportByDoctorId("9999");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredAppointments.Count);
+        }
 
         }
     }
