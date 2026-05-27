@@ -210,7 +210,7 @@ namespace Testing1
             //create an instance of the filtered data
             ClsPatientCollection FilteredPatients = new ClsPatientCollection();
             //apply a blank string (should return all records)
-            FilteredPatients.ReportedByFullName("xxxx xx");
+            FilteredPatients.ReportByFullName("");
             //test to see that the two values are the same
             Assert.AreEqual(AllPatients.Count, FilteredPatients.Count);
 
@@ -222,28 +222,9 @@ namespace Testing1
             //create an instance of the filtered data
             ClsPatientCollection FilteredPatients = new ClsPatientCollection();
             //apply a name that doesn't exist
-            FilteredPatients.ReportByFullName("xxxx xx");
+            FilteredPatients.ReportByFullName("xxxxxx");
             //check that the correct number of records are found
-            if (FilteredPatients.Count != 6)
-            {
-                //check to see that the first record is 5
-                if (FilteredPatients.PatientList[0].PatientID !=6 )
-                { OK = false; }
-                // check to see that the second record is 6
-                if (FilteredPatients.PatientList[1].PatientID != 7)
-                {
-                    OK = false;
-                }
-
-            }
-            else
-            {
-                OK = false;
-
-            }
-            //test to see that there are no records
-
-            Assert.IsTrue(OK);
+            Assert.AreEqual(0, FilteredPatients.Count);
         }
     
 

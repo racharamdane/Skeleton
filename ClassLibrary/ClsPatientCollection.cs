@@ -144,18 +144,9 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tblPatientManagement_Delete");
         }
-        public void ReportedByFullName(String Patientfullname)
-        { //filters the records based on a full or partial name
-          //connect to the database
-            clsDataConnection DB = new clsDataConnection();
-            //send the full name parameter to the database
-            DB.AddParameter("@Patientfullname", Patientfullname);
-            //execute the stored procedure
-            PopulateArray(DB);
 
+        
 
-
-        }
         public void ReportByFullName(string Patientfullname)
         {
             //filters the records based on a full or partial name
