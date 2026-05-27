@@ -84,7 +84,7 @@ public partial class _1_List : System.Web.UI.Page
         // create an instance of the patient object
         ClsPatientCollection APatient = new ClsPatientCollection();
         //retrievethe full name from the presentation layer
-        APatient.ReportedByFullName(txtFilter.Text);
+        APatient.ReportByFullName(txtFilter.Text);
         //set the data source to the list of patients in the collection
         lstPatientList.DataSource = APatient.PatientList;
         //set the name of the primary key
@@ -104,7 +104,7 @@ public partial class _1_List : System.Web.UI.Page
         // create an instance of the patient object
         ClsPatientCollection APatient = new ClsPatientCollection();
         //set an empty string
-        APatient.ReportedByFullName("");
+        APatient.ReportByFullName("");
         //clear any existing filter to tidy up the interface
         txtFilter.Text = "";
         //set the data source to the list of patients in the collection
