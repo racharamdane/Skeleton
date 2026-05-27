@@ -83,4 +83,38 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to delete";
         }
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the Doctor object
+        clsDoctorCollection ADoctor = new clsDoctorCollection();
+        //retrieve the value of the full name from the presentation layer
+        ADoctor.ReportByFullName(txtFilter.Text);
+        //set the data source to list of doctors in the collection
+        lstDoctorList.DataSource = ADoctor.DoctorList;
+        //set the name of the primary key
+        lstDoctorList.DataValueField = "DoctorId";
+        //set the data field to display
+        lstDoctorList.DataTextField = "FullName";
+        //bind the data to the list
+        lstDoctorList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the Doctor object
+        clsDoctorCollection ADoctor = new clsDoctorCollection();
+        //set an empty string 
+        ADoctor.ReportByFullName("");
+        //clear any existing filter to tidy up the interface
+        txtFilter.Text = "";
+        //set the data source to list of doctors in the collection
+        lstDoctorList.DataSource = ADoctor.DoctorList;
+        //set the name of the primary key
+        lstDoctorList.DataValueField = "DoctorId";
+        //set the data field to display
+        lstDoctorList.DataTextField = "FullName";
+        //bind the data to the list
+        lstDoctorList.DataBind();
+    }
 }

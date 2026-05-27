@@ -192,5 +192,64 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.IsFalse(Found);
         }
+
+        [TestMethod]
+        public void ReportByFullNameMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsDoctorCollection AllDoctors = new clsDoctorCollection();
+            //create the instance of the filtered data
+            clsDoctorCollection FilteredDoctors = new clsDoctorCollection();
+            //apply a blank string (should return all records)
+            FilteredDoctors.ReportByFullName("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllDoctors.Count, FilteredDoctors.Count);
+        }
+
+        [TestMethod]
+        public void ReportByFullNameNoneFound()
+        {
+            //create the instance of the filtered data
+            clsDoctorCollection FilteredDoctors = new clsDoctorCollection();
+            //apply a name that doesn't exist
+            FilteredDoctors.ReportByFullName("Sandra Oh");
+            //test to see that the two values are the same
+            Assert.AreEqual(0, FilteredDoctors.Count);
+        }
+
+        [TestMethod]
+        public void ReportByFullNameTestDataFound()
+        {
+            //create an instance of the class we want to create
+            clsDoctorCollection FilteredDoctors = new clsDoctorCollection();
+            //variable to store outcome
+            Boolean OK = true;
+            //apply a name that doesn't exist
+            FilteredDoctors.ReportByFullName("Precious P");
+            //check that the correct number of records are found
+            if (FilteredDoctors.Count == 2)
+            {
+                //check that the first record is ID 42
+                if (FilteredDoctors.DoctorList[0].DoctorId != 42)
+                {
+                    OK = false;
+                }
+
+                //check that the first record is ID 44
+                if (FilteredDoctors.DoctorList[1].DoctorId != 44)
+                {
+                    OK = false;
+                }
+            }
+
+            else
+            {
+                OK = false;
+            }
+            
+            //test to see that the there are no records
+            Assert.IsTrue(OK);
+        }
+
     }
 }
