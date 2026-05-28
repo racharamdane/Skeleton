@@ -77,27 +77,13 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tblPatientManagement_SelectAll");
             //populate the array list with the data table
-            PopulateArray(DB);
-            //get the count of records returned
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank patient
-                ClsPatient APatient = new ClsPatient();
-                //read in the fields from the current record
-                APatient.Treatment = Convert.ToBoolean(DB.DataTable.Rows[Index]["Patienttreatment"]);
-                APatient.PatientID = Convert.ToInt32(DB.DataTable.Rows[Index]["PatientID"]);
-                APatient.FullName = Convert.ToString(DB.DataTable.Rows[Index]["Patientfullname"]);
-                APatient.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["Patientregistrationdate"]);
-                APatient.PatientGender = Convert.ToString(DB.DataTable.Rows[Index]["Patientgender"]);
-                APatient.PatientPassword = Convert.ToString(DB.DataTable.Rows[Index]["Patientpassword"]);
-                APatient.Email = Convert.ToString(DB.DataTable.Rows[Index]["PatientEmail"]);
-                //add the patient to the private data member
-                mPatientList.Add(APatient);
-                //point to the next record
-                Index++;
-            }
+
+            PopulateArray(DB); 
+
+        
+          
+            
+            
         }   
 
 

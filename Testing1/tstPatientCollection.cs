@@ -224,7 +224,9 @@ namespace Testing1
             //apply a name that doesn't exist
             FilteredPatients.ReportByFullName("xxxxxx");
             //check that the correct number of records are found
-            Assert.AreEqual(0, FilteredPatients.Count);
+             Assert.AreEqual(0, FilteredPatients.Count);
+            
+            
         }
     
 
