@@ -10,7 +10,7 @@ namespace Testing4
         //good test data
         //create some test data to pass to the method
         string RoomName = "Test";
-        string ClinicalNotes = "Test";
+        string ClinicalNotes = new string('a', 100);
         string PatientID = 1.ToString();
         string RoomEntryDate = DateTime.Now.Date.ToShortDateString();
 
