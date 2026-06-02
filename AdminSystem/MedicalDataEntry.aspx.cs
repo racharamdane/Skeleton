@@ -29,11 +29,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "")
         {
   
-            AMedicalRecord.Sex = Sex;
-            AMedicalRecord.Dob = Dob;
+            AMedicalRecord.Sex = chkSex.Checked;
+            AMedicalRecord.Dob = Convert.ToDateTime(Dob);
             AMedicalRecord.Medications = Medications;
             AMedicalRecord.Diagnoses = Diagnoses;  
             AMedicalRecord.ClinicalNotes = ClinicalNotes;
+
+            clsRecordCollection RecordList = new clsRecordCollection();
+            RecordList.ThisRecord = AMedicalRecord;
+            RecordList.Add();
+            Response.Redirect("MedicalList.aspx");
 
         }
         else
