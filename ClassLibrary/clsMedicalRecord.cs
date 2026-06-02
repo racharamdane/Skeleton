@@ -81,36 +81,23 @@ namespace ClassLibrary
         public string Valid(String dob, string medications, string diagnoses, string clinicalNotes)
         {
             String Error = "";
-<<<<<<< HEAD
-
-            // normalize date to date-only for boundary comparisons
-            DateTime DateTemp = dob.Date;
-
-            // DOB must not be in the future and must not be more than 150 years in the past
-            if (DateTemp > DateTime.Now.Date || DateTemp < DateTime.Now.Date.AddYears(-150))
+            DateTime DateTemp;
+            DateTemp = Convert.ToDateTime(dob);
+            try
             {
-                Error += "DOB cannot be in the future or more than 150 years in the past";
-            }
-=======
-            DateTime DateComp = DateTime.Now.Date;
-            
->>>>>>> 6cc58e06d512c2231777df37be07b946577a4f0d
-
-            // guard against null strings before checking length
-            if (!string.IsNullOrEmpty(medications))
-            {
-                if (medications.Length > 100)
+                if (DateTemp > DateTime.Now.Date || DateTemp < DateTime.Now.Date.AddYears(-151))
                 {
-                    Error += "Medications cannot exceed 100 char";
+                    Error += "DOB cannot be in the future or more than 150 years in the past";
                 }
-            }
-
-            if (!string.IsNullOrEmpty(diagnoses))
-            {
-                if (diagnoses.Length > 100)
+                if (dob == null)
                 {
-                    Error += "Diagnoses cannot exceed 100 char";
+                    Error += "DOB is required";
                 }
+
+            }
+            catch
+            {
+                Error += "DOB must be a date, dd/mm/yyyy";
             }
 
             // clinical notes validation: required, min 2 chars, max 100 chars
@@ -118,7 +105,6 @@ namespace ClassLibrary
             {
                 Error += "Must attach some clinical notes";
             }
-<<<<<<< HEAD
             else
             {
                 if (clinicalNotes.Length < 2)
@@ -130,29 +116,6 @@ namespace ClassLibrary
                     Error += "Clinical notes cannot exceed 100 char";
                 }
             }
-
-=======
-            try
-            {
-                DateTime DateTemp = Convert.ToDateTime(dob);
-                if (DateTemp > DateComp)
-                {
-                    Error += "DOB cannot be in the future";
-                }
-                if (DateTemp <= DateComp.AddYears(-151))
-                {
-                    Error += "DOB cannot be more than 150 years in the past";
-                }
-                if (DateTemp == null)
-                {
-                    Error += "DOB is required";
-                }
-            }
-            catch
-            {
-                Error += "Not a valid date";
-            }
->>>>>>> 6cc58e06d512c2231777df37be07b946577a4f0d
             return Error;
         }
     }
