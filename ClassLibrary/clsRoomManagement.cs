@@ -130,12 +130,12 @@ namespace ClassLibrary
             DateTime DateTemp;
 
             //if the room id is blank
-            if (RoomName.Length == 0)
+            if (roomName.Length == 0)
             {
                 //record the error
                 Error = Error + "The Roomname may not be blank : ";
             }
-            else if (RoomName.Length > 100)
+            else if (roomName.Length > 100)
             {
                 //record the error
                 Error = Error + "The Roomname must be less than 100 characters : ";
@@ -148,12 +148,12 @@ namespace ClassLibrary
                 //copy the PatientID value to the IntTemp variable
                 int IntTemp = Convert.ToInt32(patientID);
 
-                if (PatientID < 1)
+                if (IntTemp < 1)
                 {
                     //record the error
                     Error = Error + "The PatientID must be greater than 0 : ";
                 }
-                else if (PatientID > 10000)
+                else if (IntTemp > 10000)
                 {
                     //record the error
                     Error = Error + "The PatientID must be less than 10000 : ";

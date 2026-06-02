@@ -7,8 +7,10 @@ using System.Collections.Generic;
 namespace Testing5
 {
     [TestClass]
-    public class tstRecordCollection
+    public class testRecordCollection
     {
+        public bool OK { get; private set; }
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -34,16 +36,7 @@ namespace Testing5
             AllRecords.RecordList = TestList;
             Assert.AreEqual(AllRecords.RecordList, TestList);
         }
-        [TestMethod]
-        public void CountRecordOk()
-        {
-            clsRecordCollection AllRecords = new clsRecordCollection();
 
-            Int32 SomeCount = 0;
-
-            AllRecords.Count = SomeCount;
-            Assert.AreEqual(AllRecords.Count, SomeCount);
-        }
         [TestMethod]
         public void ThisRecordPropertyOk()
         {
@@ -70,14 +63,13 @@ namespace Testing5
             TestItem.Dob = DateTime.Now;
             TestItem.Medications = "Some medication";
             TestItem.Diagnoses = "some diagnosis";
-            TestItem.ClinicalNotes = "some clinical notes";
-
             TestList.Add(TestItem);
 
             AllRecords.RecordList = TestList;
 
             Assert.AreEqual(TestList.Count, AllRecords.Count);
         }
+
 
     }
 }

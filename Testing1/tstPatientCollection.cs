@@ -10,6 +10,8 @@ namespace Testing1
     [TestClass]
     public class tstPatientCollection
     {
+        public bool OK { get; private set; }
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -31,7 +33,7 @@ namespace Testing1
             ClsPatient TestItem = new ClsPatient();
             // set its properties
             TestItem.Treatment = true;
-            TestItem.PatientID = 111;
+            TestItem.PatientID = 122;
             TestItem.FullName = "Racha R";
             TestItem.DateAdded = DateTime.Now;
             TestItem.PatientGender = "female";
@@ -46,7 +48,7 @@ namespace Testing1
             Assert.AreEqual(AllPatients.PatientList, TestList);
 
         }
-        
+
         [TestMethod]
         public void ThisPatientOK()
         {
@@ -59,7 +61,7 @@ namespace Testing1
             ClsPatient TestItem = new ClsPatient();
             // set its properties
             TestItem.Treatment = true;
-            TestItem.PatientID = 111;
+            TestItem.PatientID = 122;
             TestItem.FullName = "Racha R";
             TestItem.DateAdded = DateTime.Now;
             TestItem.PatientGender = "female";
@@ -83,7 +85,7 @@ namespace Testing1
             ClsPatient TestItem = new ClsPatient();
             // set its properties
             TestItem.Treatment = true;
-            TestItem.PatientID = 111;
+            TestItem.PatientID = 122;
             TestItem.FullName = "Racha R";
             TestItem.DateAdded = DateTime.Now;
             TestItem.PatientGender = "female";
@@ -97,8 +99,158 @@ namespace Testing1
             Assert.AreEqual(AllPatients.Count, TestList.Count);
 
         }
-        
-        
-    }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            ClsPatientCollection AllPatients = new ClsPatientCollection();
+            //create the item of test data
+            ClsPatient TestItem = new ClsPatient();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Treatment = true;
+            TestItem.PatientID = 122;
+            TestItem.FullName = "Racha R";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.PatientGender = "female";
+            TestItem.PatientPassword = "racha123456789";
+            TestItem.Email = "racha@gmail.com";
+            //set ThisPatient to the test data
+            AllPatients.ThisPatient = TestItem;
+            //add the record
+            PrimaryKey = AllPatients.Add();
+            //set the primary ke of the test data 
+            TestItem.PatientID = PrimaryKey;
+            //find the record
+            AllPatients.ThisPatient.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllPatients.ThisPatient, TestItem);
 
+
+
+        }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create an instance of the class we want to create
+            ClsPatientCollection AllPatients = new ClsPatientCollection();
+            //create the item of test data
+            ClsPatient TestItem = new ClsPatient();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set the properties of the test item
+            TestItem.Treatment = true;
+            TestItem.FullName = "Racha R";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.PatientGender = "female";
+            TestItem.PatientPassword = "racha123456789";
+            TestItem.Email = "racha@gmail.com";
+            //set ThisPatient to the test data
+            AllPatients.ThisPatient = TestItem;
+            //add the record
+            PrimaryKey = AllPatients.Add();
+            //set the primary key of the test data
+            TestItem.PatientID = PrimaryKey;
+            //modify the test data
+            TestItem.Treatment = false;
+            TestItem.FullName = "Ra";
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.PatientGender = "male";
+            TestItem.PatientPassword = "ra123456789";
+            TestItem.Email = "ra@gmai.com";
+            //set the record based on the new test data
+            AllPatients.ThisPatient = TestItem;
+            //update the record
+            AllPatients.Update();
+            //find the record
+            AllPatients.ThisPatient.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllPatients.ThisPatient, TestItem);
+
+
+        }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create an instance of the class we want to create
+            ClsPatientCollection AllPatients = new ClsPatientCollection();
+            //create the item of test data
+            ClsPatient TestItem = new ClsPatient();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set the properties of the test item
+            TestItem.Treatment = true;
+            TestItem.FullName = "Racha R";
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.PatientGender = "female";
+            TestItem.PatientPassword = "racha123456789";
+            TestItem.Email = "racha@gmail.com";
+            TestItem.PatientID = 122;
+            //set ThisPatient to the test data
+            AllPatients.ThisPatient = TestItem;
+            //add the record
+            PrimaryKey = AllPatients.Add();
+            //set the primary key of the test data
+            TestItem.PatientID = PrimaryKey;
+            //find the record
+            AllPatients.ThisPatient.Find(PrimaryKey);
+            //delete the record
+            AllPatients.Delete();
+            //now find the record
+            Boolean Found = AllPatients.ThisPatient.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportByFullNameMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            ClsPatientCollection AllPatients = new ClsPatientCollection();
+            //create an instance of the filtered data
+            ClsPatientCollection FilteredPatients = new ClsPatientCollection();
+            //apply a blank string (should return all records)
+            FilteredPatients.ReportedByFullName("xxxx xx");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllPatients.Count, FilteredPatients.Count);
+
+
+        }
+        [TestMethod]
+        public void ReportByFullNameNoneFound()
+        {
+            //create an instance of the filtered data
+            ClsPatientCollection FilteredPatients = new ClsPatientCollection();
+            //apply a name that doesn't exist
+            FilteredPatients.ReportByFullName("xxxx xx");
+            //check that the correct number of records are found
+            if (FilteredPatients.Count != 6)
+            {
+                //check to see that the first record is 5
+                if (FilteredPatients.PatientList[0].PatientID !=6 )
+                { OK = false; }
+                // check to see that the second record is 6
+                if (FilteredPatients.PatientList[1].PatientID != 7)
+                {
+                    OK = false;
+                }
+
+            }
+            else
+            {
+                OK = false;
+
+            }
+            //test to see that there are no records
+
+            Assert.IsTrue(OK);
+        }
+    
+
+    }
 }
+
+
+
+
+    

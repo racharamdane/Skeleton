@@ -137,12 +137,12 @@ namespace ClassLibrary
             {
                 // copy the data from the database to the private data members 
                 mPatientID = Convert.ToInt32(DB.DataTable.Rows[0]["PatientID"]);
-                mFullName = Convert.ToString(DB.DataTable.Rows[0]["Patient full name"]);
-                mTreatment = Convert.ToBoolean(DB.DataTable.Rows[0]["Patient treatment"]);
-                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["Patient registration date"]);
-                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Patient Email"]);
-                mPatientGender = Convert.ToString(DB.DataTable.Rows[0]["Patient gender"]);
-                mPatientPassword = Convert.ToString(DB.DataTable.Rows[0]["Patient password"]);
+                mFullName = Convert.ToString(DB.DataTable.Rows[0]["Patientfullname"]);
+                mTreatment = Convert.ToBoolean(DB.DataTable.Rows[0]["Patienttreatment"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["Patientregistrationdate"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["PatientEmail"]);
+                mPatientGender = Convert.ToString(DB.DataTable.Rows[0]["Patientgender"]);
+                mPatientPassword = Convert.ToString(DB.DataTable.Rows[0]["Patientpassword"]);
                 // return that everything worked OK
                 return true;
             }

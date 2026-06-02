@@ -9,9 +9,38 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 DoctorId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the doctor to be processed
+        DoctorId = Convert.ToInt32(Session["DoctorId"]);
+        //if this is the first time the page is displayed
+        if (IsPostBack == false)
+        {
+            //if we are not adding a new record
+            if (DoctorId != -1)
+            {
+                //display the current data for the record
+                DisplayDoctor();
+            }
+        }
+    }
 
+    void DisplayDoctor()
+    {
+        //create an instance of the doctor collection
+        clsDoctorCollection Doctor = new clsDoctorCollection();
+        //find the record to update
+        Doctor.ThisDoctor.Find(DoctorId);
+        //display the data for this record
+        txtDoctorId.Text = Doctor.ThisDoctor.DoctorId.ToString();
+        txtFullName.Text = Doctor.ThisDoctor.FullName.ToString();
+        txtPassword.Text = Doctor.ThisDoctor.Password.ToString();
+        txtEmail.Text = Doctor.ThisDoctor.Email.ToString();
+        txtDepartment.Text = Doctor.ThisDoctor.Department.ToString();
+        txtContractDate.Text = Doctor.ThisDoctor.ContractDate.ToString();
+        chkAvailability.Checked = Doctor.ThisDoctor.Available;
     }
 
     protected void btnOK_Click1(object sender, EventArgs e)
@@ -35,7 +64,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //validate the data
         Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
         if (Error == "")
-        {
+        {   //capture the doctor id
+            ADoctor.DoctorId = DoctorId;
             //capture the full name
             ADoctor.FullName = txtFullName.Text;
             //capture the password
@@ -48,10 +78,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ADoctor.ContractDate = Convert.ToDateTime(DateTime.Now);
             //capture the availability
             ADoctor.Available = chkAvailability.Checked;
-            //get the data from the session object
-            Session["ADoctor"] = ADoctor;
-            //navigate to the view page
-            Response.Redirect("DoctorViewer.aspx");
+            //create a new instance of the doctor collection
+            clsDoctorCollection DoctorList = new clsDoctorCollection();
+            //if this is a new record i.e. DoctorId = -1 then add the data
+            if (DoctorId == -1)
+            {
+                //set the ThisDoctor property
+                DoctorList.ThisDoctor = ADoctor;
+                //add the new record
+                DoctorList.Add();
+            }
+
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                DoctorList.ThisDoctor.Find(DoctorId);
+                //set the ThisDoctor property
+                DoctorList.ThisDoctor = ADoctor;
+                //update the new record
+                DoctorList.Update();
+            }
+
+            //redirect back to the list page
+            Response.Redirect("DoctorList.aspx");
         }
 
         else

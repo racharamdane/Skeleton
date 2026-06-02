@@ -8,8 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    // variable to store the primary key with page level scope
+    Int32 PatientID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        // get the number of the patient to be processed
+        PatientID = Convert.ToInt32(Session["PatientID"]);
+        if (IsPostBack == false)
+        {
+            // if this is not a new record
+            if (PatientID != -1)
+            {
+                // display the current data for the record
+                DisplayPatient();
+            }
+        }   
+    }
+
+    private void DisplayPatient()
+    {
+      //create an instance of the patient 
+      ClsPatientCollection Patient = new ClsPatientCollection();
+        //find the record to update
+        Patient.ThisPatient.Find(PatientID);
+        //display the data for this record
+        txtPatientfullname.Text = Convert.ToString(Patient.ThisPatient.PatientID);
+        txtPatientEmail.Text = Convert.ToString(Patient.ThisPatient.Email);
+        txtPatientgender.Text = Convert.ToString(Patient.ThisPatient.PatientGender);
+        txtPatientpassword.Text = Convert.ToString(Patient.ThisPatient.PatientPassword);
+        txtPatientregistrationdate.Text = Convert.ToString(Patient.ThisPatient.DateAdded);
+        chkPatienttreatment.Checked = Patient.ThisPatient.Treatment;
+        txtPatientID.Text = Convert.ToString(Patient.ThisPatient.PatientID);
 
     }
 
@@ -23,7 +52,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // capture the patient date of registration
         string DateAdded = txtPatientregistrationdate.Text;
         // capture the patient email
-        string Email = txtPatientemail.Text;
+        string Email = txtPatientEmail.Text;
         // capture the patient gender
         string PatientGender = txtPatientgender.Text;
         // capture the patient password
@@ -38,18 +67,41 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             // capture the patient full name
             APatient.FullName = FullName;
+            // capture the patient id
+            APatient.PatientID = PatientID;
             // capture the patient date of registration
             APatient.DateAdded = Convert.ToDateTime(DateAdded);
             // capture the patient email
-            APatient.Email = Email;
+            APatient.Email = Convert.ToString(Email);
             // capture the patient gender
             APatient.PatientGender = PatientGender;
             // capture the patient password
             APatient.PatientPassword = PatientPassword;
-           
+            // capture the patient treatment status
+            APatient.Treatment = chkPatienttreatment.Checked;
+            //create a new instance of the patient collection
+             ClsPatientCollection PatientList = new ClsPatientCollection();
+            //if this is a new record i.e. PatientID = -1 then add the data
+            if (PatientID == -1)
+            {
+                // set the ThisPatient property
+                PatientList.ThisPatient = APatient;
+                // add the new record
+                PatientList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                // find the record to update
+                PatientList.ThisPatient.Find(PatientID);
+                // set the ThisPatient property
+                PatientList.ThisPatient = APatient;
+                // update the record
+                PatientList.Update();
+            }
 
-            //Navigate to the next page
-            Response.Redirect("PatientViewer.aspx");
+            // redirect back to the list page
+            Response.Redirect("PatientList.aspx");
 
         }
         else
@@ -79,7 +131,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             // Display the values of the properties in the form
             txtPatientfullname.Text = APatient.FullName;
             txtPatientregistrationdate.Text = APatient.DateAdded.ToString("dd/MM/yyyy");
-            txtPatientemail.Text = APatient.Email;
+            txtPatientEmail.Text = APatient.Email;
             txtPatientgender.Text = APatient.PatientGender;
             txtPatientpassword.Text = APatient.PatientPassword;
             chkPatienttreatment.Checked = APatient.Treatment;
