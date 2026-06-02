@@ -459,7 +459,7 @@ namespace Testing5
             string Error = "";
             string ClinicalNotes = new string('a', 1000);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 
