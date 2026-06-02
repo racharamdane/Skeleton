@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.IO;
 
 namespace ClassLibrary
@@ -239,6 +240,32 @@ namespace ClassLibrary
             //return any error messages
             return Error;
         }
+
+
+        /****** statistics grouped by Patientgender method *******/
+        public DataTable StaticsGroupedByPatientgender()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblPatientManagement_GroupByPatientgender");
+            //return the data table to be displayed
+            return DB.DataTable;
+        }
+
+        /****** statistics grouped by added date method ******/
+
+        public DataTable StaticsGroupedByPatientregistrationdate()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //execute the stored procedure
+            DB.Execute("sproc_tblPatientManagement_GroupByPatientregistrationdate");
+            //return the data table to be displayed
+            return DB.DataTable;
+
+        }
+
 
     }
 
