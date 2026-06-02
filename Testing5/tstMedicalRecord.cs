@@ -443,6 +443,16 @@ namespace Testing5
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
+        public void ClinicalMaxMinus1()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string ClinicalNotes = new string('a', 99);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
         public void ClinicalMaxPlus1()
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
