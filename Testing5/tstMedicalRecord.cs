@@ -19,7 +19,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
 
-            Int32 TestData = '1';
+            Int32 TestData = 1;
 
             AMedicalRecord.PatientId = TestData;
 
@@ -87,6 +87,7 @@ namespace Testing5
 
             Assert.AreEqual(AMedicalRecord.ClinicalNotes, TestData);
         }
+        [TestMethod]
         public void FindMethodOk()
         {
             //create instance of the class
@@ -94,13 +95,13 @@ namespace Testing5
             //create boolean to store the results of the validation
             Boolean Found = false;
             //create test data
-            Boolean OK = true;
             Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
  
             Assert.IsTrue(Found);
         }
+        [TestMethod]
         public void TestPatientIdFound()
         {
             //create instance of the class
@@ -117,7 +118,9 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestDobFound()
         {
             //create instance of the class
@@ -134,7 +137,9 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestSexFound()
         {
             //create instance of the class
@@ -151,7 +156,9 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestMedicationsFound()
         {
             //create instance of the class
@@ -168,7 +175,9 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestDiagnosesFound()
         {
             //create instance of the class
@@ -185,7 +194,9 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestNotesFound()
         {
             //create instance of the class
@@ -202,6 +213,7 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
         [TestMethod]
         public void ValidMethodOK()
@@ -209,7 +221,7 @@ namespace Testing5
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual("", Error);
         }
         [TestMethod]
         public void DobExtremeMin()
@@ -234,9 +246,9 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            DateTime Dob = DateTime.Now;
-            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
-            Assert.AreEqual(Error, "");
+            DateTime testDob = DateTime.Now;
+            Error = AMedicalRecord.Valid(testDob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual("", Error);
         }
         [TestMethod]
         public void DobMinPlus1()
@@ -393,13 +405,22 @@ namespace Testing5
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
+        public void ClinicalMin()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string ClinicalNotes = "aa";
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
         public void ClinicalMinPlus1()
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            string ClinicalNotes = "a";
+            string ClinicalNotes = "aaa";
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void ClinicalMid()
@@ -407,6 +428,24 @@ namespace Testing5
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
             string ClinicalNotes = "patient seen for stomach pain";
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ClinicalMax()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string ClinicalNotes = new string('a', 100);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ClinicalMaxPlus1()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string ClinicalNotes = new string('a', 101);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreNotEqual(Error, "");
         }

@@ -56,8 +56,8 @@ namespace Testing5
             TestItem.Diagnoses = "some diagnosis";
             TestItem.ClinicalNotes = "some clinical notes";
 
-            AllRecords.ThisAddress = TestItem;
-            Assert.AreEqual(AllRecords.RecordList, TestItem);
+            AllRecords.ThisRecord = TestItem;
+            Assert.AreEqual(AllRecords.ThisRecord, TestItem);
         }
         [TestMethod]
         public void ListAndCountOk()
@@ -71,11 +71,12 @@ namespace Testing5
             TestItem.Medications = "Some medication";
             TestItem.Diagnoses = "some diagnosis";
             TestItem.ClinicalNotes = "some clinical notes";
+
             TestList.Add(TestItem);
 
             AllRecords.RecordList = TestList;
 
-            Assert.AreEqual(AllRecords.Count, TestList.Count);
+            Assert.AreEqual(TestList.Count, AllRecords.Count);
         }
 
     }
