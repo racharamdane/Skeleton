@@ -7,6 +7,7 @@ namespace ClassLibrary
     {
         // private data member for the list
         List<clsMedicalRecord> mRecordList = new List<clsMedicalRecord>();
+        clsMedicalRecord mThisRecord = new clsMedicalRecord();  
 
         // public property for the record list
         public List<clsMedicalRecord> RecordList
@@ -36,7 +37,9 @@ namespace ClassLibrary
             }
         }
 
-        public clsMedicalRecord ThisRecord { get; set; }
+        public clsMedicalRecord ThisRecord 
+        {
+            get { return mThisRecord; } set { mThisRecord = value; } }
 
         public clsRecordCollection()
         {
@@ -68,6 +71,25 @@ namespace ClassLibrary
 
             }
 
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Dob", mThisRecord.Dob);
+            DB.AddParameter("@Sex", mThisRecord.Sex);
+            DB.AddParameter("@Medications", mThisRecord.Medications);
+            DB.AddParameter("@Diagnoses", mThisRecord.Diagnoses);
+            DB.AddParameter("@ClinicalNotes", mThisRecord.ClinicalNotes);
+
+            return DB.Execute("sproc_tblMedicalRecord_Insert");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@PatientId", mThisRecord.PatientId);
+            DB.Execute("sproc_tblMedicalRecord_Delete");
         }
     }
 }

@@ -69,6 +69,52 @@ namespace Testing5
 
             Assert.AreEqual(TestList.Count, AllRecords.Count);
         }
+        [TestMethod]
+        public void AddMethodOk()
+        {
+            clsRecordCollection AllRecords = new clsRecordCollection();
+            clsMedicalRecord TestItem = new clsMedicalRecord();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.Sex = true;
+            TestItem.Dob = DateTime.Now;
+            TestItem.Medications = "Some medication";
+            TestItem.Diagnoses = "some diagnosis";
+            TestItem.ClinicalNotes = "some clinical notes";
+
+
+            AllRecords.ThisRecord = TestItem;
+            PrimaryKey = AllRecords.Add();
+            TestItem.PatientId = PrimaryKey;
+
+            Assert.AreEqual(AllRecords.ThisRecord, TestItem);
+        }
+        [TestMethod]
+        public void DeleteMethodOk()
+        {
+            clsRecordCollection AllRecords = new clsRecordCollection();
+            clsMedicalRecord TestItem = new clsMedicalRecord();
+
+            Int32 PrimaryKey = 0;
+
+            TestItem.Sex = true;
+            TestItem.Dob = DateTime.Now;
+            TestItem.Medications = "Some medication";
+            TestItem.Diagnoses = "some diagnosis";
+            TestItem.ClinicalNotes = "some clinical notes";
+
+
+            AllRecords.ThisRecord = TestItem;
+            PrimaryKey = AllRecords.Add();
+            TestItem.PatientId = PrimaryKey;
+            AllRecords.ThisRecord.Find(PrimaryKey);
+            AllRecords.Delete();
+            Boolean Found = AllRecords.ThisRecord.Find(PrimaryKey); 
+
+            Assert.IsFalse(Found);
+        }
+
 
 
     }
