@@ -10,7 +10,7 @@ namespace Testing5
     {
         public bool OK { get; private set; }
         //test data
-        String Dob = DateTime.Now.AddYears(-40).ToShortDateString();
+        DateTime Dob = DateTime.Now;
         string Medications = "Medication 200mg";
         string Diagnoses = "Diabetus";
         string ClinicalNotes = "Foot Pain";
@@ -20,7 +20,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
 
-            Int32 TestData = '1';
+            Int32 TestData = 1;
 
             AMedicalRecord.PatientId = TestData;
 
@@ -88,6 +88,7 @@ namespace Testing5
 
             Assert.AreEqual(AMedicalRecord.ClinicalNotes, TestData);
         }
+        [TestMethod]
         public void FindMethodOk()
         {
             //create instance of the class
@@ -95,13 +96,13 @@ namespace Testing5
             //create boolean to store the results of the validation
             Boolean Found = false;
             //create test data
-            Boolean OK = true;
             Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
  
             Assert.IsTrue(Found);
         }
+        [TestMethod]
         public void TestPatientIdFound()
         {
             //create instance of the class
@@ -118,7 +119,9 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestDobFound()
         {
             //create instance of the class
@@ -135,7 +138,9 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestSexFound()
         {
             //create instance of the class
@@ -152,7 +157,9 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestMedicationsFound()
         {
             //create instance of the class
@@ -169,7 +176,9 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestDiagnosesFound()
         {
             //create instance of the class
@@ -186,7 +195,9 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
+        [TestMethod]
         public void TestNotesFound()
         {
             //create instance of the class
@@ -203,6 +214,7 @@ namespace Testing5
                 OK = false;
             }
             Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
         }
         [TestMethod]
         public void ValidMethodOK()
@@ -210,14 +222,14 @@ namespace Testing5
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
-            Assert.AreEqual(Error, "");
+            Assert.AreEqual("", Error);
         }
         [TestMethod]
         public void DobExtremeMin()
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.AddYears(100).ToShortDateString();
+            DateTime Dob = DateTime.Now.AddYears(100);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreNotEqual(Error, "");
         }
@@ -226,7 +238,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.AddDays(1).ToShortDateString();
+            DateTime Dob = DateTime.Now.AddDays(1);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreNotEqual(Error, "");
         }
@@ -235,7 +247,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.ToShortDateString();
+            DateTime Dob = DateTime.Now;
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreEqual(Error, "");
         }
@@ -244,7 +256,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.AddDays(-1).ToShortDateString();
+            DateTime Dob = DateTime.Now.AddDays(-1);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreEqual(Error, "");
         }
@@ -253,7 +265,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.AddYears(-149).ToShortDateString();
+            DateTime Dob = DateTime.Now.AddYears(-149);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreEqual(Error, "");
         }
@@ -262,7 +274,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.AddYears(-150).ToShortDateString();
+            DateTime Dob = DateTime.Now.AddYears(-150);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreEqual(Error, "");
         }
@@ -271,7 +283,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.AddYears(-151).ToShortDateString();
+            DateTime Dob = DateTime.Now.AddYears(-151);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreNotEqual(Error, "");
         }
@@ -394,11 +406,20 @@ namespace Testing5
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
+        public void ClinicalMin()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string ClinicalNotes = "aa";
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
         public void ClinicalMinPlus1()
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            string ClinicalNotes = "a";
+            string ClinicalNotes = "aaa";
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreEqual(Error, "");
         }
@@ -412,13 +433,32 @@ namespace Testing5
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
+        public void ClinicalMax()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string ClinicalNotes = new string('a', 100);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ClinicalMaxPlus1()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            string Error = "";
+            string ClinicalNotes = new string('a', 101);
+            Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
         public void ClinicalExtremeMax()
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
             string ClinicalNotes = new string('a', 1000);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 

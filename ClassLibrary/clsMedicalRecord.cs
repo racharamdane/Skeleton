@@ -13,7 +13,7 @@ namespace ClassLibrary
         private String mDiagnoses;
         private Boolean mSex;
         private string mNotes;
-     
+
         public DateTime Dob
         {
             get
@@ -24,9 +24,9 @@ namespace ClassLibrary
         public int PatientId
         {
             get
-                { return mPatientId; }
+            { return mPatientId; }
             set
-                { mPatientId = value; }
+            { mPatientId = value; }
         }
         public string Medications
         {
@@ -78,44 +78,53 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(String dob, string medications, string diagnoses, string clinicalNotes)
+        public string Valid(DateTime dob, string medications, string diagnoses, string clinicalNotes)
         {
             String Error = "";
-            DateTime DateComp = DateTime.Now.Date;
-            
 
-            if(medications.Length > 100)
+            // normalize date to date-only for boundary comparisons
+            DateTime DateTemp = dob.Date;
+
+            // DOB must not be in the future and must not be more than 150 years in the past
+            if (DateTemp > DateTime.Now.Date || DateTemp < DateTime.Now.Date.AddYears(-150))
             {
-                Error += "Medications cannot exceed 100 char";
+                Error += "DOB cannot be in the future or more than 150 years in the past";
             }
-            if (diagnoses.Length > 100)
+
+            // guard against null strings before checking length
+            if (!string.IsNullOrEmpty(medications))
             {
-                Error += "Diagnoses cannot exceed 100 char";
+                if (medications.Length > 100)
+                {
+                    Error += "Medications cannot exceed 100 char";
+                }
             }
-            if(clinicalNotes.Length == 0)
+
+            if (!string.IsNullOrEmpty(diagnoses))
+            {
+                if (diagnoses.Length > 100)
+                {
+                    Error += "Diagnoses cannot exceed 100 char";
+                }
+            }
+
+            // clinical notes validation: required, min 2 chars, max 100 chars
+            if (string.IsNullOrEmpty(clinicalNotes))
             {
                 Error += "Must attach some clinical notes";
             }
-            try
+            else
             {
-                DateTime DateTemp = Convert.ToDateTime(dob);
-                if (DateTemp > DateComp)
+                if (clinicalNotes.Length < 2)
                 {
-                    Error += "DOB cannot be in the future";
+                    Error += "Clinical notes must be at least 2 characters";
                 }
-                if (DateTemp <= DateComp.AddYears(-151))
+                if (clinicalNotes.Length > 100)
                 {
-                    Error += "DOB cannot be more than 150 years in the past";
-                }
-                if (DateTemp == null)
-                {
-                    Error += "DOB is required";
+                    Error += "Clinical notes cannot exceed 100 char";
                 }
             }
-            catch
-            {
-                Error += "Not a valid date";
-            }
+
             return Error;
         }
     }
