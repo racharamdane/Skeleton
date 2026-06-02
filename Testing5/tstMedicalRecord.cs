@@ -8,6 +8,7 @@ namespace Testing5
     [TestClass]
     public class tstMedicalRecord
     {
+        public bool OK { get; private set; }
         //test data
         String Dob = DateTime.Now.AddYears(-40).ToShortDateString();
         string Medications = "Medication 200mg";
