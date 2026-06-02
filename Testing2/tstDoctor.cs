@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data;
 using System.IO;
 using System.Net;
 
@@ -917,6 +918,34 @@ namespace Testing2
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
 
+        }
+
+        [TestMethod]
+        public void StatStatisticGroupedByDepartment()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //invoke the method
+            DataTable dT = ADoctor.StatisticsGroupedByDepartment();
+            //According to the data in the database there should be 5 departments
+            int noOfRecords = 5;
+
+            //test to see that the result is correct
+            Assert.AreEqual(noOfRecords, dT.Rows.Count);
+        }
+
+        [TestMethod]
+        public void StatStatisticGroupedByContractDate()
+        {
+            //create an instance of the class we want to create
+            clsDoctor ADoctor = new clsDoctor();
+            //invoke the method
+            DataTable dT = ADoctor.StatisticsGroupedContactDate();
+            //According to the data in the database there should be 6 different contract dates
+            int noORecord = dT.Rows.Count;
+
+            //test to see that the result is correct
+            Assert.AreEqual(noORecord, dT.Rows.Count);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace ClassLibrary
 {
@@ -238,5 +239,29 @@ namespace ClassLibrary
             //return any error message
             return Error;
         }
+
+        /****** Statistics Grouped by Department METHOD ******/
+        public DataTable StatisticsGroupedByDepartment()
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblDoctorManagement_Count_GroupByDepartment");
+            //There should be either zero, one or more records
+            return DB.DataTable;
+        }
+
+        /****** Statistics Grouped by ContractDate METHOD ******/
+        public DataTable StatisticsGroupedContactDate()
+            {
+                //create an instance of the data connection
+                clsDataConnection DB = new clsDataConnection();
+
+                //execute the stored procedure
+                DB.Execute("sproc_tblDoctorManagement_Count_GroupContractDate");
+                //There should be either zero, one or more records
+                return DB.DataTable;
+            }
     }
 }
