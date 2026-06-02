@@ -23,6 +23,7 @@
         <p style="margin-left: 40px">
             <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" Text="Apply Filter" />
             <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" Text="Clear Filter" />
+            <asp:Button ID="btnStatisticsPage" runat="server" OnClick="btnStatisticsPage_Click" style="z-index: 1; left: 245px; top: 556px; position: absolute" Text="Statistics Page" />
         </p>
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>
