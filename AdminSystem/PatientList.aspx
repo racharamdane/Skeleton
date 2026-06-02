@@ -23,6 +23,7 @@
         <p>
             <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; top: 577px; position: absolute; left: 244px"></asp:TextBox>
         </p>
+        <asp:Button ID="btnStatisticsPage" runat="server" style="z-index: 1; left: 423px; top: 658px; position: absolute" Text="Statistics Page" />
     </form>
 </body>
 </html>
