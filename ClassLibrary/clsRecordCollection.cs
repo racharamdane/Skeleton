@@ -58,7 +58,6 @@ namespace ClassLibrary
                 // create a blank record
                 clsMedicalRecord ARecord = new clsMedicalRecord();
 
-                ARecord.PatientId = Convert.ToInt32(DB.DataTable.Rows[Index]["PatientId"]);
                 ARecord.Dob = Convert.ToDateTime(DB.DataTable.Rows[Index]["Dob"]);
                 ARecord.Sex = Convert.ToBoolean(DB.DataTable.Rows[Index]["Sex"]);
                 ARecord.Medications = Convert.ToString(DB.DataTable.Rows[Index]["Medications"]);
