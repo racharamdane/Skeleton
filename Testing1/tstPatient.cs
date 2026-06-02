@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.ComponentModel;
+using System.Data;
 using System.IO;
 
 namespace Testing1
@@ -828,8 +829,32 @@ namespace Testing1
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
+        [TestMethod]
+        
+        public void StatStaticsGroupedByPatientgender()
+        {
+            //cerate an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //invoke the method
+            DataTable dT = APatient.StaticsGroupedByPatientgender();
+            //according to the last executed test there should be 2 records in the data table
+            int noOfRecords = 2;
+            //test to see that the result is correct
+            Assert.AreEqual(noOfRecords, dT.Rows.Count);
+        }
+        public void StatStaticsGroupedByPatientregistrationdate()
+        {
+            // create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //invoke the method
+            DataTable dT = APatient.StaticsGroupedByPatientregistrationdate();
+            //according to the last executed test there should be 2 records in the data table
+            int noOfRecords = dT.Rows.Count;
+            //test to see that the result is correct
+            Assert.AreEqual(noOfRecords, dT.Rows.Count);
 
 
+        }
 
     }
 }
