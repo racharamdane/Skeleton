@@ -10,7 +10,7 @@ namespace Testing5
     {
         public bool OK { get; private set; }
         //test data
-        String Dob = DateTime.Now.AddYears(-40).ToShortDateString();
+        DateTime Dob = DateTime.Now;
         string Medications = "Medication 200mg";
         string Diagnoses = "Diabetus";
         string ClinicalNotes = "Foot Pain";
@@ -229,7 +229,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.AddYears(100).ToShortDateString();
+            DateTime Dob = DateTime.Now.AddYears(100);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreNotEqual(Error, "");
         }
@@ -238,7 +238,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.AddDays(1).ToShortDateString();
+            DateTime Dob = DateTime.Now.AddDays(1);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreNotEqual(Error, "");
         }
@@ -247,22 +247,16 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-<<<<<<< HEAD
-            DateTime testDob = DateTime.Now;
-            Error = AMedicalRecord.Valid(testDob, Medications, Diagnoses, ClinicalNotes);
-            Assert.AreEqual("", Error);
-=======
-            String Dob = DateTime.Now.ToShortDateString();
+            DateTime Dob = DateTime.Now;
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreEqual(Error, "");
->>>>>>> 6cc58e06d512c2231777df37be07b946577a4f0d
         }
         [TestMethod]
         public void DobMinPlus1()
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.AddDays(-1).ToShortDateString();
+            DateTime Dob = DateTime.Now.AddDays(-1);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreEqual(Error, "");
         }
@@ -271,7 +265,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.AddYears(-149).ToShortDateString();
+            DateTime Dob = DateTime.Now.AddYears(-149);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreEqual(Error, "");
         }
@@ -280,7 +274,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.AddYears(-150).ToShortDateString();
+            DateTime Dob = DateTime.Now.AddYears(-150);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreEqual(Error, "");
         }
@@ -289,7 +283,7 @@ namespace Testing5
         {
             clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
             string Error = "";
-            String Dob = DateTime.Now.AddYears(-151).ToShortDateString();
+            DateTime Dob = DateTime.Now.AddYears(-151);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreNotEqual(Error, "");
         }
@@ -437,7 +431,6 @@ namespace Testing5
             string ClinicalNotes = "patient seen for stomach pain";
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreEqual(Error, "");
-<<<<<<< HEAD
         }
         [TestMethod]
         public void ClinicalMax()
@@ -456,8 +449,7 @@ namespace Testing5
             string ClinicalNotes = new string('a', 101);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreNotEqual(Error, "");
-=======
->>>>>>> 6cc58e06d512c2231777df37be07b946577a4f0d
+
         }
         [TestMethod]
         public void ClinicalExtremeMax()
@@ -466,7 +458,7 @@ namespace Testing5
             string Error = "";
             string ClinicalNotes = new string('a', 1000);
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
 

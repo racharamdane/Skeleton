@@ -78,26 +78,34 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(String dob, string medications, string diagnoses, string clinicalNotes)
+        public string Valid(DateTime dob, string medications, string diagnoses, string clinicalNotes)
         {
             String Error = "";
-            DateTime DateTemp;
-            DateTemp = Convert.ToDateTime(dob);
-            try
-            {
-                if (DateTemp > DateTime.Now.Date || DateTemp < DateTime.Now.Date.AddYears(-151))
-                {
-                    Error += "DOB cannot be in the future or more than 150 years in the past";
-                }
-                if (dob == null)
-                {
-                    Error += "DOB is required";
-                }
 
-            }
-            catch
+            // normalize date to date-only for boundary comparisons
+            DateTime DateTemp = dob.Date;
+
+            // DOB must not be in the future and must not be more than 150 years in the past
+            if (DateTemp > DateTime.Now.Date || DateTemp < DateTime.Now.Date.AddYears(-150))
             {
-                Error += "DOB must be a date, dd/mm/yyyy";
+                Error += "DOB cannot be in the future or more than 150 years in the past";
+            }
+
+            // guard against null strings before checking length
+            if (!string.IsNullOrEmpty(medications))
+            {
+                if (medications.Length > 100)
+                {
+                    Error += "Medications cannot exceed 100 char";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(diagnoses))
+            {
+                if (diagnoses.Length > 100)
+                {
+                    Error += "Diagnoses cannot exceed 100 char";
+                }
             }
 
             // clinical notes validation: required, min 2 chars, max 100 chars
@@ -116,6 +124,7 @@ namespace ClassLibrary
                     Error += "Clinical notes cannot exceed 100 char";
                 }
             }
+
             return Error;
         }
     }
