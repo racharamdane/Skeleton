@@ -19,7 +19,7 @@ public partial class PatientStatistics : System.Web.UI.Page
         GridViewStGroupByPatientgender.DataBind();
 
         //change the header of the first column
-        GridViewStGroupByPatientgender.HeaderRow.Cells[0].Text = "Patient Gender";
+        GridViewStGroupByPatientgender.HeaderRow.Cells[0].Text = "Total";
 
         //retrieve the data from the database
         dt = Clspatient.StaticsGroupedByPatientregistrationdate();
@@ -28,7 +28,7 @@ public partial class PatientStatistics : System.Web.UI.Page
         GridViewStGroupByPatientregistrationdate.DataBind();
 
         //change the header of the first column
-        GridViewStGroupByPatientregistrationdate.HeaderRow.Cells[0].Text = "Patient Registration Date";
+        GridViewStGroupByPatientregistrationdate.HeaderRow.Cells[0].Text = "Total";
 
 
     }
