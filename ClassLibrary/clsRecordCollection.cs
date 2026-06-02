@@ -37,5 +37,25 @@ namespace ClassLibrary
         }
 
         public clsMedicalRecord ThisRecord { get; set; }
+
+        public clsRecordCollection()
+        {
+            Int32 Index = 0;
+            Int32 RecordCount = 0;
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblMedicalRecord_SelectAll");
+            RecordCount = DB.Count;
+            while (Index < RecordCount)
+            {
+                clsMedicalRecord ARecord = new clsMedicalRecord();
+                ARecord.Dob = Convert.ToDateTime(DB.DataTable.Rows[Index]["Dob"]);
+                ARecord.Sex = Convert.ToBoolean(DB.DataTable.Rows[Index]["Sex"]);
+                ARecord.Medications = Convert.ToString(DB.DataTable.Rows[Index]["Medications"]);
+                ARecord.Diagnoses = Convert.ToString(DB.DataTable.Rows[Index]["Diagnoses"]);
+                ARecord.ClinicalNotes = Convert.ToString(DB.DataTable.Rows[Index]["ClinicalNotes"]);
+                mRecordList.Add(ARecord);
+                Index++;
+            }
+        }
     }
 }
