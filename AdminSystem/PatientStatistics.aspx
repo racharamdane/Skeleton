@@ -20,6 +20,7 @@
         </p>
         <asp:GridView ID="GridViewStGroupByPatientregistrationdate" runat="server" style="z-index: 1; left: 20px; top: 358px; position: absolute; height: 133px; width: 187px">
         </asp:GridView>
+        <asp:Button ID="btnBack" runat="server" OnClick="btnBack_Click" style="z-index: 1; left: 113px; top: 536px; position: absolute" Text="Back to Previous Page" />
     </form>
 </body>
 </html>
