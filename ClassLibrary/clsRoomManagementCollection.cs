@@ -19,8 +19,19 @@ namespace ClassLibrary
             TestItem.ClinicalNotes = "wrbxteyanlpofjibgbgzjczsuriqmgwdxlndgarfhihexxghhfcxnlcmskcueolxgkutzvcpytydqykykfntydirnqckfqtiwezop";
             //add the item to the test list
             mRoomList.Add(TestItem);
-            //re intialise 
+            //re intialise the object for some new data
+            TestItem = new clsRoomManagement();
+            //set its properties
+            TestItem.RoomID = 2;
+            TestItem.RoomName = "Test Room 2";
+            TestItem.RoomEntryDate = DateTime.Now.Date;
+            TestItem.TreatmentOver = false;
+            TestItem.PatientID = 2;
+            TestItem.ClinicalNotes = "12345wrbxteyanlpofjibgbgzjczsuriqmgwdxlndgarfhihexxghhfcxnlcmskcueolxgkutzvcpytydqykykfntydirnqckfqtiwezop";
+            //add the item to the test list
+            mRoomList.Add(TestItem);
         }
+
         //private data member for the list
         List<clsRoomManagement> mRoomList = new List<clsRoomManagement>();
         //public property for the room list

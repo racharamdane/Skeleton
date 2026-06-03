@@ -49,7 +49,7 @@ namespace Testing4
             //create an instnace of the class wwe want to create
             clsRoomManagementCollection AllRooms = new clsRoomManagementCollection();
             //create some test data to assign to the property
-            Int32 SomeCount = 0;
+            Int32 SomeCount = 2;
             //assign the data to the property
             AllRooms.Count = SomeCount;
             //test to see that the two values are the same
