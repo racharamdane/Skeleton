@@ -29,10 +29,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AnRoomManagement.ClinicalNotes = txtClinicalNotes.Text;
         //capture the treatment over
         AnRoomManagement.TreatmentOver = chkTreatmentOver.Checked;
-        //store the room in the session object
-        Session["AnRoomManagement"] = AnRoomManagement;
-        //navigate to the view page
-        Response.Redirect("RoomViewer.aspx");
+        //varible to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnRoomManagement.Valid(AnRoomManagement.RoomName, AnRoomManagement.ClinicalNotes, AnRoomManagement.PatientID.ToString(), AnRoomManagement.RoomEntryDate.ToString());
+        if (Error == "")
+        {
+            //capture the room id
+            AnRoomManagement.RoomID = Convert.ToInt32(txtRoomID.Text);
+            //capture the room name
+            AnRoomManagement.RoomName = txtRoomName.Text;
+            //capture the patientID
+            AnRoomManagement.PatientID = Convert.ToInt32(txtPatientID.Text);
+            //capture the room entry date
+            AnRoomManagement.RoomEntryDate = Convert.ToDateTime(txtRoomEntryDate.Text);
+            //capture the clical notes
+            AnRoomManagement.ClinicalNotes = txtClinicalNotes.Text;
+            //capture the treatment over
+            AnRoomManagement.TreatmentOver = chkTreatmentOver.Checked;
+            //store the room in the session object
+            Session["AnRoomManagement"] = AnRoomManagement;
+            //navigate to the view page
+            Response.Redirect("RoomViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
