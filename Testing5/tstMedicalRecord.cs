@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Data;
 using System.IO;
 using System.Net;
 
@@ -100,7 +101,7 @@ namespace Testing5
             Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
- 
+
             Assert.IsTrue(Found);
         }
         [TestMethod]
@@ -115,8 +116,8 @@ namespace Testing5
             Int32 PatientId = 1234571;
             //invoke method 
             Found = AMedicalRecord.Find(PatientId);
-            if(AMedicalRecord.PatientId != 1234571)
-            { 
+            if (AMedicalRecord.PatientId != 1234571)
+            {
                 OK = false;
             }
             Assert.IsTrue(Found);
@@ -471,8 +472,23 @@ namespace Testing5
             Error = AMedicalRecord.Valid(Dob, Medications, Diagnoses, ClinicalNotes);
             Assert.AreNotEqual(Error, "");
         }
+        [TestMethod]
+        public void StatStatisticsGroupedBySex()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            DataTable dT = AMedicalRecord.StatisticsGroupedBySex();
+            int noOfRecord = 2;
+            Assert.AreEqual(dT.Rows.Count, noOfRecord);
 
+        }
+        [TestMethod]
+        public void StatStatisticsGroupedByDob()
+        {
+            clsMedicalRecord AMedicalRecord = new clsMedicalRecord();
+            DataTable dT = AMedicalRecord.StatisticsGroupedByDob();
+            int noOfRecord = 6;
+            Assert.AreEqual(dT.Rows.Count, noOfRecord);
 
+        }
     }
-
 }

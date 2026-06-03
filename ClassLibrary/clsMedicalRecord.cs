@@ -1,5 +1,6 @@
 ﻿using System;
-                                                          
+using System.Data;
+
 
 namespace ClassLibrary
 {
@@ -81,7 +82,7 @@ namespace ClassLibrary
         {
             String Error = "";
 
-            // normalize date to date-only for boundary comparisons
+
             DateTime DateTemp = dob.Date;
 
             // DOB must not be in the future and must not be more than 150 years in the past
@@ -125,6 +126,19 @@ namespace ClassLibrary
             }
 
             return Error;
+        }
+
+        public DataTable StatisticsGroupedBySex()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblMedicalRecord_Count_GroupBySex");
+            return DB.DataTable;
+        }
+        public DataTable StatisticsGroupedByDob()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblMedicalRecord_Count_GroupByDob");
+            return DB.DataTable;
         }
     }
 }
