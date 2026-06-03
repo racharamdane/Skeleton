@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
 
 namespace ClassLibrary
 {
@@ -141,7 +142,17 @@ namespace ClassLibrary
                 Error = Error + "The Roomname must be less than 100 characters : ";
             }
 
-           
+            // Clinical notes: validate minimum and maximum lengths
+            if (clinicalNotes.Length < 100)
+            {
+                //record the error (covers blank and extremely short notes)
+                Error = Error + "The Clinical Notes must be at least 100 characters : ";
+            }
+            else if (clinicalNotes.Length > 5000)
+            {
+                //record the error
+                Error = Error + "The Clinical Notes must be less than 5000 characters : ";
+            }
 
             try
             {
@@ -165,6 +176,30 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The PatientID must be a valid integer : ";
             }
+
+            try
+            {
+                //copy the RoomEntryDate value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(roomEntryDate);
+
+                if (DateTemp <= DateTime.Now.Date.AddYears(-5).AddDays(-1))
+                {
+                    //record the error
+                    Error = Error + "The RoomEntryDate cannot be over 5 years in the past : ";
+                }
+                else if (DateTemp >= DateTime.Now.Date.AddDays(1))
+                {
+                    //record the error
+                    Error = Error + "The RoomEntryDate cannot be in the future : ";
+                }
+            }
+            
+            catch
+            {
+                //record the error
+                Error = Error + "The RoomEntryDate must be a valid date : ";
+            }
+
 
             //return any error messages
             return Error;
