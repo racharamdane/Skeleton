@@ -31,7 +31,7 @@
             <asp:CheckBox ID="chkTreatmentOver" runat="server" style="z-index: 1; left: 10px; top: 230px; position: absolute; width: 300px" Text="Treatment over" />
         </p>
         <p>
-            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 270px; position: absolute; width: 60px" Text="[lblError]"></asp:Label>
+            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 270px; position: absolute; width: 1000px" Text="[lblError]"></asp:Label>
         </p>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 10px; top: 310px; position: absolute; width: 40px" Text="OK" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 75px; top: 310px; position: absolute; width: 70px"  Text="Cancel" />

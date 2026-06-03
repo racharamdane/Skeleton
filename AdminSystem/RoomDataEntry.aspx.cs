@@ -18,21 +18,45 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create new instance of clsRoomManagement
         clsRoomManagement AnRoomManagement = new clsRoomManagement();
         //capture the RoomID
-        AnRoomManagement.RoomID = Convert.ToInt32(txtRoomID.Text);
+        string RoomID = txtRoomID.Text;
         //capture the room name
-        AnRoomManagement.RoomName = txtRoomName.Text;
+        string RoomName = txtRoomName.Text;
         //capture the patientID
-        AnRoomManagement.PatientID = Convert.ToInt32(txtPatientID.Text);
+        string PatientID = txtPatientID.Text;
         //capture the room entry date
-        AnRoomManagement.RoomEntryDate = Convert.ToDateTime(txtRoomEntryDate.Text);
+        string RoomEntryDate = txtRoomEntryDate.Text;
         //capture the clical notes
-        AnRoomManagement.ClinicalNotes = txtClinicalNotes.Text;
+        string ClinicalNotes = txtClinicalNotes.Text;
         //capture the treatment over
         AnRoomManagement.TreatmentOver = chkTreatmentOver.Checked;
-        //store the room in the session object
-        Session["AnRoomManagement"] = AnRoomManagement;
-        //navigate to the view page
-        Response.Redirect("RoomViewer.aspx");
+        //varible to store any error messages
+        string Error = "";
+        //validate the data
+        Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+        if (Error == "")
+        {
+            //capture the room id
+            AnRoomManagement.RoomID = Convert.ToInt32(txtRoomID.Text);
+            //capture the room name
+            AnRoomManagement.RoomName = txtRoomName.Text;
+            //capture the patientID
+            AnRoomManagement.PatientID = Convert.ToInt32(txtPatientID.Text);
+            //capture the room entry date
+            AnRoomManagement.RoomEntryDate = Convert.ToDateTime(txtRoomEntryDate.Text);
+            //capture the clical notes
+            AnRoomManagement.ClinicalNotes = txtClinicalNotes.Text;
+            //capture the treatment over
+            AnRoomManagement.TreatmentOver = chkTreatmentOver.Checked;
+            //store the room in the session object
+            Session["AnRoomManagement"] = AnRoomManagement;
+            //navigate to the view page
+            Response.Redirect("RoomViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

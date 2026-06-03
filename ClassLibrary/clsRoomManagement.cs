@@ -123,14 +123,33 @@ namespace ClassLibrary
 
         
 
-        public string Valid(string roomName, string clinicalNotes, string patientID, string roomEntryDate)
+        public string Valid(string roomID, string roomName, string clinicalNotes, string patientID, string roomEntryDate)
         {
             //create a string variable to store the error
             String Error = "";
             //create a temporary variable to store the date values
             DateTime DateTemp;
 
-            //if the room id is blank
+            try
+            {
+                //copy the RoomID value to the IntTemp variable
+                int IntTemp = Convert.ToInt32(RoomID);
+                //if the room id is blank
+                if (string.IsNullOrEmpty(roomName))
+                {
+                    //record the error
+                    Error = Error + "The RoomID may not be blank : ";
+                }
+            }
+
+            catch
+            {
+                //record the error
+                Error = Error + "The RoomID must be a valid integer : ";
+            }
+
+
+            //if the room name is blank
             if (roomName.Length == 0)
             {
                 //record the error
