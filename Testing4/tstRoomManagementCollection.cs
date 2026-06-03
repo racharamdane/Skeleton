@@ -44,19 +44,6 @@ namespace Testing4
         }
 
         [TestMethod]
-        public void CountPropertyOK()
-        {
-            //create an instnace of the class wwe want to create
-            clsRoomManagementCollection AllRooms = new clsRoomManagementCollection();
-            //create some test data to assign to the property
-            Int32 SomeCount = 2;
-            //assign the data to the property
-            AllRooms.Count = SomeCount;
-            //test to see that the two values are the same
-            Assert.AreEqual(AllRooms.Count, SomeCount);
-        }
-
-        [TestMethod]
         public void ThisRoomPropertyOK()
         {
             //create an instance of the class we want to create
@@ -101,12 +88,6 @@ namespace Testing4
             Assert.AreEqual(AllRooms.Count, TestList.Count);
         }
 
-        [TestMethod]
-        public void TwoRecordsPresent()
-        {
-            //create an instance of the class we want to create
-            clsRoomManagementCollection AllRooms = new clsRoomManagementCollection();
-            Assert.AreEqual(AllRooms.Count, 2);
-        }
+
     }
 }

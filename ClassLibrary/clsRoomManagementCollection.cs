@@ -8,28 +8,32 @@ namespace ClassLibrary
         //constructor for the class
         public clsRoomManagementCollection()
         {
-            //create the items of test data
-            clsRoomManagement TestItem = new clsRoomManagement();
-            //set its properties
-            TestItem.RoomID = 1;
-            TestItem.RoomName = "Test Room";
-            TestItem.RoomEntryDate = DateTime.Now.Date;
-            TestItem.TreatmentOver = false;
-            TestItem.PatientID = 1;
-            TestItem.ClinicalNotes = "wrbxteyanlpofjibgbgzjczsuriqmgwdxlndgarfhihexxghhfcxnlcmskcueolxgkutzvcpytydqykykfntydirnqckfqtiwezop";
-            //add the item to the test list
-            mRoomList.Add(TestItem);
-            //re intialise the object for some new data
-            TestItem = new clsRoomManagement();
-            //set its properties
-            TestItem.RoomID = 2;
-            TestItem.RoomName = "Test Room 2";
-            TestItem.RoomEntryDate = DateTime.Now.Date;
-            TestItem.TreatmentOver = false;
-            TestItem.PatientID = 2;
-            TestItem.ClinicalNotes = "12345wrbxteyanlpofjibgbgzjczsuriqmgwdxlndgarfhihexxghhfcxnlcmskcueolxgkutzvcpytydqykykfntydirnqckfqtiwezop";
-            //add the item to the test list
-            mRoomList.Add(TestItem);
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount = 0;
+            //object for data connect
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblRoomManagement_SelectAll");
+            //get the count of records
+            RecordCount = DB.Count;
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank room
+                clsRoomManagement ARoom = new clsRoomManagement();
+                //read in the fields from the current record
+                ARoom.RoomID = Convert.ToInt32(DB.DataTable.Rows[Index]["RoomID"]);
+                ARoom.TreatmentOver = Convert.ToBoolean(DB.DataTable.Rows[Index]["TreatmentOver"]);
+                ARoom.RoomEntryDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["RoomEntryDate"]);
+                ARoom.PatientID = Convert.ToInt32(DB.DataTable.Rows[Index]["PatientID"]);
+                ARoom.RoomName = Convert.ToString(DB.DataTable.Rows[Index]["RoomName"]);
+                ARoom.ClinicalNotes = Convert.ToString(DB.DataTable.Rows[Index]["ClinicalNotes"]);
+                //add the record to the private data member
+                mRoomList.Add(ARoom);
+                //point at the next record
+                Index++;
+            }
         }
 
         //private data member for the list
