@@ -35,13 +35,14 @@
         <p>
             <asp:Label ID="lblPatientregistrationdate" runat="server" style="z-index: 1; left: 10px; top: 167px; position: absolute" Text="Patient registration date"></asp:Label>
         </p>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 144px; top: 533px; position: absolute" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 144px; top: 533px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
         <p>
             &nbsp;</p>
         <p>
             &nbsp;</p>
         <p>
             &nbsp;</p>
+        <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" style="z-index: 1; top: 533px; position: absolute" Text="Return to Main Menu" />
     </form>
 </body>
 </html>

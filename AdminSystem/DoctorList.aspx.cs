@@ -120,6 +120,13 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnStatisticsPage_Click(object sender, EventArgs e)
     {
+        // redirect back to Statistics page
+        Response.Redirect("DoctorStatistics.aspx");
+    }
 
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        // redirect back to Main Menu page
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
