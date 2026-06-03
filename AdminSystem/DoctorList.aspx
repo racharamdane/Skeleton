@@ -19,6 +19,7 @@
         <p style="margin-left: 40px">
             Enter a Full Name
             <asp:TextBox ID="txtFilter" runat="server"></asp:TextBox>
+            <asp:Button ID="btnReturn" runat="server" OnClick="Button1_Click" style="z-index: 1; left: 378px; top: 556px; position: absolute; bottom: 259px" Text="Return to Main Menu" />
         </p>
         <p style="margin-left: 40px">
             <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" Text="Apply Filter" />

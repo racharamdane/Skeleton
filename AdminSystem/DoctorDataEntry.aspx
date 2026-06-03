@@ -34,12 +34,13 @@
         <asp:Label ID="lblContractDate" runat="server" style="z-index: 1; left: 11px; top: 279px; position: absolute" Text="Contract Date"></asp:Label>
         <asp:TextBox ID="txtContractDate" runat="server" style="z-index: 1; left: 174px; top: 279px; position: absolute" height="29px" width="240px"></asp:TextBox>
         <p>
-            &nbsp;</p>
+            <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" style="z-index: 1; left: 415px; top: 405px; position: absolute" Text="Return to Main Menu" />
+        </p>
         <asp:CheckBox ID="chkAvailability" runat="server" style="z-index: 1; left: 88px; top: 346px; position: absolute" Text="Availability" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 13px; top: 405px; position: absolute" height="35px" width="90px"></asp:Label>
         <p>
             &nbsp;</p>
-        <asp:Button ID="btnCancel" runat="server" height="25px" style="z-index: 1; left: 291px; top: 405px; position: absolute" Text="Cancel" width="75px" />
+        <asp:Button ID="btnCancel" runat="server" height="25px" style="z-index: 1; left: 291px; top: 405px; position: absolute" Text="Cancel" width="75px" OnClick="btnCancel_Click" />
         <asp:Button ID="btnOK" runat="server" height="25px" OnClick="btnOK_Click1" style="z-index: 1; left: 171px; top: 405px; position: absolute" Text="OK" width="75px" />
         <asp:Button ID="btnFind" runat="server" height="25px" OnClick="btnFind_Click" style="z-index: 1; left: 468px; top: 34px; position: absolute" Text="Find" width="75px" />
     </form>

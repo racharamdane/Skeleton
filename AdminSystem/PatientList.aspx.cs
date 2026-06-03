@@ -118,4 +118,16 @@ public partial class _1_List : System.Web.UI.Page
 
 
     }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        // redirect back to Main Menu page
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnStatisticsPage_Click(object sender, EventArgs e)
+    {
+        // redirect back to statistics page
+        Response.Redirect("PatientStatistics.aspx");
+    }
 }

@@ -33,7 +33,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsDoctorCollection Doctor = new clsDoctorCollection();
         //find the record to update
         Doctor.ThisDoctor.Find(DoctorId);
-        //display the data for this record
+        /*//display the data for this record
         txtDoctorId.Text = Doctor.ThisDoctor.DoctorId.ToString();
         txtFullName.Text = Doctor.ThisDoctor.FullName.ToString();
         txtPassword.Text = Doctor.ThisDoctor.Password.ToString();
@@ -41,6 +41,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtDepartment.Text = Doctor.ThisDoctor.Department.ToString();
         txtContractDate.Text = Doctor.ThisDoctor.ContractDate.ToString();
         chkAvailability.Checked = Doctor.ThisDoctor.Available;
+        */
+
+
+
+        txtDoctorId.Text = Convert.ToString(Doctor.ThisDoctor.DoctorId);
+        txtFullName.Text = Convert.ToString(Doctor.ThisDoctor.FullName);
+        txtPassword.Text = Convert.ToString(Doctor.ThisDoctor.Password);
+        txtEmail.Text = Convert.ToString(Doctor.ThisDoctor.Email);
+        txtDepartment.Text = Convert.ToString(Doctor.ThisDoctor.Department);
+        chkAvailability.Checked = Doctor.ThisDoctor.Available;
+        txtContractDate.Text = Convert.ToString(Doctor.ThisDoctor.ContractDate);
     }
 
     protected void btnOK_Click1(object sender, EventArgs e)
@@ -134,5 +145,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtContractDate.Text = ADoctor.ContractDate.ToString();
             chkAvailability.Checked = ADoctor.Available;
         }
+    }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        // redirect back to Main Menu page
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        // redirect back to List page
+        Response.Redirect("DoctorList.aspx");
     }
 }

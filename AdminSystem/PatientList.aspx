@@ -23,7 +23,8 @@
         <p>
             <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; top: 577px; position: absolute; left: 244px"></asp:TextBox>
         </p>
-        <asp:Button ID="btnStatisticsPage" runat="server" style="z-index: 1; left: 423px; top: 658px; position: absolute" Text="Statistics Page" />
+        <asp:Button ID="btnStatisticsPage" runat="server" style="z-index: 1; left: 423px; top: 658px; position: absolute" Text="Statistics Page" OnClick="btnStatisticsPage_Click" />
+        <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" style="z-index: 1; left: 631px; top: 657px; position: absolute" Text="Return to Main Menu" />
     </form>
 </body>
 </html>
