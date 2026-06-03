@@ -7,7 +7,7 @@ using System.ComponentModel;
 namespace Testing5
 {
     [TestClass]
-    public class testRecordCollection
+    public class tstRecordCollection
     {
         public bool OK { get; private set; }
 
