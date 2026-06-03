@@ -20,19 +20,19 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the RoomID
         AnRoomManagement.RoomID = Convert.ToInt32(txtRoomID.Text);
         //capture the room name
-        AnRoomManagement.RoomName = txtRoomName.Text;
+        string RoomName = txtRoomName.Text;
         //capture the patientID
-        AnRoomManagement.PatientID = Convert.ToInt32(txtPatientID.Text);
+        string PatientID = txtPatientID.Text;
         //capture the room entry date
-        AnRoomManagement.RoomEntryDate = Convert.ToDateTime(txtRoomEntryDate.Text);
+        string RoomEntryDate = txtRoomEntryDate.Text;
         //capture the clical notes
-        AnRoomManagement.ClinicalNotes = txtClinicalNotes.Text;
+        string ClinicalNotes = txtClinicalNotes.Text;
         //capture the treatment over
         AnRoomManagement.TreatmentOver = chkTreatmentOver.Checked;
         //varible to store any error messages
         string Error = "";
         //validate the data
-        Error = AnRoomManagement.Valid(AnRoomManagement.RoomName, AnRoomManagement.ClinicalNotes, AnRoomManagement.PatientID.ToString(), AnRoomManagement.RoomEntryDate.ToString());
+        Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
         if (Error == "")
         {
             //capture the room id
