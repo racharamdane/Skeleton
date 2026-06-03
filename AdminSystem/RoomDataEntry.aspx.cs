@@ -18,7 +18,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create new instance of clsRoomManagement
         clsRoomManagement AnRoomManagement = new clsRoomManagement();
         //capture the RoomID
-        AnRoomManagement.RoomID = Convert.ToInt32(txtRoomID.Text);
+        string RoomID = txtRoomID.Text;
         //capture the room name
         string RoomName = txtRoomName.Text;
         //capture the patientID
@@ -32,7 +32,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //varible to store any error messages
         string Error = "";
         //validate the data
-        Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+        Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
         if (Error == "")
         {
             //capture the room id

@@ -9,6 +9,7 @@ namespace Testing4
     {
         //good test data
         //create some test data to pass to the method
+        string RoomID = 1.ToString();
         string RoomName = "Test";
         string ClinicalNotes = new string('a', 100);
         string PatientID = 1.ToString();
@@ -258,7 +259,7 @@ namespace Testing4
             //create some test data to assign to the property
             string RoomName = ""; //this should trigger an error 
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -273,7 +274,7 @@ namespace Testing4
             //create some test data to assign to the property
             string RoomName = "a"; //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -288,7 +289,7 @@ namespace Testing4
             //create some test data to assign to the property
             string RoomName = "aa"; //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -303,7 +304,7 @@ namespace Testing4
             //create some test data to assign to the property
             string RoomName = new string('a', 99); //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -318,7 +319,7 @@ namespace Testing4
             //create some test data to assign to the property
             string RoomName = new string('a', 100); //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -333,7 +334,7 @@ namespace Testing4
             //create some test data to assign to the property
             string RoomName = new string('a', 101); //this should trigger an error
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -348,7 +349,7 @@ namespace Testing4
             //create some test data to assign to the property
             string RoomName = new string('a', 50); //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -363,7 +364,7 @@ namespace Testing4
             //create some test data to assign to the property
             string RoomName = new string('a', 9999); //this should trigger an error
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -378,7 +379,7 @@ namespace Testing4
             //create some test data to assign to the property
             string PatientID = 0.ToString(); //this should trigger an error 
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -393,7 +394,7 @@ namespace Testing4
             //create some test data to assign to the property
             string PatientID = 1.ToString(); //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -408,7 +409,7 @@ namespace Testing4
             //create some test data to assign to the property
             string PatientID = 2.ToString(); //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -423,7 +424,7 @@ namespace Testing4
             //create some test data to assign to the property
             string PatientID = 9999.ToString(); //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -438,7 +439,7 @@ namespace Testing4
             //create some test data to assign to the property
             string PatientID = 10000.ToString(); //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -453,7 +454,7 @@ namespace Testing4
             //create some test data to assign to the property
             string PatientID = 10001.ToString(); //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -468,7 +469,7 @@ namespace Testing4
             //create some test data to assign to the property
             string PatientID = 5000.ToString(); //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -483,7 +484,7 @@ namespace Testing4
             //create some test data to assign to the property
             string PatientID = 9999999.ToString(); //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -498,7 +499,7 @@ namespace Testing4
             //create some test data to assign to the property
             string PatientID = "a"; //this should be ok
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -519,7 +520,7 @@ namespace Testing4
             //convert the date to a string variable
             string RoomEntryDate = TestDate.ToString();
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -540,7 +541,7 @@ namespace Testing4
             //convert the date to a string variable
             string RoomEntryDate = TestDate.ToString();
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -561,7 +562,7 @@ namespace Testing4
             //convert the date to a string variable
             string RoomEntryDate = TestDate.ToString();
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -582,7 +583,7 @@ namespace Testing4
             //convert the date to a string variable
             string RoomEntryDate = TestDate.ToString();
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -603,7 +604,7 @@ namespace Testing4
             //convert the date to a string variable
             string RoomEntryDate = TestDate.ToString();
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -624,7 +625,7 @@ namespace Testing4
             //convert the date to a string variable
             string RoomEntryDate = TestDate.ToString();
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -645,7 +646,7 @@ namespace Testing4
             //convert the date to a string variable
             string RoomEntryDate = TestDate.ToString();
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -666,7 +667,7 @@ namespace Testing4
             //convert the date to a string variable
             string RoomEntryDate = TestDate.ToString();
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -687,7 +688,7 @@ namespace Testing4
             //convert the date to a string variable
             string RoomEntryDate = TestDate.ToString();
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -703,7 +704,7 @@ namespace Testing4
             String RoomEntryDate = "String";
 
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -718,7 +719,7 @@ namespace Testing4
             //create some test data to assign to the property
             string ClinicalNotes = "a"; //this should trigger an error
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -733,7 +734,7 @@ namespace Testing4
             //create some test data to assign to the property
             string ClinicalNotes = new string('a', 99); //this should trigger an error
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -748,7 +749,7 @@ namespace Testing4
             //create some test data to assign to the property
             string ClinicalNotes = new string('a', 100); //this should pass
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -763,7 +764,7 @@ namespace Testing4
             //create some test data to assign to the property
             string ClinicalNotes = new string('a', 101); //this should pass
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -778,7 +779,7 @@ namespace Testing4
             //create some test data to assign to the property
             string ClinicalNotes = new string('a', 4999); //this should pass
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -793,7 +794,7 @@ namespace Testing4
             //create some test data to assign to the property
             string ClinicalNotes = new string('a', 5000); //this should pass
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -808,7 +809,7 @@ namespace Testing4
             //create some test data to assign to the property
             string ClinicalNotes = new string('a', 5001); //this should not pass
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -823,7 +824,7 @@ namespace Testing4
             //create some test data to assign to the property
             string ClinicalNotes = new string('a', 2500); //this should pass
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -839,7 +840,7 @@ namespace Testing4
             //create some test data to assign to the property
             string ClinicalNotes = new string('a', 999999); //this should not pass
             //invoke the method
-            Error = AnRoomManagement.Valid(RoomName, ClinicalNotes, PatientID, RoomEntryDate);
+            Error = AnRoomManagement.Valid(RoomID, RoomName, ClinicalNotes, PatientID, RoomEntryDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
