@@ -241,7 +241,7 @@ namespace Testing4
             //invoke the method
             Found = AnRoomManagement.Find(RoomID);
             //check the room id
-            if (AnRoomManagement.ClinicalNotes != "stuff")
+            if (AnRoomManagement.ClinicalNotes != "wrbxteyanlpofjibgbgzjczsuriqmgwdxlndgarfhihexxghhfcxnlcmskcueolxgkutzvcpytydqykykfntydirnqckfqtiwezop")
             {
                 OK = false;
             }

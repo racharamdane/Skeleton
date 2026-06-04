@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RoomManagementCollection.cs" />
     <Compile Include="clsAppointmentScheduling.cs" />
     <Compile Include="clsAppointmentSchedulingCollection.cs" />
     <Compile Include="clsDataConnection.cs" />
@@ -53,6 +52,7 @@
     <Compile Include="ClsPatientCollection.cs" />
     <Compile Include="clsRecordCollection.cs" />
     <Compile Include="clsRoomManagement.cs" />
+    <Compile Include="clsRoomManagementCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

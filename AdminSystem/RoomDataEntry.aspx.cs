@@ -47,8 +47,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnRoomManagement.ClinicalNotes = txtClinicalNotes.Text;
             //capture the treatment over
             AnRoomManagement.TreatmentOver = chkTreatmentOver.Checked;
-            //store the room in the session object
-            Session["AnRoomManagement"] = AnRoomManagement;
+            //create a new instance of the room collection
+            clsRoomManagementCollection RoomList = new clsRoomManagementCollection();
+            //set the ThisRoom property
+            RoomList.ThisRoom = AnRoomManagement;
+            //add the new record
+            RoomList.Add();
             //navigate to the view page
             Response.Redirect("RoomViewer.aspx");
         }
