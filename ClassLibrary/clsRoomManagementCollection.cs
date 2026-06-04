@@ -96,7 +96,7 @@ namespace ClassLibrary
             DB.AddParameter("@TreatmentOver", mThisRoom.TreatmentOver);
 
             //execute the query returning the primary key value
-            return DB.Execute("sproc_tblRoomManagement_Insert);
+            return DB.Execute("sproc_tblRoomManagement_Insert");
         }
     }
 }
