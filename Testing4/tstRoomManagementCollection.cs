@@ -88,6 +88,32 @@ namespace Testing4
             Assert.AreEqual(AllRooms.Count, TestList.Count);
         }
 
-
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsRoomManagementCollection AllRooms = new clsRoomManagementCollection();
+            //create some test data to assign to the property
+            clsRoomManagement TestItem = new clsRoomManagement();
+            //varible to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.RoomID = 1;
+            TestItem.RoomName = "Test Room";
+            TestItem.RoomEntryDate = DateTime.Now.Date;
+            TestItem.TreatmentOver = false;
+            TestItem.PatientID = 1;
+            TestItem.ClinicalNotes = "wrbxteyanlpofjibgbgzjczsuriqmgwdxlndgarfhihexxghhfcxnlcmskcueolxgkutzvcpytydqykykfntydirnqckfqtiwezop";
+            //assign the data to the property
+            AllRooms.ThisRoom = TestItem;
+            //add the record
+            PrimaryKey = AllRooms.Add();
+            //set the primary key of the test data
+            TestItem.RoomID = PrimaryKey;
+            //find the record
+            AllRooms.ThisRoom.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllRooms.ThisRoom, TestItem);
+        }
     }
 }

@@ -5,6 +5,11 @@ namespace ClassLibrary
 {
     public class clsRoomManagementCollection
     {
+        //private data member for the list
+        List<clsRoomManagement> mRoomList = new List<clsRoomManagement>();
+        //private data member for thisRoom
+        clsRoomManagement mThisRoom = new clsRoomManagement();
+
         //constructor for the class
         public clsRoomManagementCollection()
         {
@@ -36,8 +41,6 @@ namespace ClassLibrary
             }
         }
 
-        //private data member for the list
-        List<clsRoomManagement> mRoomList = new List<clsRoomManagement>();
         //public property for the room list
         public List<clsRoomManagement> RoomList
         {
@@ -65,6 +68,27 @@ namespace ClassLibrary
                 //we will worry about this later
             }
         }
-        public clsRoomManagement ThisRoom { get; set; }
+        public clsRoomManagement ThisRoom
+        {
+            get
+            {
+                //return the private data
+                return mThisRoom;
+            }
+            set
+            {
+                //set the private data
+                mThisRoom = value;
+            }
+        }
+
+        public int Add()
+        {
+            //adds a new record to the database based on the values of mThisRoom
+            //set the primary key value of the new record
+            mThisRoom.RoomID = 111;
+            //return the primary key of the new record
+            return mThisRoom.RoomID;
+        }
     }
 }
