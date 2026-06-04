@@ -667,7 +667,7 @@ namespace Testing1
             string Email = "";
             PatientEmail = PatientEmail.PadRight(500, 'a'); //this should fail
             //invoke the method
-            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword, DateAdded);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
