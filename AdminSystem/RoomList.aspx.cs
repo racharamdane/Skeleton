@@ -40,4 +40,24 @@ public partial class _1_List : System.Web.UI.Page
         //redirect to the data entry page
         Response.Redirect("RoomDataEntry.aspx");
     }
+
+    protected void btn_Click(object sender, EventArgs e)
+    {
+        //varible to store the primary key value of the record to be deleted
+        Int32 RoomID;
+        //if a record has been selected from the list
+        if (lstRoomList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to delete
+            RoomID = Convert.ToInt32(lstRoomList.SelectedValue);
+            //store the data in the session object
+            Session["RoomID"] = RoomID;
+            //redirect to the delete page
+            Response.Redirect("RoomConfirmDelete.aspx");
+        }
+         else
+        {
+            string Error = "Please select a record to delete from the list";
+        }
+    }
 }

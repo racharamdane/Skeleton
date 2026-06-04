@@ -101,7 +101,18 @@ namespace ClassLibrary
 
         public void Update()
         {
-            throw new NotImplementedException();
+            //update an existing record based on the values of thisRoom
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@RoomID", mThisRoom.RoomID);
+            DB.AddParameter("@RoomName", mThisRoom.RoomName);
+            DB.AddParameter("@PatientID", mThisRoom.PatientID);
+            DB.AddParameter("@RoomEntryDate", mThisRoom.RoomEntryDate);
+            DB.AddParameter("@ClinicalNotes", mThisRoom.ClinicalNotes);
+            DB.AddParameter("@TreatmentOver", mThisRoom.TreatmentOver);
+            //execture the stored procedure
+            DB.Execute("sproc_tblRoomManagement_Update");
         }
     }
 }
