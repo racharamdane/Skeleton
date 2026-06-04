@@ -375,6 +375,20 @@ namespace Testing1
             //test to see that the result is correct 
             Assert.AreEqual(Error, "");
         }
+        [TestMethod]
+        public void PatientFullNameMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            Patientfullname = Patientfullname.PadRight(51, 'a'); //this should fail
+            //invoke the method
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
 
         [TestMethod]
         public void PatientFullNameMid()
@@ -504,6 +518,26 @@ namespace Testing1
             Assert.AreNotEqual(Error, "");
 
         }
+
+        public void PatientregistrationdateExtremeMin()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the data is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
         [TestMethod]
         public void PatientRegistrationDateInvalidData()
         {
@@ -623,6 +657,22 @@ namespace Testing1
         }
 
         [TestMethod]
+        public void PatientEmailExtremeMax()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Email = "";
+            PatientEmail = PatientEmail.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
         public void PatientPasswordMinLessOne()
         {
             //create an instance of the class we want to create
@@ -711,6 +761,23 @@ namespace Testing1
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
+
+        [TestMethod]
+        public void PatientPasswordExtremeMax()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Patientpassword = "";
+            Patientpassword = Patientpassword.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
         [TestMethod]
         public void PatientPasswordMid()
         {
@@ -829,6 +896,25 @@ namespace Testing1
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
+
+
+        [TestMethod]
+        public void PatientGenderExtremeMax()
+        {
+            //create an instance of the class we want to create
+            ClsPatient APatient = new ClsPatient();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Patientgender = "";
+            Patientgender = Patientgender.PadRight(500, 'a');
+            //invoke the method
+            Error = APatient.Valid(Patientfullname, PatientEmail, Patientgender, Patientpassword, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
         [TestMethod]
         
         public void StatStaticsGroupedByPatientgender()
