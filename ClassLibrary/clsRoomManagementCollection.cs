@@ -85,10 +85,18 @@ namespace ClassLibrary
         public int Add()
         {
             //adds a new record to the database based on the values of mThisRoom
-            //set the primary key value of the new record
-            mThisRoom.RoomID = 111;
-            //return the primary key of the new record
-            return mThisRoom.RoomID;
+            //connect to the databaseq
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@RoomID", mThisRoom.RoomID);
+            DB.AddParameter("@RoomName", mThisRoom.RoomName);
+            DB.AddParameter("@PatientID", mThisRoom.PatientID);
+            DB.AddParameter("@RoomEntryDate", mThisRoom.RoomEntryDate);
+            DB.AddParameter("@ClinicalNotes", mThisRoom.ClinicalNotes);
+            DB.AddParameter("@TreatmentOver", mThisRoom.TreatmentOver);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblRoomManagement_Insert);
         }
     }
 }
