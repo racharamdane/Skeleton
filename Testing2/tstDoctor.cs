@@ -29,6 +29,10 @@ namespace Testing2
             Assert.IsNotNull(ADoctor);
         }
 
+
+
+
+
         [TestMethod]
         public void AvailableDoctorOK()
         {
@@ -117,6 +121,9 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(ADoctor.Department, TestData);
         }
+
+
+        
 
         [TestMethod]
         public void FindMethodOK()
@@ -665,7 +672,7 @@ namespace Testing2
             String Error = "";
             //create some test data to pass to the method
             string Email = "";
-            Password = Password.PadRight(500, 'a'); //this should fail
+            Email = Email.PadRight(500, 'a'); //this should fail
             //invoke the method
             Error = ADoctor.Valid(FullName, Password, Email, Department, ContractDate);
             //test to see that the result is correct
@@ -949,3 +956,4 @@ namespace Testing2
         }
     }
 }
+
