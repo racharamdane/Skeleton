@@ -234,6 +234,5 @@ namespace Testing3
             //test to see that there are no records
             Assert.AreEqual(0, FilteredAppointments.Count);
         }
-
         }
     }
