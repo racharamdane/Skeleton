@@ -402,6 +402,39 @@ namespace Testing3
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
+        public void AppointmentNotesExtremeMin()
+        {
+            //create an instance of the class we want to create
+            ClsAppointmentScheduling AAppointmentScheduling = MakeValidAppointment();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string AppointmentNotes = "";
+            string AppointmentDate = DateTime.Now.Date.ToString();
+            string AppointmentTime = DateTime.Now.TimeOfDay.ToString();
+            //invoke the method
+            Error = AAppointmentScheduling.Valid(AppointmentNotes, AppointmentDate, AppointmentTime);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void AppointmentNotesInvalidData()
+        {
+            //create an instance of the class we want to create
+            ClsAppointmentScheduling AAppointmentScheduling = MakeValidAppointment();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string AppointmentNotes = "This is not a valid note!@£$%^&*()";
+            string AppointmentDate = DateTime.Now.Date.ToString();
+            string AppointmentTime = DateTime.Now.TimeOfDay.ToString();
+            //invoke the method
+            Error = AAppointmentScheduling.Valid(AppointmentNotes, AppointmentDate, AppointmentTime);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
         public void AppointmentDateExtremeMin()
         {
             //create an instance of the class we want to create
@@ -435,6 +468,79 @@ namespace Testing3
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
+        [TestMethod]
+        public void AppointmentDateMax()
+            {
+            //create an instance of the class we want to create
+            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string AppointmentNotes = "N/A";
+            DateTime TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(365);
+            string AppointmentDate = TestDate.ToString();
+            string AppointmentTime = DateTime.Now.TimeOfDay.ToString();
+            //invoke the method
+            Error = AAppointmentScheduling.Valid(AppointmentNotes, AppointmentDate, AppointmentTime);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void AppointmentDateMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string AppointmentNotes = "N/A";
+            DateTime TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(366);
+            string AppointmentDate = TestDate.ToString();
+            string AppointmentTime = DateTime.Now.TimeOfDay.ToString();
+            //invoke the method
+            Error = AAppointmentScheduling.Valid(AppointmentNotes, AppointmentDate, AppointmentTime);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void AppointmentDateMid()
+        {
+            //create an instance of the class we want to create
+            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string AppointmentNotes = "N/A";
+            DateTime TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(182);
+            string AppointmentDate = TestDate.ToString();
+            string AppointmentTime = DateTime.Now.TimeOfDay.ToString();
+            //invoke the method
+            Error = AAppointmentScheduling.Valid(AppointmentNotes, AppointmentDate, AppointmentTime);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void AppointmentDateMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to assign to the property
+            string AppointmentNotes = "N/A";
+            DateTime TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(364);
+            string AppointmentDate = TestDate.ToString();
+            string AppointmentTime = DateTime.Now.TimeOfDay.ToString();
+            //invoke the method
+            Error = AAppointmentScheduling.Valid(AppointmentNotes, AppointmentDate, AppointmentTime);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
         [TestMethod]
         public void AppointmentDateMin()
         {
