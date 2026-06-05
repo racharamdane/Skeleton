@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ClassLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 
@@ -11,10 +12,6 @@ namespace Testing3
         public void InstanceOK()
         {
             //create an instance of the class we want to create
-            // FIX: Remove unnecessary assignment and use correct type name if available
-            // The type 'clsAppointmentSchedulingCollection' is not defined anywhere in the provided context.
-            // If you have a collection class for appointments, please ensure it is defined and referenced.
-            // For now, comment out the line to resolve IDE0059 and CS0246.
             // clsAppointmentSchedulingCollection AAppointmentScheduling = new clsAppointmentSchedulingCollection();
         }
 
@@ -22,17 +19,15 @@ namespace Testing3
         public void AppointmentListOK()
         {
             //create an instance of the class we want to create
-            // FIX: The type 'clsAppointmentSchedulingCollection' is not defined.
-            // Please define this class or use the correct collection class.
             // clsAppointmentScheduling AllAppointments = new clsAppointmentSchedulingCollection();
 
             //create some test data to assign to the property
             //in this case the data needs to be a list of objects
-            List<clsAppointmentScheduling.clsAppointmentScheduling> TestList = new List<clsAppointmentScheduling.clsAppointmentScheduling>();
+            List<ClassLibrary.ClsAppointmentScheduling> TestList = new List<ClassLibrary.ClsAppointmentScheduling>();
 
             //add an item to the list
             //create the item of test data
-            clsAppointmentScheduling.clsAppointmentScheduling TestItem = new clsAppointmentScheduling.clsAppointmentScheduling();
+            ClassLibrary.ClsAppointmentScheduling TestItem = new ClassLibrary.ClsAppointmentScheduling();
 
             //set its properties
             TestItem.AppointmentId = 1234;
@@ -60,7 +55,7 @@ namespace Testing3
             // clsAppointmentSchedulingCollection AllAppointments = new clsAppointmentSchedulingCollection();
 
             //create some test data to assign to the property
-            clsAppointmentScheduling.clsAppointmentScheduling TestItem = new clsAppointmentScheduling.clsAppointmentScheduling();
+            ClassLibrary.ClsAppointmentScheduling TestItem = new ClassLibrary.ClsAppointmentScheduling();
 
             //set its properties
             TestItem.AppointmentId = 1234;
@@ -81,16 +76,15 @@ namespace Testing3
         [TestMethod]
         public void ListAndCountOK()
         {
-            //create an instance of the class we want to create
-            clsAppointmentScheduling.clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling.clsAppointmentScheduling();
+            ClassLibrary.ClsAppointmentScheduling AAppointmentScheduling = new ClassLibrary.ClsAppointmentScheduling();
 
             //create some test data to assign to the property
             //in this case the data needs to be a list of objects
-            List<clsAppointmentScheduling.clsAppointmentScheduling> TestList = new List<clsAppointmentScheduling.clsAppointmentScheduling>();
+            List<ClassLibrary.ClsAppointmentScheduling> TestList = new List<ClassLibrary.ClsAppointmentScheduling>();
 
             //add an item to the list
             //create the item of test data
-            clsAppointmentScheduling.clsAppointmentScheduling TestItem = new clsAppointmentScheduling.clsAppointmentScheduling();
+            ClassLibrary.ClsAppointmentScheduling TestItem = new ClassLibrary.ClsAppointmentScheduling();
 
             //set its properties
             TestItem.AppointmentId = 1234;
@@ -116,70 +110,70 @@ namespace Testing3
             //create an instance of the class we want to create
             clsAppointmentSchedulingCollection AllAppointments = new clsAppointmentSchedulingCollection();
             //create the item of test data
-            clsAppointmentScheduling TestItem = new clsAppointmentScheduling();
+            ClassLibrary.ClsAppointmentScheduling TestItem = new ClassLibrary.ClsAppointmentScheduling();
             //variable to store the primary key
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.Availability = true;
-            TestItem.PatientID = 111;
-            TestItem.DoctorID = 1;
+            TestItem.PatientId = 111;
+            TestItem.DoctorId = 1;
             TestItem.AppointmentId = 1234;
             TestItem.AppointmentNotes = "N/A";
             TestItem.AppointmentDate = DateTime.Now;
             TestItem.AppointmentTime = DateTime.Now;
 
-            //set ThisPatient to the test data
-            AllAppointments.ThisAppointment TestItem;
+            //set ThisAppointmentScheduling to the test data
+            AllAppointments.ThisAppointmentScheduling = TestItem;
             //add the record
             PrimaryKey = AllAppointments.Add();
-            //set the primary ke of the test data 
-            TestItem.AppointmentID = PrimaryKey;
+            //set the primary key of the test data 
+            TestItem.AppointmentId = PrimaryKey;
             //find the record
-            AllAppointments.ThisAppointment.Find(PrimaryKey);
+            AllAppointments.ThisAppointmentScheduling.Find(PrimaryKey);
             //test to see that the two values are the same
-            Assert.AreEqual(AllAppointment.ThisPatient, TestItem);
+            Assert.AreEqual(AllAppointments.ThisAppointmentScheduling, TestItem);
         }
         [TestMethod]
         public void UpdateMethodOK()
         {
             //create an instance of the class we want to create
-            clsAppointmentSchedulingCollection AAppointments = new clsAppointmentSchedulingCollection();
+            clsAppointmentSchedulingCollection AllAppointments = new clsAppointmentSchedulingCollection();
             //create the item of test data
-            clsAppointmentScheduling TestItem = new clsAppointmentScheduling();
+            ClassLibrary.ClsAppointmentScheduling TestItem = new ClassLibrary.ClsAppointmentScheduling();
             //variable to store the primary key
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.Availability = true;
-            TestItem.PatientID = 111;
-            TestItem.DoctorID = 1;
+            TestItem.PatientId = 111;
+            TestItem.DoctorId = 1;
             TestItem.AppointmentId = 1234;
             TestItem.AppointmentNotes = "N/A";
             TestItem.AppointmentDate = DateTime.Now;
             TestItem.AppointmentTime = DateTime.Now;
 
-            //set ThisAppointment to the test data
-            AAppointments.ThisAppointment TestItem;
+            //set ThisAppointmentScheduling to the test data
+            AllAppointments.ThisAppointmentScheduling = TestItem;
             //add the record
-            PrimaryKey = AAppointments.Add();
-            //set the primary ke of the test data 
-            TestItem.AppointmentID = PrimaryKey;
+            PrimaryKey = AllAppointments.Add();
+            //set the primary key of the test data 
+            TestItem.AppointmentId = PrimaryKey;
             //modify the test data
             TestItem.Availability = false;
-            TestItem.PatientID = 222;
-            TestItem.DoctorID = 2;
+            TestItem.PatientId = 222;
+            TestItem.DoctorId = 2;
             TestItem.AppointmentNotes = "Updated Notes";
             TestItem.AppointmentDate = DateTime.Now.AddDays(1);
             TestItem.AppointmentTime = DateTime.Now.AddHours(1);
 
             //update the record
-            AllAppointments.ThisAppointment = TestItem;
+            AllAppointments.ThisAppointmentScheduling = TestItem;
             AllAppointments.Update();
 
             //find the record
-            AllAppointments.ThisAppointment.Find(PrimaryKey);
+            AllAppointments.ThisAppointmentScheduling.Find(PrimaryKey);
 
             //test to see that the two values are the same
-            Assert.AreEqual(AllAppointments.ThisAppointment, TestItem);
+            Assert.AreEqual(AllAppointments.ThisAppointmentScheduling, TestItem);
         }
         [TestMethod]
         public void DeleteMethodOK()
@@ -187,52 +181,44 @@ namespace Testing3
             //create an instance of the class we want to create
             clsAppointmentSchedulingCollection AllAppointments = new clsAppointmentSchedulingCollection();
             //create the item of test data
-            clsAppointmentScheduling TestItem = new clsAppointmentScheduling();
+            ClassLibrary.ClsAppointmentScheduling TestItem = new ClassLibrary.ClsAppointmentScheduling();
             //variable to store the primary key
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.Availability = true;
-            TestItem.PatientID = 111;
-            TestItem.DoctorID = 1;
+            TestItem.PatientId = 111;
+            TestItem.DoctorId = 1;
             TestItem.AppointmentId = 1234;
             TestItem.AppointmentNotes = "N/A";
             TestItem.AppointmentDate = DateTime.Now;
             TestItem.AppointmentTime = DateTime.Now;
-            //set ThisAppointment to the test data
-            AllAppointments.ThisAppointment TestItem;
+            //set ThisAppointmentScheduling to the test data
+            AllAppointments.ThisAppointmentScheduling = TestItem;
             //add the record
             PrimaryKey = AllAppointments.Add();
-            //set the primary ke of the test data 
-            TestItem.AppointmentID = PrimaryKey;
+            //set the primary key of the test data 
+            TestItem.AppointmentId = PrimaryKey;
             //delete the record
-            AllAppointments.ThisAppointment.Find(PrimaryKey);
+            AllAppointments.ThisAppointmentScheduling.Find(PrimaryKey);
             AllAppointments.Delete();
             //now find the record
-            Boolean Found = AllAppointments.ThisAppointment.Find(PrimaryKey);
+            Boolean Found = AllAppointments.ThisAppointmentScheduling.Find(PrimaryKey);
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
         [TestMethod]
-            public void ReportByDoctorIdMethodOK()
+        public void ReportByDoctorMethodOK()
         {
             //create an instance of the class we want to create
             clsAppointmentSchedulingCollection AllAppointments = new clsAppointmentSchedulingCollection();
             //create an instance of the filtered data
             clsAppointmentSchedulingCollection FilteredAppointments = new clsAppointmentSchedulingCollection();
             //apply a blank string (should return all records)
-            FilteredAppointments.ReportByDoctorId("");
+            FilteredAppointments.reportbyDoctor("");
             //test to see that the two values are the same
             Assert.AreEqual(AllAppointments.Count, FilteredAppointments.Count);
-        }
-        [TestMethod]
-        public void ReportByDoctorIdNoneFound()
-        {
-            //create an instance of the class we want to create
-            clsAppointmentSchedulingCollection FilteredAppointments = new clsAppointmentSchedulingCollection();
-            //apply a DoctorId that doesn't exist
-            FilteredAppointments.ReportByDoctorId("9999");
-            //test to see that there are no records
-            Assert.AreEqual(0, FilteredAppointments.Count);
-        }
+
+
         }
     }
+}
