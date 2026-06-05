@@ -34,7 +34,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     private void DisplayAppointment()
     {
         //create an instance of the appointment
-        clsAppointmentScheduling Appointment = new clsAppointmentScheduling();
+        ClsAppointmentScheduling Appointment = new ClsAppointmentScheduling();
         //find the record to update
         Appointment.Find(AppointmentId);
         //display the data for this record
@@ -49,7 +49,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click1(object sender, EventArgs e)
     {
         // Create a new instance of clsAppointmentScheduling
-        clsAppointmentScheduling AAppointment = new clsAppointmentScheduling();
+        ClsAppointmentScheduling AAppointment = new ClsAppointmentScheduling();
         // capture the doctor id
         string DoctorId = (string)txtDoctorId;
         // capture the patient id
@@ -114,7 +114,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnFind_Click(object sender, EventArgs e)
     {
         //create an instance of the appointment class
-        clsAppointmentScheduling AnAppointment = new clsAppointmentScheduling();
+        ClsAppointmentScheduling AnAppointment = new ClsAppointmentScheduling();
         //variable to store the primary key
         Int32 AppointmentId;
         //variable to store the result of the find operation

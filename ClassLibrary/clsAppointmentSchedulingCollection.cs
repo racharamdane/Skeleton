@@ -9,11 +9,11 @@ namespace ClassLibrary
     public class clsAppointmentSchedulingCollection
     {
         //private data member for the list 
-        List<clsAppointmentScheduling> mAppointmentList = new List<clsAppointmentScheduling>();
+        List<ClsAppointmentScheduling> mAppointmentList = new List<ClsAppointmentScheduling>();
         //private member data for ThisAppointmentScheduling
-        clsAppointmentScheduling mThisAppointmentScheduling = new clsAppointmentScheduling();
+        ClsAppointmentScheduling mThisAppointmentScheduling = new ClsAppointmentScheduling();
         //public property for the Appointment list
-        public List<clsAppointmentScheduling> AppointmentList
+        public List<ClsAppointmentScheduling> AppointmentList
         {
             get
             {
@@ -40,7 +40,7 @@ namespace ClassLibrary
                 //we shall worry about this later
             }
         }
-        public clsAppointmentScheduling ThisAppointmentScheduling { get; set; }
+        public ClsAppointmentScheduling ThisAppointmentScheduling { get; set; }
 
         public clsAppointmentSchedulingCollection()
         {
@@ -62,7 +62,7 @@ namespace ClassLibrary
             while (Index < RecordCount)
             {
                 //create a blank address
-                clsAppointmentScheduling AAppointmentScheduling = new clsAppointmentScheduling();
+                ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
                 AAppointmentScheduling.AppointmentId = Convert.ToInt32(DB.DataTable.Rows[Index]["AppointmentId"]);
                 AAppointmentScheduling.DoctorId = Convert.ToInt32(DB.DataTable.Rows[Index]["DoctorId"]);
                 AAppointmentScheduling.PatientId = Convert.ToInt32(DB.DataTable.Rows[Index]["PatientId"]);
@@ -78,8 +78,8 @@ namespace ClassLibrary
                 Index++;
             }
         }
-        
-            public int Add()
+
+        public int Add()
         {
             //adds a record to the databse based on the values of mThisAppointmentScheduling
             //connect to the database
@@ -121,11 +121,69 @@ namespace ClassLibrary
             DB.Execute("sproc_tblAppointmentScheduling_Delete");
         }
 
-        public static implicit operator clsAppointmentSchedulingCollection(clsAppointmentScheduling v)
+        public static implicit operator clsAppointmentSchedulingCollection(ClsAppointmentScheduling v)
+        {
+            throw new NotImplementedException();
+        }
+        public void reportbyDoctor(int DoctorId)
+        {
+            //filters the record based on a full or partial doctor id
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameter for the stored procedure
+            DB.AddParameter("@DoctorId", DoctorId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblAppointmentScheduling_FilterByDoctorId");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populate the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount = 0;
+            //get the count of records returned
+            RecordCount = DB.Count;
+            //clear the private array list
+            mAppointmentList = new List<ClsAppointmentScheduling>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank appointment scheduling
+                ClsAppointmentScheduling AAppointmentScheduling = new ClsAppointmentScheduling();
+                AAppointmentScheduling.AppointmentId = Convert.ToInt32(DB.DataTable.Rows[Index]["AppointmentId"]);
+                AAppointmentScheduling.DoctorId = Convert.ToInt32(DB.DataTable.Rows[Index]["DoctorId"]);
+                AAppointmentScheduling.PatientId = Convert.ToInt32(DB.DataTable.Rows[Index]["PatientId"]);
+                AAppointmentScheduling.AppointmentNotes = Convert.ToString(DB.DataTable.Rows[Index]["Appointment Notes"]);
+                AAppointmentScheduling.AppointmentDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["Appointment Date"]);
+                AAppointmentScheduling.AppointmentTime = Convert.ToDateTime(DB.DataTable.Rows[Index]["Appointment Time"]);
+                AAppointmentScheduling.Availability = Convert.ToBoolean(DB.DataTable.Rows[Index]["Availability"]);
+                //add the record to the private data member
+                mAppointmentList.Add(AAppointmentScheduling);
+                //point at the next record
+                Index++;
+            }
+        }
+        public void ReportByDoctorId(string DoctorId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReportByDoctorID(object text)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void reportbyDoctor(string v)
         {
             throw new NotImplementedException();
         }
     }
-
 }
-    
+
+
+
+
+
